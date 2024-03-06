@@ -1,0 +1,26 @@
+package.json
+tsconfig.json
+/node_modules
+yarn.lock
+
+.eslintrc.json
+./vite.config.js
+
+CHANGELOG.md
+README.md
+
+/public/*
+
+# git
+/.git/
+*.tsbuildinfo
+
+# misc
+.DS_Store
+*.pem
+
+# local env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
