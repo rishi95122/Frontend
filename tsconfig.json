@@ -1,0 +1,39 @@
+{
+	"extends": "./tsconfig.path.json",
+	"compilerOptions": {
+		/* Language and Environment */
+		"target": "esnext",
+		"lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+		"jsx": "react-jsx",
+		"experimentalDecorators": true,
+
+		/* Modules */
+		"module": "esnext",
+		"moduleResolution": "node",
+		"types": ["node", "vite/client"],
+		"typeRoots": ["./node_modules/@types", "./node_modules"],
+
+		/* Emit */
+		"sourceMap": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+
+		/* Interop Constraints */
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+
+		/* Type Checking */
+		"strict": true,
+		"allowJs": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+
+		/* Completeness */
+		"skipLibCheck": true
+	},
+	"include": ["src/**/*.ts", "src/**/*.tsx"],
+	"exclude": ["node_modules"]
+}

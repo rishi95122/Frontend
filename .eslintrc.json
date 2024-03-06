@@ -1,0 +1,52 @@
+{
+  "extends": [
+    "plugin:canonical/recommended",
+    "canonical",
+    "canonical/typescript",
+    "canonical/json",
+    "canonical/module",
+    "canonical/regexp",
+    "canonical/typescript-type-checking",
+    "canonical/zod",
+    "canonical/browser",
+    "canonical/typescript",
+    "canonical/react",
+    "canonical/jsx-a11y",
+    "canonical/prettier"
+  ],
+  "plugins": ["canonical"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": false,
+        "semi": false,
+        "useTabs": true,
+        "trailingComma": "none",
+        "tabWidth": 2,
+        "jsxSingleQuote": false,
+        "bracketSpacing": true,
+        "printWidth": 100
+      }
+    ],
+    "node/no-process-env": "off",
+    "import/extensions": "off",
+    "no-warning-comments": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+		"@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "react/jsx-sort-props": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "canonical/destructuring-property-newline": "off",
+		"canonical/import-specifier-newline": "off",
+		"react/forbid-component-props": "off",
+		"canonical/filename-match-exported": "off",
+    "canonical/filename-match-regex": "off",
+    "unicorn/no-abusive-eslint-disable": "off",
+    "eslint-comments/no-unlimited-disable": "off",
+    "unicorn/no-empty-file": "off"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}
