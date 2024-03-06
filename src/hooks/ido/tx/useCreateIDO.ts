@@ -51,14 +51,14 @@ export const useCreateIDO = () => {
 					},
 					product: {
 						banner_images: [
-							"https://raw.githubusercontent.com/MikeVerse/Branding-proxy/main/ido_banner.png"
+							"https://raw.githubusercontent.com/Electron-Protocol/Branding/main/ido_banner.png"
 						],
 						full_name: "Electron Network",
 						header: "Welcome to Electron",
 						highlights: [
 							"Electron is the premier fully permissionless decentralized exchange, on Neutron."
 						],
-						logo: "https://raw.githubusercontent.com/MikeVerse/Branding-proxy/main/logo.svg",
+						logo: "https://raw.githubusercontent.com/Electron-Protocol/Branding/main/logo.svg",
 						long_desc:
 							"In the vibrant digital landscape of the Electron Project on Neutron Network, a captivating motto resonates with a spirit of adventure and boundless possibilities: This powerful mantra embodies the essence of this innovative platform, inviting users to embark on an exciting journey of discovery, collaboration, and creativity.",
 						short_desc: "Welcome to Electron",

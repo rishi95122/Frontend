@@ -238,7 +238,7 @@ export const RouterArea = () => {
 										_hover={{ bg: "blackAlpha.100" }}
 										as="a"
 										bg="transparent"
-										href="https://github.com/MikeVerse"
+										href="https://github.com/Electron-Protocol"
 										target="_blank"
 									>
 										<HStack justify="space-between" w="full">

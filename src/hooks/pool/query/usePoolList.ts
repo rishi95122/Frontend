@@ -4,7 +4,7 @@ import { BigNumber } from "bignumber.js"
 import { useMemo } from "react"
 import { type TPool } from "utils/tokens/pools"
 
-export const poolListUrl = `https://raw.githubusercontent.com/MikeVerse/assetlist-proxy/main/${
+export const poolListUrl = `https://raw.githubusercontent.com/Electron-Protocol/assetlist/main/${
 	import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet" ? "mainnet/" : "testnet/"
 }poolList.json`
 
