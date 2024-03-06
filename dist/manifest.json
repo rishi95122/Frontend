@@ -1,0 +1,12 @@
+{
+  "short_name": "Electron-dapp",
+  "name": "Electron Network",
+  "lang": "en",
+  "start_url": "/",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "dir": "ltr",
+  "display": "standalone",
+  "orientation": "portrait",
+  "prefer_related_applications": false
+}
