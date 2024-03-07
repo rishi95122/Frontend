@@ -32,7 +32,7 @@ export const SwapPanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src="/assets/home/circuitboard_bg.jpg"
+				src="/assets/home/1.webp"
 				blurHash="L77-=pIu02-O0:xY}mI=qIs,T^NL"
 				isHovering={isHovering}
 			/>
