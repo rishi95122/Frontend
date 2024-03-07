@@ -25,7 +25,7 @@ export const LaunchpadPanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src="/assets/home/circuitboard_bg.jpg"
+				src="/assets/home/staking.mp4"
 				blurHash="LA6]tNoy00WC.jfkDRaf8zaz??oK"
 				isHovering={isHovering}
 			/>

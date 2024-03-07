@@ -33,7 +33,7 @@ export const AssetsPanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src="/assets/home/circuitboard_bg.jpg"
+				src="/assets/home/assets.mp4"
 				blurHash="L56cQlnj*KkVQ8bauPi{00WpH9bb"
 				isHovering={isHovering}
 			/>
