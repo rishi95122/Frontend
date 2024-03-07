@@ -132,7 +132,7 @@ export const Footer = () => {
 						>
 							DEVELOPERS
 						</Heading>
-						<Link href="https://github.com/MikeVerse/" target="_blank">
+						<Link href="https://github.com/Electron-Protocol/" target="_blank">
 							GitHub
 						</Link>
 					</Flex>

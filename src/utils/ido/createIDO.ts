@@ -40,7 +40,7 @@ export const createIDO = async (
 			funds: [
 				{
 					amount: "100",
-					denom: "factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/tTEST"
+					denom: "factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/ELE"
 				}
 			],
 			memo: `Electron | Create IDO for ${idoInfo.product.token_symbol}`

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { type Token } from "utils/tokens/tokens"
 
-export const tokenListUrl = `https://raw.githubusercontent.com/MikeVerse/assetlist-proxy/main/${
+export const tokenListUrl = `https://raw.githubusercontent.com/Electron-Protocol/assetlist/main/${
 	import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet" ? "mainnet/" : "testnet/"
 }tokenList.json`
 

@@ -51,7 +51,7 @@ export const HeaderMenu = () => {
 					_hover={{ bg: "blackAlpha.100" }}
 					as="a"
 					bg="transparent"
-					href="https://github.com/MikeVerse"
+					href="https://github.com/Electron-Protocol"
 					icon={<FaGithub size="18" />}
 					target="_blank"
 				>

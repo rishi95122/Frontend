@@ -368,8 +368,8 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 								: "Neutron Network Testnet",
 						url:
 							import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet"
-								? "https://app.unknown.network"
-								: "https://testnet.unknown.network"
+								? "https://app.electron.network"
+								: "https://testnet.electron.network"
 					},
 					name: "Electron Network",
 					projectId: import.meta.env.VITE_WCCLIENT as string,

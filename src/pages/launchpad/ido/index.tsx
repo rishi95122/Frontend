@@ -7,28 +7,28 @@ import { useNavigate } from "react-router-dom"
 const IDOMockup: IDOCardType[] = [
 	{
 		bannerImages: [
-			"https://raw.githubusercontent.com/MikeVerse/Branding-proxy/main/ido_banner.png"
+			"https://raw.githubusercontent.com/Electron-Protocol/Branding/main/ido_banner.png"
 		],
-		fullName: "UNKNOWN Network",
-		logo: "https://raw.githubusercontent.com/MikeVerse/Branding-proxy/main/logo.svg",
+		fullName: "Electron Network",
+		logo: "https://raw.githubusercontent.com/Electron-Protocol/Branding/main/logo.svg",
 		shortDesc: "Welcome to the jungle!",
 		tokenSymbol: "UNKNOWN"
 	},
 	{
 		bannerImages: [
-			"https://raw.githubusercontent.com/MikeVerse/Branding-proxy/main/ido_banner.png"
+			"https://raw.githubusercontent.com/Electron-Protocol/Branding/main/ido_banner.png"
 		],
-		fullName: "UNKNOWN Network II",
-		logo: "https://raw.githubusercontent.com/MikeVerse/Branding-proxy/main/logo.svg",
+		fullName: "Electron Network II",
+		logo: "https://raw.githubusercontent.com/Electron-Protocol/Branding/main/logo.svg",
 		shortDesc: "Welcome to the jungle again!",
 		tokenSymbol: "UNKNOWN"
 	},
 	{
 		bannerImages: [
-			"https://raw.githubusercontent.com/MikeVerse/Branding-proxy/main/ido_banner.png"
+			"https://raw.githubusercontent.com/Electron-Protocol/Branding/main/ido_banner.png"
 		],
-		fullName: "UNKNOWN Network III",
-		logo: "https://raw.githubusercontent.com/MikeVerse/Branding-proxy/main/logo.svg",
+		fullName: "Electron Network III",
+		logo: "https://raw.githubusercontent.com/Electron-Protocol/Branding/main/logo.svg",
 		shortDesc: "Welcome to the jungle again again!",
 		tokenSymbol: "UNKNOWN"
 	}
