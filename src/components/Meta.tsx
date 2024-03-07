@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet"
 
-const APP_NAME = "Unknown"
+const APP_NAME = "Electron"
 
 const Meta = () => {
 	return (

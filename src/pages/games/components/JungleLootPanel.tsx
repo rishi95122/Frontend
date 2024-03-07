@@ -82,7 +82,7 @@ export const JungleLootPanel = () => {
 					width: "100%"
 				}}
 			>
-				Stake $UNKNOWN to receive tickets
+				Stake $ELE to receive tickets
 			</motion.p>
 		</Box>
 	)

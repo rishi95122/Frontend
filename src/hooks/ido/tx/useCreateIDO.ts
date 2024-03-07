@@ -43,7 +43,7 @@ export const useCreateIDO = () => {
 				120,
 				3_600,
 				{ amount: "100", denom: "untrn" },
-				"factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/tTEST",
+				"factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/ELE",
 				{
 					problem: {
 						desc: "Test Test Test Lorem Ipsum unknown has no problems",
@@ -51,18 +51,18 @@ export const useCreateIDO = () => {
 					},
 					product: {
 						banner_images: [
-							"https://raw.githubusercontent.com/MikeVerse/Branding-proxy/main/ido_banner.png"
+							"https://raw.githubusercontent.com/Electron-Protocol/Branding/main/ido_banner.png"
 						],
 						full_name: "Electron Network",
 						header: "Welcome to Electron",
 						highlights: [
 							"Electron is the premier fully permissionless decentralized exchange, on Neutron."
 						],
-						logo: "https://raw.githubusercontent.com/MikeVerse/Branding-proxy/main/logo.svg",
+						logo: "https://raw.githubusercontent.com/Electron-Protocol/Branding/main/logo.svg",
 						long_desc:
 							"In the vibrant digital landscape of the Electron Project on Neutron Network, a captivating motto resonates with a spirit of adventure and boundless possibilities: This powerful mantra embodies the essence of this innovative platform, inviting users to embark on an exciting journey of discovery, collaboration, and creativity.",
 						short_desc: "Welcome to Electron",
-						token_symbol: "UNKNOWN"
+						token_symbol: "ELECTRON"
 					},
 					solution: {
 						desc: "TESTTESTETSTETSTETSTETTEETSTTS",

@@ -76,9 +76,7 @@ const ConnectButton: FC<ConnectButtonProps> = () => {
 	const { onCopy, setValue } = useClipboard("")
 
 	// TODO: Add Electron denom once minted
-	const [unknownBalance] = useTokenBalance(
-		"factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/tTEST"
-	)
+	const [EleBalance] = useTokenBalance("factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/ELE")
 	const [ntrnBalance] = useTokenBalance("untrn")
 
 	useEffect(() => {
@@ -123,7 +121,7 @@ const ConnectButton: FC<ConnectButtonProps> = () => {
 								<HStack justify="start" w="full">
 									<Image src="/assets/tokens/unknown.png" w="1.4rem" />
 									<Text fontFamily="body" fontSize="md" fontWeight="900" textAlign="start" w="full">
-										{shortenNumber(convertMicroDenomToDenom(unknownBalance, 6), 2)}
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
 									</Text>
 								</HStack>
 								<HStack justify="start" w="full">
