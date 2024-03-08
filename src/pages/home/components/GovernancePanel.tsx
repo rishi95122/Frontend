@@ -25,7 +25,7 @@ export const GovernancePanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src="/assets/home/circuitboard_bg.jpg"
+				src="/assets/home/governance.mp4"
 				blurHash="L9A]y;Sh00v}2xbF{]R,0Lr??FOY"
 				isHovering={isHovering}
 			/>
