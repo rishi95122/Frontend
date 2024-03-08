@@ -220,7 +220,7 @@ export const NextRoundCard = ({ roundInfo }: { roundInfo?: NextRound }) => {
 								<Text pt={1} textAlign="end" w="full">
 									{shortenNumber(convertMicroDenomToDenom(tokenBalance, 6), 2)}
 								</Text>
-								<Image src="/assets/UnknownLogo.png" w="1.25rem" />
+								<Image src="/assets/electron.png" w="1.25rem" />
 							</HStack>
 							<Box px={3}>
 								<Slider
@@ -425,7 +425,7 @@ export const NextRoundCard = ({ roundInfo }: { roundInfo?: NextRound }) => {
 													6
 												).toFixed(0)}
 											</Text>
-											<Avatar h="1.25rem" src="/assets/UnknownLogo.png" w="1.25rem" />
+											<Avatar h="1.25rem" src="/assets/electron.png" w="1.25rem" />
 										</HStack>
 									</HStack>
 									<Spacer />
@@ -450,7 +450,7 @@ export const NextRoundCard = ({ roundInfo }: { roundInfo?: NextRound }) => {
 														pricePool}
 												</Text>
 											)}
-											<Avatar h="1.25rem" src="/assets/UnknownLogo.png" w="1.25rem" />
+											<Avatar h="1.25rem" src="/assets/electron.png" w="1.25rem" />
 											<Text color="green.500" fontFamily="heading" fontWeight="900">
 												(
 												{Number(playerRoundInfo?.next_bull_amount) !== 0 && (

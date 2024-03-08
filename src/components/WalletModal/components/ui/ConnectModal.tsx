@@ -107,7 +107,7 @@ export const SimpleConnectModal = ({
 				}}
 				// animate={{ rotate: 360 }}
 				// transition={{ repeat: Number.POSITIVE_INFINITY, duration: 20 }}
-				src="/assets/UnknownLogo.png"
+				src="/assets/electron.png"
 			/>
 			<Flex
 				bottom="calc(50% - 12.5rem)"

@@ -119,7 +119,7 @@ const ConnectButton: FC<ConnectButtonProps> = () => {
 						>
 							<VStack align="start" spacing={0.25} w="full">
 								<HStack justify="start" w="full">
-									<Image src="/assets/tokens/unknown.png" w="1.4rem" />
+									<Image src="/assets/tokens/electron.png" w="1.4rem" />
 									<Text fontFamily="body" fontSize="md" fontWeight="900" textAlign="start" w="full">
 										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
 									</Text>

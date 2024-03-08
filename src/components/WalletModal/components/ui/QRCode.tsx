@@ -45,7 +45,7 @@ export const QRCodeDisplayError = ({ onRefresh }: QRCodeDisplayErrorType) => {
 					[25, 0, 25, 25] // bottom/left
 				]}
 				fgColor="#2975CB"
-				logoImage="/assets/UnknownLogo.png"
+				logoImage="/assets/electron.png"
 				logoWidth={100}
 				maxW="sm"
 				overflow="hidden"
@@ -177,7 +177,7 @@ export const QRCode = ({
 							[25, 0, 25, 25] // bottom/left
 						]}
 						fgColor="#2975CB"
-						logoImage="/assets/tokens/unknown.png"
+						logoImage="/assets/tokens/electron.png"
 						logoWidth={100}
 						maxW="sm"
 						overflow="hidden"

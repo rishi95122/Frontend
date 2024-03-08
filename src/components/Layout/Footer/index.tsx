@@ -54,7 +54,7 @@ export const Footer = () => {
 				right={{ base: "0rem", lg: "5rem", md: "5rem" }}
 				top="1rem"
 			>
-				<Image alt="Electron Logo" height="5rem" src="/assets/UnknownLogo.png" width="4rem" />
+				<Image alt="Electron Logo" height="5rem" src="/assets/electron.png" width="4rem" />
 			</Flex>
 			<Stack
 				align={{ base: "center", md: "space-between" }}
@@ -222,7 +222,7 @@ export const Footer = () => {
 				<Spacer />
 				<HStack spacing={4}>
 					<HStack spacing={2}>
-						{/* <Image h="1.5rem" src="/assets/UnknownLogo.png" w="1.5rem" /> */}
+						{/* <Image h="1.5rem" src="/assets/electron.png" w="1.5rem" /> */}
 						{/* <Text fontWeight="600">
               ${convertMicroDenomToDenom(tokenDollarPrice ?? 0, 6).toFixed(3)}
             </Text> */}

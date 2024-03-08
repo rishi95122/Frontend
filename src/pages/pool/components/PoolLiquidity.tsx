@@ -23,8 +23,8 @@ import { type TPool } from "utils/tokens/pools"
 export const PoolLiquidity = ({ pool }: { pool: TPool }) => {
 	const tokenA = useTokenInfo(pool.liquidity.token1.denom)
 	const tokenB = useTokenInfo(pool.liquidity.token2.denom)
-	const { data: tokenAColors } = usePalette(tokenA?.logoURI ?? "/assets/UnknownLogo.png")
-	const { data: tokenBColors } = usePalette(tokenB?.logoURI ?? "/assets/UnknownLogo.png")
+	const { data: tokenAColors } = usePalette(tokenA?.logoURI ?? "/assets/electron.png")
+	const { data: tokenBColors } = usePalette(tokenB?.logoURI ?? "/assets/electron.png")
 
 	const { isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
 	const { isOpen, onOpen, onClose } = useDisclosure()
