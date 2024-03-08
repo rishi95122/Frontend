@@ -33,7 +33,7 @@ export const useTotalUnbondedValue = ({ tokenList }: { tokenList: Token[] }) => 
 					liquidity.pool.liquidity.token2.denom === initialUSDCToken.denom
 			)
 			const ratio = ElectronUsdcPool?.pool.ratio ?? BigNumber(0)
-			const ElectronPrice = BigNumber(ratio)
+			const FuzioPrice = BigNumber(ratio)
 
 			// eslint-disable-next-line no-unsafe-optional-chaining
 			for (const [, pool] of poolsList?.poolsWithAPR.entries()!) {
@@ -65,9 +65,9 @@ export const useTotalUnbondedValue = ({ tokenList }: { tokenList: Token[] }) => 
 				// eslint-disable-next-line no-negated-condition
 				if (denom !== initialNeutronToken.denom) {
 					const currentRatio = pool?.pool.ratio ?? 0
-					tokenPrice = currentRatio ? BigNumber(ElectronPrice.dividedBy(currentRatio)) : BigNumber(0)
+					tokenPrice = currentRatio ? BigNumber(FuzioPrice.dividedBy(currentRatio)) : BigNumber(0)
 				} else {
-					tokenPrice = BigNumber(ElectronPrice)
+					tokenPrice = BigNumber(FuzioPrice)
 				}
 
 				totalUnbondedDollarValue += convertMicroDenomToDenom(
