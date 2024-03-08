@@ -19,8 +19,8 @@ export const usePoolList = () => {
 		async () => {
 			const response = await fetch(
 				import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet"
-					? "http://localhost:1337/poolList"
-					: "http://localhost:1337/poolList"
+					? "https://backend-1-h514.onrender.com/poolList"
+					: "https://backend-1-h514.onrender.com/poolList"
 			)
 			const responseJson = await response.json()
 			const pools: TPool[] = []
