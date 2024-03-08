@@ -25,8 +25,8 @@ const Pool = () => {
 	const tokenA = useTokenInfo(pool?.pool.liquidity.token1.denom!)
 	const tokenB = useTokenInfo(pool?.pool.liquidity.token2.denom!)
 
-	const { data: tokenAColors } = usePalette(tokenA?.logoURI ?? "/assets/unknownToken.svg")
-	const { data: tokenBColors } = usePalette(tokenB?.logoURI ?? "/assets/unknownToken.svg")
+	const { data: tokenAColors } = usePalette(tokenA?.logoURI ?? "/assets/electron.png")
+	const { data: tokenBColors } = usePalette(tokenB?.logoURI ?? "/assets/electron.png")
 
 	const breakpoint = useBreakpoint({ ssr: false })
 	useEffect(() => {}, [breakpoint])

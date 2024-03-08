@@ -13,7 +13,15 @@
 
 // Converting colors to proper format
 function normalizeColor(hexCode) {
-	return [((hexCode >> 16) & 255) / 255, ((hexCode >> 8) & 255) / 255, (255 & hexCode) / 255]
+    // Extracting green component and normalizing it
+    var green = (hexCode >> 8) & 50;
+    // Adjusting the green component to have a little green with mostly black
+    var green_normalized = green / 512; // Adjust this value to control the amount of green
+    
+    // For shades of black, red and blue components are kept zero
+    var black_shade = [0, green_normalized, 0];
+    
+    return black_shade;
 }
 
 Object.fromEntries(["SCREEN", "LINEAR_LIGHT"].map((t, n) => [t, n]))
