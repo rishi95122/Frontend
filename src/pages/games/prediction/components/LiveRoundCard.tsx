@@ -526,7 +526,7 @@ export const LiveRoundCard = ({
 								<Text>Prize Pool:</Text>
 								<HStack spacing={0.5}>
 									<Text>{shortenNumber(BigNumber(pricePool), 2)}</Text>
-									<Image src="/assets/UnknownLogo.png" w="1.2rem" />
+									<Image src="/assets/electron.png" w="1.2rem" />
 								</HStack>
 							</Flex>
 						</VStack>

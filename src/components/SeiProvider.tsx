@@ -159,12 +159,12 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 					provider: "twitter"
 				},
 				{
-					logo: "/assets/UnknownLogo.png",
+					logo: "/assets/electron.png",
 					name: "Email",
 					provider: "email_passwordless"
 				},
 				{
-					logo: "/assets/UnknownLogo.png",
+					logo: "/assets/electron.png",
 					name: "Phone",
 					provider: "sms_passwordless"
 				}
@@ -361,7 +361,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 				signClient: {
 					metadata: {
 						description: "Bridging the gap between CEX and DeFi",
-						icons: ["/assets/UnknownLogo.png"],
+						icons: ["/assets/electron.png"],
 						name:
 							import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet"
 								? "Neutron Network"

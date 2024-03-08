@@ -69,7 +69,7 @@ export const WonRoundCard = ({ wonRound }: { wonRound: [string, string] }) => {
 						>
 							{shortenNumber(winAmount, 2)}
 						</Text>
-						<Avatar h="1.25rem" src="/assets/UnknownLogo.png" w="1.25rem" />
+						<Avatar h="1.25rem" src="/assets/electron.png" w="1.25rem" />
 					</HStack>
 				</HStack>
 			</VStack>

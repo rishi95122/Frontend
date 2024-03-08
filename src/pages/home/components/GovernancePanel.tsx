@@ -33,7 +33,7 @@ export const GovernancePanel = () => {
 				animate={isHovering ? { height: "15rem" } : { height: "10rem" }}
 				initial={{ height: "10rem" }}
 				style={{
-				//	backgroundImage: "linear-gradient(0deg, rgba(162, 42, 40, 0.6), transparent)",
+					//	backgroundImage: "linear-gradient(0deg, rgba(162, 42, 40, 0.6), transparent)",
 					bottom: "0",
 					position: "absolute",
 					width: "100%"

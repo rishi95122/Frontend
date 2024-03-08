@@ -292,7 +292,7 @@ export const PreviousRoundCard = ({
 						<Text>Prize Pool:</Text>
 						<HStack spacing={0.5}>
 							<Text>{shortenNumber(BigNumber(pricePool), 2)}</Text>
-							<Image src="/assets/UnknownLogo.png" w="1.5rem" />
+							<Image src="/assets/electron.png" w="1.5rem" />
 						</HStack>
 					</Flex>
 				</Flex>

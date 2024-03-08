@@ -43,7 +43,7 @@ const Header = () => {
 						handleClick()
 						navigate("/")
 					}}
-					src="/assets/UnknownLogo.png"
+					src="/assets/electron.png"
 					w="3rem"
 				/>
 			) : (
@@ -54,7 +54,7 @@ const Header = () => {
 						handleClick()
 						navigate("/")
 					}}
-					src="/assets/UnknownLogo.png"
+					src="/assets/electron.png"
 					w="10rem"
 				/>
 			)}
