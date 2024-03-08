@@ -42,7 +42,7 @@ export const initialNeutronToken: Token = {
 	isNativeCoin: true,
 	logoHash: "L3EAsd9=00$~2gR~}ESK00,C%LJ-",
 	logoURI:
-		"https://raw.githubusercontent.com/Electron-Protocol/assetlist/main/assets/mainnet/ntrn.png",
+		"https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/assets/mainnet/ntrn.png",
 	symbol: "NTRN",
 	tokenPrettyName: "Neutron Testnet"
 }
@@ -66,7 +66,7 @@ export const initialUSDCToken: Token = {
 	isNativeCoin: true,
 	logoHash: "LOKC*Nyl}4v,o#kBkCaz|-Z,$xIr",
 	logoURI:
-		"https://raw.githubusercontent.com/Electron-Protocol/assetlist/main/assets/testnet/tUSDC.png",
+		"https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/assets/testnet/tUSDC.png",
 	symbol: "tUSDC",
 	tokenPrettyName: "tUSDC"
 }
@@ -90,7 +90,7 @@ export const initialUSTTwoToken: Token = {
 	isNativeCoin: true,
 	logoHash: "LYJ17EbFZ,oMt7j]j[WU#Hju][ay",
 	logoURI:
-		"https://raw.githubusercontent.com/Electron-Protocol/assetlist/main/assets/testnet/UST2.png",
+		"https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/assets/testnet/UST2.png",
 	symbol: "UST2",
 	tokenPrettyName: "US Dollar"
 }
@@ -114,7 +114,7 @@ export const initialAtomToken: Token = {
 	isNativeCoin: true,
 	logoHash: "LOKC*Nyl}4v,o#kBkCaz|-Z,$xIr",
 	logoURI:
-		"https://raw.githubusercontent.com/Electron-Protocol/assetlist/main/assets/testnet/tATOM.png",
+		"https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/assets/testnet/tATOM.png",
 	symbol: "ATOM",
 	tokenPrettyName: "tATOM"
 }
@@ -138,7 +138,7 @@ export const initialBTCToken: Token = {
 	isNativeCoin: true,
 	logoHash: "LOKC*Nyl}4v,o#kBkCaz|-Z,$xIr",
 	logoURI:
-		"https://raw.githubusercontent.com/Electron-Protocol/assetlist/main/assets/testnet/tBTC.png",
+		"https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/assets/testnet/tBTC.png",
 	symbol: "tBTC",
 	tokenPrettyName: "tBTC"
 }
@@ -162,7 +162,7 @@ export const initialEleToken: Token = {
 	isNativeCoin: true,
 	logoHash: "LOKC*Nyl}4v,o#kBkCaz|-Z,$xIr",
 	logoURI:
-		"https://raw.githubusercontent.com/Electron-Protocol/assetlist/main/assets/testnet/electron.png",
+		"https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/assets/testnet/electron.png",
 	symbol: "ELE",
 	tokenPrettyName: "Electron"
 }
