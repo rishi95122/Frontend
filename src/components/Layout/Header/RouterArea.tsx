@@ -166,7 +166,7 @@ export const RouterArea = () => {
 
 	return (
 		<>
-			<Flex align="start" justify="start" pos="relative" w="full">
+			<Flex align="start" justify="end" pos="relative" w="full" pt={3}>
 				{isMobile ? (
 					<>
 						<IconButton
@@ -174,7 +174,9 @@ export const RouterArea = () => {
 							_dark={{
 								_active: { bg: "whiteAlpha.400" },
 								_hover: { bg: "whiteAlpha.300" },
-								bg: "whiteAlpha.200"
+								bg: "whiteAlpha.200",
+								
+								
 							}}
 							_hover={{ bg: "blackAlpha.400" }}
 							aria-label="Open Menu"
@@ -184,7 +186,7 @@ export const RouterArea = () => {
 							isActive={isOpen}
 							minWidth="2rem"
 							onClick={() => onOpen()}
-							rounded="1.25em"
+							rounded="1em"
 							w={{ base: "3rem", md: "4rem" }}
 						/>
 						<Drawer isOpen={isOpen} onClose={onClose} placement="right">
@@ -197,25 +199,7 @@ export const RouterArea = () => {
 								shadow="md"
 							>
 								<DrawerBody bg="transparent" flex={1} flexDirection="column" p={3}>
-									<Flex direction="column" gap={{ base: 3, md: 1 }}>
-										{data.map((props: NavigationButtonProps) => {
-											return (
-												<motion.div
-													key={props.navId}
-													layout
-													onClick={() => {
-														handleClick(props.navId, props.subLinks)
-													}}
-												>
-													<NavigationButton
-														activeIndex={activeIndex}
-														{...props}
-														icon={props.icon}
-													/>
-												</motion.div>
-											)
-										})}
-									</Flex>
+									
 									<Flex
 										bgGradient="linear(45deg, brand.1, brand.2)"
 										h="0.3rem"
@@ -345,18 +329,18 @@ export const RouterArea = () => {
 				) : (
 					<Accordion allowToggle as={motion.div} border="0px" layout w="full">
 						{data.map((props: NavigationButtonProps) => {
-							return (
-								<NavigationButton
-									activeIndex={activeIndex}
-									isDisabled={props.isDisabled}
-									key={props.navId}
-									onClick={() => {
-										handleClick(props.navId, props.subLinks)
-									}}
-									{...props}
-								/>
-							)
-						})}
+    return (
+        <NavigationButton
+            key={props.navId} // Use navId as the key
+            activeIndex={activeIndex}
+            isDisabled={props.isDisabled}
+            onClick={() => {
+                handleClick(props.navId, props.subLinks);
+            }}
+            {...props}
+        />
+    );
+})}
 					</Accordion>
 				)}
 			</Flex>
