@@ -107,7 +107,7 @@ const MyAssets = () => {
 								<Skeleton isLoaded={Boolean(info.row.original.logoURI)} rounded="full">
 									<MemoizedAvatar
 										border="none"
-										src={info.row.original.logoURI ?? "/assets/unknownToken.svg"}
+										src={info.row.original.logoURI ?? "/assets/electron.png"}
 										blurHash={info.row.original.logoHash}
 										w="3rem"
 										h="3rem"

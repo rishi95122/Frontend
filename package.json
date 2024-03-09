@@ -19,6 +19,7 @@
   "dependencies": {
     "@amplitude/analytics-browser": "^2.1.3",
     "@chakra-ui/anatomy": "^2.2.0",
+    "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "2.8.0",
     "@chakra-ui/theme-tools": "^2.1.0",
     "@cosmjs/cosmwasm-stargate": "^0.31.0",
@@ -73,7 +74,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.45.4",
     "react-hotjar": "^6.1.0",
-    "react-icons": "^4.10.1",
+    "react-icons": "latest",
     "react-multi-date-picker": "^4.1.2",
     "react-number-format": "^5.3.0",
     "react-palette": "^1.0.2",
