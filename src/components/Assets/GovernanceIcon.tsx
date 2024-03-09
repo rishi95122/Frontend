@@ -1,9 +1,9 @@
 /* eslint-disable no-empty-pattern */
 import { Icon, type IconProps } from "@chakra-ui/react"
-import { PiSwapFill } from "react-icons/pi"
+import { GiReactor } from "react-icons/gi"
 
-export const SwapIcon = ({}: IconProps) => (
+export const GovernanceIcon = ({}: IconProps) => (
 	<Icon boxSize={9} pt={1}>
-		<PiSwapFill />
+		<GiReactor />
 	</Icon>
 )

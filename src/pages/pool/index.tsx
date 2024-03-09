@@ -5,7 +5,7 @@ import { PoolSummary } from "./components/PoolSummary"
 import { Button, Center, Flex, HStack, Icon, Stack, useBreakpoint } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { usePoolFromListQueryById } from "@hooks/pool/query/usePoolList"
-import { SwapIcon } from "components/Assets/SwapIcon"
+import { TradeIcon } from "components/Assets/TradeIcon"
 import { motion } from "framer-motion"
 import { useTokenInfo } from "hooks/tokens/query/useTokenInfo"
 import { useEffect } from "react"
@@ -90,7 +90,7 @@ const Pool = () => {
 					bg="gray.700"
 					bgGradient="linear(to-br, gray.600, gray.800)"
 					color="white"
-					leftIcon={<SwapIcon />}
+					leftIcon={<TradeIcon />}
 					onClick={() => {
 						navigate(`/trade/swap?from=${tokenA?.symbol!}&to=${tokenB?.symbol!}`)
 					}}

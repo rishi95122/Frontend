@@ -1,9 +1,9 @@
 /* eslint-disable no-empty-pattern */
 import { Icon, type IconProps } from "@chakra-ui/react"
-import { PiSwapFill } from "react-icons/pi"
+import { FaHouseUser } from "react-icons/fa6"
 
-export const SwapIcon = ({}: IconProps) => (
+export const MyaccountIcon = ({}: IconProps) => (
 	<Icon boxSize={9} pt={1}>
-		<PiSwapFill />
+		<FaHouseUser />
 	</Icon>
 )
