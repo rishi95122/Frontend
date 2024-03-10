@@ -30,7 +30,7 @@ import ConnectButton from "components/ConnectButton"
 import { motion } from "framer-motion"
 import { type ReactElement } from "react"
 import { useCallback, useEffect, useMemo } from "react"
-import { FaBook, FaDiscord, FaGithub, FaTelegram, FaTwitter } from "react-icons/fa";
+import { FaBook, FaDiscord, FaGithub, FaTelegram, FaTwitter } from "react-icons/fa"
 import { FaXTwitter } from "react-icons/fa6"
 import { HiExternalLink, HiOutlineMenuAlt3 } from "react-icons/hi"
 import { useLocation } from "react-router-dom"
@@ -174,9 +174,7 @@ export const RouterArea = () => {
 							_dark={{
 								_active: { bg: "whiteAlpha.400" },
 								_hover: { bg: "whiteAlpha.300" },
-								bg: "whiteAlpha.200",
-								
-								
+								bg: "whiteAlpha.200"
 							}}
 							_hover={{ bg: "blackAlpha.400" }}
 							aria-label="Open Menu"
@@ -199,7 +197,6 @@ export const RouterArea = () => {
 								shadow="md"
 							>
 								<DrawerBody bg="transparent" flex={1} flexDirection="column" p={3}>
-									
 									<Flex
 										bgGradient="linear(45deg, brand.1, brand.2)"
 										h="0.3rem"
@@ -285,7 +282,7 @@ export const RouterArea = () => {
 											_hover={{ bg: "blackAlpha.100" }}
 											as="a"
 											bg="transparent"
-											href="https://x.com/Electronnetwork"
+											href="https://x.com/"
 											target="_blank"
 										>
 											<HStack justify="space-between" w="full">
@@ -303,7 +300,7 @@ export const RouterArea = () => {
 											_hover={{ bg: "blackAlpha.100" }}
 											as="a"
 											bg="transparent"
-											href="https://discord.com/invite/BfKPacc5jF"
+											href="https://discord.com"
 											target="_blank"
 										>
 											<HStack justify="space-between" w="full">
@@ -329,18 +326,18 @@ export const RouterArea = () => {
 				) : (
 					<Accordion allowToggle as={motion.div} border="0px" layout w="full">
 						{data.map((props: NavigationButtonProps) => {
-    return (
-        <NavigationButton
-            key={props.navId} // Use navId as the key
-            activeIndex={activeIndex}
-            isDisabled={props.isDisabled}
-            onClick={() => {
-                handleClick(props.navId, props.subLinks);
-            }}
-            {...props}
-        />
-    );
-})}
+							return (
+								<NavigationButton
+									key={props.navId} // Use navId as the key
+									activeIndex={activeIndex}
+									isDisabled={props.isDisabled}
+									onClick={() => {
+										handleClick(props.navId, props.subLinks)
+									}}
+									{...props}
+								/>
+							)
+						})}
 					</Accordion>
 				)}
 			</Flex>
