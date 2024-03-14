@@ -1,10 +1,14 @@
-import { Box, Heading } from "@chakra-ui/react"
+import { Box, Heading, useBreakpointValue } from "@chakra-ui/react"
 import { BlurImage } from "components/BlurImage"
 import { motion } from "framer-motion"
 import { useState } from "react"
 
 export const GovernancePanel = () => {
 	const [isHovering, setIsHovering] = useState(false)
+
+	const headingFontSize = useBreakpointValue({ base: "1.5rem", md: "2rem", sm: "2.5rem" })
+	const paragraphFontSize = useBreakpointValue({ base: "1rem", md: "1,5rem", sm: "2,5rem" })
+	const centeredFontSize = useBreakpointValue({ base: "1rem", md: "1,5rem", sm: "2,5rem" })
 	return (
 		<Box
 			_dark={{ bgGradient: "linear(to-br, gray.600, gray.800)" }}
@@ -25,15 +29,15 @@ export const GovernancePanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src="/assets/home/governance.mp4"
-				blurHash="L9A]y;Sh00v}2xbF{]R,0Lr??FOY"
+				src="/assets/home/Trade.mp4"
+				blurHash="LA6]tNoy00WC.jfkDRaf8zaz??oK"
 				isHovering={isHovering}
 			/>
 			<motion.div
 				animate={isHovering ? { height: "15rem" } : { height: "10rem" }}
 				initial={{ height: "10rem" }}
 				style={{
-					//	backgroundImage: "linear-gradient(0deg, rgba(162, 42, 40, 0.6), transparent)",
+					//	backgroundImage: "linear-gradient(0deg, rgba(100, 250, 150, 0.8), transparent)",
 					bottom: "0",
 					position: "absolute",
 					width: "100%"
@@ -56,14 +60,16 @@ export const GovernancePanel = () => {
 				}}
 				transition={{ type: "tween" }}
 			>
-				<Heading color="white">Coming Soon</Heading>
+				<Heading color="gray" size={centeredFontSize}>
+					Coming Soon
+				</Heading>
 			</motion.div>
 			<motion.h1
-				animate={isHovering ? { bottom: 40 } : { bottom: 0 }}
+				animate={isHovering ? { top: 10 } : { top: -50 }}
 				initial={{ bottom: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
-					fontSize: 40,
+					fontSize: headingFontSize,
 					position: "absolute",
 					textAlign: "center",
 					width: "100%"
@@ -72,11 +78,11 @@ export const GovernancePanel = () => {
 				Governance
 			</motion.h1>
 			<motion.p
-				animate={isHovering ? { bottom: 20 } : { bottom: -30 }}
-				initial={{ bottom: -20 }}
+				animate={isHovering ? { bottom: 20 } : { bottom: -60 }}
+				initial={{ bottom: -30 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
-					fontSize: 20,
+					fontSize: paragraphFontSize,
 					position: "absolute",
 					textAlign: "center",
 					width: "100%"
