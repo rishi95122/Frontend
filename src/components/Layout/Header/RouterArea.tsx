@@ -116,11 +116,11 @@ export const RouterArea = () => {
 				initialIndexId = 0
 				setActiveRoute(data[0].subLinks)
 				break
-			case "games":
+			case "assets":
 				initialIndexId = 1
 				setActiveRoute(data[1].subLinks)
 				break
-			case "launchpad":
+			case "staking":
 				initialIndexId = 2
 				setActiveRoute(data[2].subLinks)
 				break
@@ -128,13 +128,9 @@ export const RouterArea = () => {
 				initialIndexId = 3
 				setActiveRoute(data[3].subLinks)
 				break
-			case "staking":
+			case "portfolio":
 				initialIndexId = 4
 				setActiveRoute(data[4].subLinks)
-				break
-			case "portfolio":
-				initialIndexId = 5
-				setActiveRoute(data[5].subLinks)
 				break
 			default:
 				initialIndexId = -1

@@ -12,7 +12,9 @@ import { toast } from "react-toastify"
 import { claimAllRewards } from "utils/pool/claimAllRewards"
 
 export const useClaimAllRewards = () => {
-	const { getSigningCosmWasmClient, address, status } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
+	const { getSigningCosmWasmClient, address, status } = useChain(
+		import.meta.env.VITE_NEUTRONNETWORK
+	)
 	const [poolsList] = usePoolList()
 
 	const pools = useMemo(() => {

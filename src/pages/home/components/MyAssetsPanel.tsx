@@ -37,6 +37,7 @@ export const MyAssetsPanel = () => {
 			shadow="md"
 			w="full"
 			whileHover={{ scale: 1.02 }}
+			style={{ zIndex: 1 }} // Set the z-index of the box
 		>
 			<BlurImage
 				src="/assets/home/Myassets.mp4"
@@ -49,14 +50,15 @@ export const MyAssetsPanel = () => {
 				style={{
 					bottom: "0",
 					position: "absolute",
-					width: "100%"
+					width: "100%",
+					zIndex: 1 // Set a lower z-index for the blur effect
 				}}
 			/>
 			{!isWalletConnected && (
 				<motion.div
 					animate={
 						isHovering
-							? { backdropFilter: "blur(6px)", opacity: 1, scale: 1.1 }
+							? { backdropFilter: "blur(0px)", opacity: 1, scale: 1.1 }
 							: { backdropFilter: "blur(0px)", opacity: 0, scale: 1 }
 					}
 					initial={{ opacity: 0 }}
@@ -66,7 +68,8 @@ export const MyAssetsPanel = () => {
 						height: "100%",
 						justifyContent: "center",
 						position: "absolute",
-						width: "100%"
+						width: "100%",
+						zIndex: 3 // Set a higher z-index for the button
 					}}
 					transition={{ type: "tween" }}
 				>
@@ -83,7 +86,8 @@ export const MyAssetsPanel = () => {
 					fontSize: headingFontSize,
 					position: "absolute",
 					textAlign: "center",
-					width: "100%"
+					width: "100%",
+					zIndex: 2 // Set a lower z-index for the text
 				}}
 			>
 				My Assets
@@ -96,7 +100,8 @@ export const MyAssetsPanel = () => {
 					fontSize: paragraphFontSize,
 					position: "absolute",
 					textAlign: "center",
-					width: "100%"
+					width: "100%",
+					zIndex: 2 // Set a lower z-index for the text
 				}}
 			>
 				Your personal stash

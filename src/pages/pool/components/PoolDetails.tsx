@@ -346,10 +346,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														minimumFractionDigits: 2
 													})}
 												</Text>
-												<Avatar
-													size="xs"
-													src={token1Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token1Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</Skeleton>
 										<Skeleton isLoaded={!isLoadingTotalUnderlyingAssets} rounded="0.8em" w="full">
@@ -360,10 +357,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														minimumFractionDigits: 2
 													})}
 												</Text>
-												<Avatar
-													size="xs"
-													src={token2Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token2Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</Skeleton>
 									</VStack>
@@ -392,10 +386,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														minimumFractionDigits: 2
 													})}
 												</Text>
-												<Avatar
-													size="xs"
-													src={token1Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token1Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</Skeleton>
 										<Skeleton isLoaded={!isLoadingTotalUnderlyingAssets} rounded="0.8em" w="full">
@@ -406,10 +397,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														minimumFractionDigits: 2
 													})}
 												</Text>
-												<Avatar
-													size="xs"
-													src={token2Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token2Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</Skeleton>
 									</VStack>
@@ -500,10 +488,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														minimumFractionDigits: 2
 													})}
 												</Text>
-												<Avatar
-													size="xs"
-													src={token1Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token1Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</Skeleton>
 										<Skeleton isLoaded={!isLoadingUnderlyingAssets} rounded="0.8em" w="full">
@@ -514,10 +499,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														minimumFractionDigits: 2
 													})}
 												</Text>
-												<Avatar
-													size="xs"
-													src={token2Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token2Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</Skeleton>
 									</VStack>
@@ -546,10 +528,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														minimumFractionDigits: 2
 													})}
 												</Text>
-												<Avatar
-													size="xs"
-													src={token1Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token1Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</Skeleton>
 										<Skeleton isLoaded={!isLoadingUnderlyingAssets} rounded="0.8em" w="full">
@@ -560,10 +539,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														minimumFractionDigits: 2
 													})}
 												</Text>
-												<Avatar
-													size="xs"
-													src={token2Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token2Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</Skeleton>
 									</VStack>
@@ -669,10 +645,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														})}
 													</Text>
 												)}
-												<Avatar
-													size="xs"
-													src={token1Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token1Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 											<HStack pt={0.5} justify="end" w="full">
 												{isShowingTotal ? (
@@ -691,10 +664,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 													</Text>
 												)}
 
-												<Avatar
-													size="xs"
-													src={token2Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token2Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</VStack>
 									)
@@ -734,10 +704,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 													</Text>
 												)}
 
-												<Avatar
-													size="xs"
-													src={token1Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token1Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 											<HStack pt={0.5}>
 												{isShowingTotal ? (
@@ -755,10 +722,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														})}
 													</Text>
 												)}
-												<Avatar
-													size="xs"
-													src={token2Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token2Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</VStack>
 									)
@@ -805,10 +769,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														)}
 													</Text>
 												)}
-												<Avatar
-													size="xs"
-													src={token1Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token1Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 											<HStack pt={0.5}>
 												{isShowingTotal ? (
@@ -832,10 +793,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 														)}
 													</Text>
 												)}
-												<Avatar
-													size="xs"
-													src={token2Info?.logoURI ?? "/assets/tokens/electron.png"}
-												/>
+												<Avatar size="xs" src={token2Info?.logoURI ?? "/assets/unknownToken.svg"} />
 											</HStack>
 										</VStack>
 									)
