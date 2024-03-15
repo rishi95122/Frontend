@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react"
+import { Box, Heading, useBreakpointValue } from "@chakra-ui/react"
 import { BlurImage } from "components/BlurImage"
 import { motion } from "framer-motion"
 import { useState } from "react"
@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom"
 export const AssetsPanel = () => {
 	const [isHovering, setIsHovering] = useState(false)
 	const navigate = useNavigate()
+
+	const headingFontSize = useBreakpointValue({ base: "1.5rem", md: "2rem", sm: "2.5rem" })
+	const paragraphFontSize = useBreakpointValue({ base: "1rem", md: "1,5rem", sm: "2,5rem" })
 
 	return (
 		<Box
@@ -33,7 +36,7 @@ export const AssetsPanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src="/assets/home/governance.mp4"
+				src="/assets/home/Asset.mp4"
 				blurHash="L56cQlnj*KkVQ8bauPi{00WpH9bb"
 				isHovering={isHovering}
 			/>
@@ -50,7 +53,7 @@ export const AssetsPanel = () => {
 			<motion.div
 				animate={
 					isHovering
-						? { backdropFilter: "blur(6px)", opacity: 1, scale: 1.1 }
+						? { backdropFilter: "blur(3px)", opacity: 1, scale: 1.1 }
 						: { backdropFilter: "blur(0px)", opacity: 0, scale: 1 }
 				}
 				initial={{ opacity: 0 }}
@@ -67,11 +70,11 @@ export const AssetsPanel = () => {
 				<Heading color="white" />
 			</motion.div>
 			<motion.h1
-				animate={isHovering ? { bottom: 40 } : { bottom: 0 }}
-				initial={{ bottom: 0 }}
+				animate={isHovering ? { top: 20 } : { top: -50 }}
+				initial={{ top: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
-					fontSize: 40,
+					fontSize: headingFontSize,
 					position: "absolute",
 					textAlign: "center",
 					width: "100%"
@@ -80,11 +83,11 @@ export const AssetsPanel = () => {
 				Assets
 			</motion.h1>
 			<motion.p
-				animate={isHovering ? { bottom: 20 } : { bottom: -30 }}
+				animate={isHovering ? { bottom: 20 } : { bottom: -40 }}
 				initial={{ bottom: -30 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
-					fontSize: 20,
+					fontSize: paragraphFontSize,
 					position: "absolute",
 					textAlign: "center",
 					width: "100%"

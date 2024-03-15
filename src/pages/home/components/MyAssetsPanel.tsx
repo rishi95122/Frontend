@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react"
+import { Box, Flex, useBreakpointValue } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { BlurImage } from "components/BlurImage"
 import ConnectButton from "components/ConnectButton"
@@ -10,6 +10,11 @@ export const MyAssetsPanel = () => {
 	const [isHovering, setIsHovering] = useState(false)
 	const { isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
 	const navigate = useNavigate()
+
+	const headingFontSize = useBreakpointValue({ base: "1.5rem", md: "2rem", sm: "2.5rem" })
+	const paragraphFontSize = useBreakpointValue({ base: "1,5rem", md: "1rem", sm: "2.5rem" })
+	const maxFlexWidth = useBreakpointValue({ base: "10rem", md: "12.5rem", sm: "10rem" })
+
 	return (
 		<Box
 			_dark={{ bgGradient: "linear(to-br, gray.600, gray.800)" }}
@@ -32,6 +37,7 @@ export const MyAssetsPanel = () => {
 			shadow="md"
 			w="full"
 			whileHover={{ scale: 1.02 }}
+			style={{ zIndex: 1 }} // Set the z-index of the box
 		>
 			<BlurImage
 				src="/assets/home/Myassets.mp4"
@@ -42,17 +48,17 @@ export const MyAssetsPanel = () => {
 				animate={isHovering ? { height: "15rem" } : { height: "10rem" }}
 				initial={{ height: "10rem" }}
 				style={{
-					//	backgroundImage: "linear-gradient(0deg, rgba(200, 180, 30, 0.6), transparent)",
 					bottom: "0",
 					position: "absolute",
-					width: "100%"
+					width: "100%",
+					zIndex: 1 // Set a lower z-index for the blur effect
 				}}
 			/>
 			{!isWalletConnected && (
 				<motion.div
 					animate={
 						isHovering
-							? { backdropFilter: "blur(6px)", opacity: 1, scale: 1.1 }
+							? { backdropFilter: "blur(0px)", opacity: 1, scale: 1.1 }
 							: { backdropFilter: "blur(0px)", opacity: 0, scale: 1 }
 					}
 					initial={{ opacity: 0 }}
@@ -62,37 +68,40 @@ export const MyAssetsPanel = () => {
 						height: "100%",
 						justifyContent: "center",
 						position: "absolute",
-						width: "100%"
+						width: "100%",
+						zIndex: 3 // Set a higher z-index for the button
 					}}
 					transition={{ type: "tween" }}
 				>
-					<Flex maxW="12.5rem" pos="relative" top="-5" w="full">
+					<Flex maxW={maxFlexWidth} pos="relative" top="1" w="full">
 						<ConnectButton />
 					</Flex>
 				</motion.div>
 			)}
 			<motion.h1
-				animate={isHovering ? { bottom: 40 } : { bottom: 0 }}
+				animate={isHovering ? { top: 10 } : { top: -50 }}
 				initial={{ bottom: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
-					fontSize: 40,
+					fontSize: headingFontSize,
 					position: "absolute",
 					textAlign: "center",
-					width: "100%"
+					width: "100%",
+					zIndex: 2 // Set a lower z-index for the text
 				}}
 			>
 				My Assets
 			</motion.h1>
 			<motion.p
-				animate={isHovering ? { bottom: 20 } : { bottom: -30 }}
+				animate={isHovering ? { bottom: 20 } : { bottom: -60 }}
 				initial={{ bottom: -30 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
-					fontSize: 20,
+					fontSize: paragraphFontSize,
 					position: "absolute",
 					textAlign: "center",
-					width: "100%"
+					width: "100%",
+					zIndex: 2 // Set a lower z-index for the text
 				}}
 			>
 				Your personal stash

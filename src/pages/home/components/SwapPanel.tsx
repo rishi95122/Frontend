@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react"
+import { Box, useBreakpointValue, useMediaQuery } from "@chakra-ui/react"
 import { BlurImage } from "components/BlurImage"
 import { motion } from "framer-motion"
 import { useState } from "react"
@@ -8,6 +8,9 @@ export const SwapPanel = () => {
 	const [isHovering, setIsHovering] = useState(false)
 	const navigate = useNavigate()
 
+	const headingFontSize = useBreakpointValue({ base: "1.5rem", md: "2rem", sm: "2.5rem" })
+	const paragraphFontSize = useBreakpointValue({ base: "1rem", md: "1,5rem", sm: "2,5rem" })
+	const [isMobile] = useMediaQuery("(max-width: 768px)")
 	return (
 		<Box
 			_dark={{ bgGradient: "linear(to-br, gray.600, gray.800)" }}
@@ -28,14 +31,16 @@ export const SwapPanel = () => {
 			overflow="hidden"
 			pos="relative"
 			rounded="1.25em"
+			shadow="md"
 			w="full"
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src="/assets/home/assets.mp4"
+				src={isMobile ? "/assets/home/Trade_mobile.mp4" : "/assets/home/Trade(compress).mp4"}
 				blurHash="L77-=pIu02-O0:xY}mI=qIs,T^NL"
 				isHovering={isHovering}
 			/>
+
 			<motion.div
 				animate={isHovering ? { height: "15rem" } : { height: "10rem" }}
 				initial={{ height: "10rem" }}
@@ -46,12 +51,29 @@ export const SwapPanel = () => {
 					width: "100%"
 				}}
 			/>
+			<motion.div
+				animate={
+					isHovering
+						? { backdropFilter: "blur(3px)", opacity: 1, scale: 1.1 }
+						: { backdropFilter: "blur(0px)", opacity: 0, scale: 1 }
+				}
+				initial={{ opacity: 0 }}
+				style={{
+					alignItems: "center",
+					display: "flex",
+					height: "100%",
+					justifyContent: "center",
+					position: "absolute",
+					width: "100%"
+				}}
+				transition={{ type: "tween" }}
+			/>
 			<motion.h1
-				animate={isHovering ? { bottom: 40 } : { bottom: 0 }}
-				initial={{ bottom: 0 }}
+				animate={isHovering ? { top: 20 } : { top: -50 }}
+				initial={{ top: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
-					fontSize: 40,
+					fontSize: headingFontSize,
 					position: "absolute",
 					textAlign: "center",
 					width: "100%"
@@ -60,11 +82,11 @@ export const SwapPanel = () => {
 				Trade
 			</motion.h1>
 			<motion.p
-				animate={isHovering ? { bottom: 20 } : { bottom: -30 }}
+				animate={isHovering ? { bottom: 20 } : { bottom: -60 }}
 				initial={{ bottom: -30 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
-					fontSize: 20,
+					fontSize: paragraphFontSize,
 					position: "absolute",
 					textAlign: "center",
 					width: "100%"

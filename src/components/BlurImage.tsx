@@ -27,7 +27,7 @@ export const BlurImage = ({
 					transition: "filter 0.5s ease-in-out",
 					width: "100%",
 					height: "100%",
-					objectFit: "cover",
+					objectFit: "fill",
 					position: "absolute"
 				}}
 			/>
