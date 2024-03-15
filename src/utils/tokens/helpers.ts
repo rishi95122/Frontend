@@ -162,7 +162,7 @@ export const initialEleToken: Token = {
 	isNativeCoin: true,
 	logoHash: "LOKC*Nyl}4v,o#kBkCaz|-Z,$xIr",
 	logoURI:
-		"https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/assets/testnet/electron.png",
+		"https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/assets/testnet/ele.png",
 	symbol: "ELE",
 	tokenPrettyName: "Electron"
 }

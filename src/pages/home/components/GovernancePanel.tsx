@@ -29,7 +29,7 @@ export const GovernancePanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src="/assets/home/Trade.mp4"
+				src="/assets/home/Governance.mp4"
 				blurHash="LA6]tNoy00WC.jfkDRaf8zaz??oK"
 				isHovering={isHovering}
 			/>
