@@ -1,4 +1,4 @@
-import { Box, Flex, useBreakpointValue } from "@chakra-ui/react"
+import { Box, Flex, useBreakpointValue, useMediaQuery } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { BlurImage } from "components/BlurImage"
 import ConnectButton from "components/ConnectButton"
@@ -10,6 +10,7 @@ export const MyAssetsPanel = () => {
 	const [isHovering, setIsHovering] = useState(false)
 	const { isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
 	const navigate = useNavigate()
+	const [isMobile] = useMediaQuery("(max-width: 768px)")
 
 	const headingFontSize = useBreakpointValue({ base: "1.5rem", md: "2rem", sm: "2.5rem" })
 	const paragraphFontSize = useBreakpointValue({ base: "1,5rem", md: "1rem", sm: "2.5rem" })
@@ -40,7 +41,7 @@ export const MyAssetsPanel = () => {
 			style={{ zIndex: 1 }} // Set the z-index of the box
 		>
 			<BlurImage
-				src="/assets/home/Myassets.mp4"
+				src={isMobile ? "/assets/home/My_Asset.mp4" : "/assets/home/My_Asset.mp4"}
 				blurHash="L7D8%:3d00:eG^tO:ijK00{p^*CD"
 				isHovering={isHovering}
 			/>

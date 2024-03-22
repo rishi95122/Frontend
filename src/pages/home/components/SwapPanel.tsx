@@ -11,6 +11,12 @@ export const SwapPanel = () => {
 	const headingFontSize = useBreakpointValue({ base: "1.5rem", md: "2rem", sm: "2.5rem" })
 	const paragraphFontSize = useBreakpointValue({ base: "1rem", md: "1,5rem", sm: "2,5rem" })
 	const [isMobile] = useMediaQuery("(max-width: 768px)")
+	const panelWidth = useBreakpointValue({
+		base: "calc(50% - 1rem)",
+		md: "calc(50% - 1rem)",
+		sm: "calc(100% - 1rem)"
+	})
+
 	return (
 		<Box
 			_dark={{ bgGradient: "linear(to-br, gray.600, gray.800)" }}
@@ -18,7 +24,7 @@ export const SwapPanel = () => {
 			as={motion.div}
 			bg="white"
 			h="full"
-			minH="18rem"
+			minH={panelWidth}
 			onClick={() => {
 				navigate("/trade")
 			}}
@@ -36,7 +42,7 @@ export const SwapPanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src={isMobile ? "/assets/home/Trade_mobile.mp4" : "/assets/home/Trade(compress).mp4"}
+				src={isMobile ? "/assets/home/Trade_Square.mp4" : "/assets/home/Trade.mp4"}
 				blurHash="L77-=pIu02-O0:xY}mI=qIs,T^NL"
 				isHovering={isHovering}
 			/>
