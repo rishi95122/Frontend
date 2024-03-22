@@ -29,11 +29,12 @@ export const PoolsPanel = () => {
 			pos="relative"
 			rounded="1.25em"
 			shadow="md"
-			w="full"
+			w={{ base: "90%", lg: "60%", md: "70%", sm: "80%", xl: "50%" }}
 			whileHover={{ scale: 1.02 }}
+			style={{ margin: "0 auto" }}
 		>
 			<BlurImage
-				src="/assets/home/Trade.mp4"
+				src="/assets/home/Pool.mp4"
 				blurHash="L53Kf+L#L~yrUZiIsCSzUbcDY5q^"
 				isHovering={isHovering}
 			/>

@@ -17,6 +17,7 @@ const Home = () => {
 			flexDirection="column"
 			gap={4}
 			h="full"
+			mt={2}
 			initial={{ opacity: 0 }}
 			p={{ base: 5, lg: 24, md: 16 }}
 			w="full"
@@ -25,7 +26,7 @@ const Home = () => {
 			{breakpoint === "base" || breakpoint === "sm" ? (
 				<Grid
 					gap={{ base: 4, md: 2 }}
-					h="xl"
+					h="lg"
 					minH="50vh"
 					templateColumns="repeat(2, 1fr)"
 					templateRows="repeat(2, 1fr) 1fr"

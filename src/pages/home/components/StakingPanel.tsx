@@ -1,10 +1,11 @@
-import { Box, Heading, useBreakpointValue } from "@chakra-ui/react"
+import { Box, Heading, useBreakpointValue, useMediaQuery } from "@chakra-ui/react"
 import { BlurImage } from "components/BlurImage"
 import { motion } from "framer-motion"
 import { useState } from "react"
 
 export const StakingPanel = () => {
 	const [isHovering, setIsHovering] = useState(false)
+	const [isMobile] = useMediaQuery("(max-width: 768px)")
 
 	const headingFontSize = useBreakpointValue({ base: "1.5rem", md: "2rem", sm: "2.5rem" })
 	const paragraphFontSize = useBreakpointValue({ base: "1rem", md: "1,5rem", sm: "2,5rem" })
@@ -29,7 +30,7 @@ export const StakingPanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src="/assets/home/Staking.mp4"
+				src={isMobile ? "/assets/home/Staking_Square.mp4" : "/assets/home/Staking.mp4"}
 				blurHash="LA6]tNoy00WC.jfkDRaf8zaz??oK"
 				isHovering={isHovering}
 			/>

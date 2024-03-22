@@ -1,4 +1,4 @@
-import { Box, Heading, useBreakpointValue } from "@chakra-ui/react"
+import { Box, Heading, useBreakpointValue, useMediaQuery } from "@chakra-ui/react"
 import { BlurImage } from "components/BlurImage"
 import { motion } from "framer-motion"
 import { useState } from "react"
@@ -10,6 +10,13 @@ export const AssetsPanel = () => {
 
 	const headingFontSize = useBreakpointValue({ base: "1.5rem", md: "2rem", sm: "2.5rem" })
 	const paragraphFontSize = useBreakpointValue({ base: "1rem", md: "1,5rem", sm: "2,5rem" })
+	const [isMobile] = useMediaQuery("(max-width: 768px)")
+
+	const panelWidth = useBreakpointValue({
+		base: "calc(50% - 1rem)",
+		md: "calc(50% - 1rem)",
+		sm: "calc(100% - 1rem)"
+	})
 
 	return (
 		<Box
@@ -18,7 +25,7 @@ export const AssetsPanel = () => {
 			as={motion.div}
 			bg="gray.800"
 			h="full"
-			minH="18rem"
+			minH={panelWidth}
 			onClick={() => {
 				navigate("/portfolio/assets")
 			}}
@@ -36,7 +43,7 @@ export const AssetsPanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src="/assets/home/Asset.mp4"
+				src={isMobile ? "/assets/home/Asset.mp4" : "/assets/home/Asset.mp4"}
 				blurHash="L56cQlnj*KkVQ8bauPi{00WpH9bb"
 				isHovering={isHovering}
 			/>

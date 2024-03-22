@@ -2,6 +2,7 @@ import { type NavigationButtonProps } from "./NavigationButton"
 import NavigationButton from "./NavigationButton"
 import {
 	Accordion,
+	Box,
 	Drawer,
 	DrawerBody,
 	DrawerContent,
@@ -337,68 +338,70 @@ export const RouterArea = () => {
 					</Accordion>
 				)}
 			</Flex>
-			<Flex
-				pos="fixed"
-				bottom="6.5rem"
-				left="0"
-				right="0"
-				justifyContent="left"
-				pl={{ base: 4, md: 9 }} // Padding left responsive
-				pt={{ base: 2, md: 9 }} // Padding top responsive
-			>
+			<Box display={{ base: "none", md: "flex" }}>
 				<Flex
-					_dark={{ _hover: { bg: "whiteAlpha.200" } }}
-					_hover={{ bg: "blackAlpha.100" }}
-					as="a"
-					bg="transparent"
-					href=""
-					target="_blank"
-					alignItems="center" // Align items vertically
-					justifyContent="center" // Align items horizontally
-					mx={2} // Add margin between icons
+					pos="fixed"
+					bottom="6.5rem"
+					left="0"
+					right="0"
+					justifyContent="left"
+					pl={{ base: 4, md: 9, sm: 20 }} // Padding left responsive
+					pt={{ base: 2, md: 9, sm: 2 }} // Padding top responsive
 				>
-					<Icon as={FaXTwitter} h="1.2rem" w="1.2rem" />
+					<Flex
+						_dark={{ _hover: { bg: "whiteAlpha.200" } }}
+						_hover={{ bg: "blackAlpha.100" }}
+						as="a"
+						bg="transparent"
+						href=""
+						target="_blank"
+						alignItems="center" // Align items vertically
+						justifyContent="center" // Align items horizontally
+						mx={2} // Add margin between icons
+					>
+						<Icon as={FaXTwitter} h="1.2rem" w="1.2rem" />
+					</Flex>
+					<Flex
+						_dark={{ _hover: { bg: "whiteAlpha.200" } }}
+						_hover={{ bg: "blackAlpha.100" }}
+						as="a"
+						bg="transparent"
+						href=""
+						target="_blank"
+						alignItems="center" // Align items vertically
+						justifyContent="center" // Align items horizontally
+						mx={2} // Add margin between icons
+					>
+						<Icon as={FaDiscord} h="1.5rem" w="1.5rem" />
+					</Flex>
+					<Flex
+						_dark={{ _hover: { bg: "whiteAlpha.200" } }}
+						_hover={{ bg: "blackAlpha.100" }}
+						as="a"
+						bg="transparent"
+						href=""
+						target="_blank"
+						alignItems="center" // Align items vertically
+						justifyContent="center" // Align items horizontally
+						mx={2} // Add margin between icons
+					>
+						<Icon as={FaTelegram} h="1.3rem" w="1.3rem" />
+					</Flex>
+					<Flex
+						_dark={{ _hover: { bg: "whiteAlpha.200" } }}
+						_hover={{ bg: "blackAlpha.100" }}
+						as="a"
+						bg="transparent"
+						href=""
+						target="_blank"
+						alignItems="center" // Align items vertically
+						justifyContent="center" // Align items horizontally
+						mx={2} // Add margin between icons
+					>
+						<Icon as={FaGithub} h="1.3rem" w="1.3rem" />
+					</Flex>
 				</Flex>
-				<Flex
-					_dark={{ _hover: { bg: "whiteAlpha.200" } }}
-					_hover={{ bg: "blackAlpha.100" }}
-					as="a"
-					bg="transparent"
-					href=""
-					target="_blank"
-					alignItems="center" // Align items vertically
-					justifyContent="center" // Align items horizontally
-					mx={2} // Add margin between icons
-				>
-					<Icon as={FaDiscord} h="1.5rem" w="1.5rem" />
-				</Flex>
-				<Flex
-					_dark={{ _hover: { bg: "whiteAlpha.200" } }}
-					_hover={{ bg: "blackAlpha.100" }}
-					as="a"
-					bg="transparent"
-					href=""
-					target="_blank"
-					alignItems="center" // Align items vertically
-					justifyContent="center" // Align items horizontally
-					mx={2} // Add margin between icons
-				>
-					<Icon as={FaTelegram} h="1.3rem" w="1.3rem" />
-				</Flex>
-				<Flex
-					_dark={{ _hover: { bg: "whiteAlpha.200" } }}
-					_hover={{ bg: "blackAlpha.100" }}
-					as="a"
-					bg="transparent"
-					href=""
-					target="_blank"
-					alignItems="center" // Align items vertically
-					justifyContent="center" // Align items horizontally
-					mx={2} // Add margin between icons
-				>
-					<Icon as={FaGithub} h="1.3rem" w="1.3rem" />
-				</Flex>
-			</Flex>
+			</Box>
 		</>
 	)
 }
