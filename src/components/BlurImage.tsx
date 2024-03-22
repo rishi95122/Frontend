@@ -1,5 +1,6 @@
 import { useImage } from "@chakra-ui/react"
 import { motion } from "framer-motion"
+import { useEffect, useRef } from "react"
 import { Blurhash } from "react-blurhash"
 
 export const BlurImage = ({
@@ -11,16 +12,22 @@ export const BlurImage = ({
 	isHovering: boolean
 	src: string
 }) => {
-	// Check if the src is an image or video
 	const isVideo = src.endsWith(".mp4")
+	const videoRef = useRef<HTMLVideoElement>(null)
+
+	useEffect(() => {
+		if (isVideo && videoRef.current) {
+			videoRef.current.playbackRate = 0.5 // Adjust the playback rate here
+		}
+	}, [isVideo])
 
 	if (isVideo) {
-		// If it's a video, return the video element
 		return (
 			<video
 				autoPlay
 				loop
 				muted
+				ref={videoRef}
 				src={src}
 				style={{
 					filter: isHovering ? "blur(8px)" : "blur(0px)",
@@ -31,10 +38,9 @@ export const BlurImage = ({
 					position: "absolute"
 				}}
 			/>
-		)
+		);
 	} else {
-		// If it's an image, return the image element
-		const imageStatus = useImage({ src })
+		const imageStatus = useImage({ src });
 		return imageStatus === "loaded" ? (
 			<motion.img
 				animate={isHovering ? { scale: 1.1 } : { scale: 1 }}

@@ -44,7 +44,7 @@ export const SwapPanel = () => {
 			<BlurImage
 				src={isMobile ? "/assets/home/Trade_Square.mp4" : "/assets/home/Trade.mp4"}
 				blurHash="L77-=pIu02-O0:xY}mI=qIs,T^NL"
-				isHovering={isHovering}
+				isHovering={false}
 			/>
 
 			<motion.div
@@ -60,8 +60,8 @@ export const SwapPanel = () => {
 			<motion.div
 				animate={
 					isHovering
-						? { backdropFilter: "blur(3px)", opacity: 1, scale: 1.1 }
-						: { backdropFilter: "blur(0px)", opacity: 0, scale: 1 }
+						? { backdropFilter: "blur(0px)", opacity: 0, scale: 1.1 }
+						: { backdropFilter: "blur(6px)", opacity: 1, scale: 1 }
 				}
 				initial={{ opacity: 0 }}
 				style={{
@@ -75,7 +75,7 @@ export const SwapPanel = () => {
 				transition={{ type: "tween" }}
 			/>
 			<motion.h1
-				animate={isHovering ? { top: 20 } : { top: -50 }}
+				animate={isHovering ? { top: -50 } : { top: 20 }}
 				initial={{ top: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",

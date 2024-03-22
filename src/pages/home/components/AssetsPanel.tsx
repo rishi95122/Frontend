@@ -45,7 +45,7 @@ export const AssetsPanel = () => {
 			<BlurImage
 				src={isMobile ? "/assets/home/Asset.mp4" : "/assets/home/Asset.mp4"}
 				blurHash="L56cQlnj*KkVQ8bauPi{00WpH9bb"
-				isHovering={isHovering}
+				isHovering={false}
 			/>
 			<motion.div
 				animate={isHovering ? { height: "15rem" } : { height: "10rem" }}
@@ -60,8 +60,8 @@ export const AssetsPanel = () => {
 			<motion.div
 				animate={
 					isHovering
-						? { backdropFilter: "blur(3px)", opacity: 1, scale: 1.1 }
-						: { backdropFilter: "blur(0px)", opacity: 0, scale: 1 }
+						? { backdropFilter: "blur(0px)", opacity: 0, scale: 1.1 }
+						: { backdropFilter: "blur(6px)", opacity: 1, scale: 1 }
 				}
 				initial={{ opacity: 0 }}
 				style={{
@@ -77,7 +77,7 @@ export const AssetsPanel = () => {
 				<Heading color="white" />
 			</motion.div>
 			<motion.h1
-				animate={isHovering ? { top: 20 } : { top: -50 }}
+				animate={isHovering ? { top: -50 } : { top: 20 }}
 				initial={{ top: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",

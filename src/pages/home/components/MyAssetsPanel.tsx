@@ -1,4 +1,4 @@
-import { Box, Flex, useBreakpointValue, useMediaQuery } from "@chakra-ui/react"
+import { Box, useBreakpointValue, useMediaQuery } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { BlurImage } from "components/BlurImage"
 import ConnectButton from "components/ConnectButton"
@@ -11,10 +11,8 @@ export const MyAssetsPanel = () => {
 	const { isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
 	const navigate = useNavigate()
 	const [isMobile] = useMediaQuery("(max-width: 768px)")
-
 	const headingFontSize = useBreakpointValue({ base: "1.5rem", md: "2rem", sm: "2.5rem" })
 	const paragraphFontSize = useBreakpointValue({ base: "1,5rem", md: "1rem", sm: "2.5rem" })
-	const maxFlexWidth = useBreakpointValue({ base: "10rem", md: "12.5rem", sm: "10rem" })
 
 	return (
 		<Box
@@ -43,7 +41,7 @@ export const MyAssetsPanel = () => {
 			<BlurImage
 				src={isMobile ? "/assets/home/My_Asset.mp4" : "/assets/home/My_Asset.mp4"}
 				blurHash="L7D8%:3d00:eG^tO:ijK00{p^*CD"
-				isHovering={isHovering}
+				isHovering={false}
 			/>
 			<motion.div
 				animate={isHovering ? { height: "15rem" } : { height: "10rem" }}
@@ -59,8 +57,8 @@ export const MyAssetsPanel = () => {
 				<motion.div
 					animate={
 						isHovering
-							? { backdropFilter: "blur(0px)", opacity: 1, scale: 1.1 }
-							: { backdropFilter: "blur(0px)", opacity: 0, scale: 1 }
+							? { backdropFilter: "blur(0px)", opacity: 0, scale: 1.1 }
+							: { backdropFilter: "blur(6px)", opacity: 1, scale: 1 }
 					}
 					initial={{ opacity: 0 }}
 					style={{
@@ -70,21 +68,18 @@ export const MyAssetsPanel = () => {
 						justifyContent: "center",
 						position: "absolute",
 						width: "100%",
-						zIndex: 3 // Set a higher z-index for the button
+						zIndex: 1 // Set a higher z-index for the button
 					}}
 					transition={{ type: "tween" }}
-				>
-					<Flex maxW={maxFlexWidth} pos="relative" top="1" w="full">
-						<ConnectButton />
-					</Flex>
-				</motion.div>
+				/>
 			)}
 			<motion.h1
-				animate={isHovering ? { top: 10 } : { top: -50 }}
+				animate={isHovering ? { top: -50 } : { top: 10 }}
 				initial={{ bottom: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
 					fontSize: headingFontSize,
+					justifyContent: "center",
 					position: "absolute",
 					textAlign: "center",
 					width: "100%",
@@ -93,12 +88,34 @@ export const MyAssetsPanel = () => {
 			>
 				My Assets
 			</motion.h1>
+			{!isMobile && ( // Render the ConnectButton only if not on mobile
+				<motion.p
+					animate={isHovering ? { bottom: 80 } : { bottom: -60 }}
+					initial={{ bottom: -30 }}
+					style={{
+						fontFamily: "var(--chakra-fonts-heading)",
+						fontSize: paragraphFontSize,
+						justifyContent: "center",
+						marginLeft: "3.1rem",
+						position: "absolute",
+						textAlign: "center",
+						width: "75%",
+						zIndex: 2 // Set a lower z-index for the text
+					}}
+				>
+					<ConnectButton
+						onMouseEnter={() => setIsHovering(true)} // Set isHovering to true when mouse enters the button
+						onMouseLeave={() => setIsHovering(false)} // Set isHovering to false when mouse leaves the button
+					/>
+				</motion.p>
+			)}
 			<motion.p
 				animate={isHovering ? { bottom: 20 } : { bottom: -60 }}
 				initial={{ bottom: -30 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
 					fontSize: paragraphFontSize,
+					justifyContent: "center",
 					position: "absolute",
 					textAlign: "center",
 					width: "100%",
