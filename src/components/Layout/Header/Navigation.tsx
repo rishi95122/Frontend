@@ -11,7 +11,7 @@ const Navigation = () => {
 		<Flex
 			align="start"
 			as="nav"
-			bgGradient="linear(to-b, black, #121111)"
+			bgGradient="linear(to-b, #0a2b33, #1a001e)"
 			direction={{ base: "row", md: "column" }}
 			gap={2}
 			justifyContent="start"

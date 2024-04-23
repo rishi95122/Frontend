@@ -1,10 +1,10 @@
 const styles = {
 	global: () => ({
 		"#gradient-canvas": {
-			"--gradient-color-1": "#02c296",
-			"--gradient-color-2": "#317eaa",
+			"--gradient-color-1": "#a401c0",
+			"--gradient-color-2": "#22839c",
 			"--gradient-color-3": "#0659c7",
-			"--gradient-color-4": "#033540"
+			"--gradient-color-4": "#22839c"
 		},
 		".rmdp-arrow": {
 			border: "solid white",
