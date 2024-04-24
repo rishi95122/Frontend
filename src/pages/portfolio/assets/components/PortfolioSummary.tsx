@@ -14,10 +14,10 @@ export const PortfolioSummary = () => {
 	return (
 		<SimpleGrid
 			_dark={{
-				bgGradient: "linear(to-br, gray.600 1%, gray.800 80%)"
+				bgGradient: "linear(to-b, #0a2b33, #1a001e)"
 			}}
 			bg="gray.700"
-			bgGradient="linear(to-br, gray.600 1%, gray.800 80%)"
+			bgGradient="linear(to-b, #0a2b33, #1a001e)"
 			columns={{ base: 1, md: 4, sm: 2 }}
 			px={4}
 			py="1rem"

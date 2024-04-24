@@ -42,7 +42,7 @@ export const SwapPanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src={isMobile ? "/assets/home/Trade_Square.mp4" : "/assets/home/Trade.mp4"}
+				src={isMobile ? "/assets/home/Trade.mp4" : "/assets/home/Trade.mp4"}
 				blurHash="L77-=pIu02-O0:xY}mI=qIs,T^NL"
 				isHovering={false}
 			/>
@@ -75,7 +75,7 @@ export const SwapPanel = () => {
 				transition={{ type: "tween" }}
 			/>
 			<motion.h1
-				animate={isHovering ? { top: -50 } : { top: 20 }}
+				animate={isHovering ? { top: 20 } : { top: 20 }}
 				initial={{ top: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",

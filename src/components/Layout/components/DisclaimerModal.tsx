@@ -189,10 +189,10 @@ export const DisclaimerModal = () => {
 			<ModalContent
 				_dark={{
 					bg: "gray.700",
-					bgGradient: "linear(to-br, gray.600 1%, gray.800 80%)"
+					bgGradient: "linear(to-b, #0a2b33, #1a001e)"
 				}}
 				bg="gray.700"
-				bgGradient="linear(to-br, gray.600 1%, gray.800 80%)"
+				bgGradient="linear(to-b, #0a2b33, #1a001e)"
 				rounded="1.25em"
 			>
 				<ModalHeader color="white" textAlign="center" w="full">
@@ -201,7 +201,7 @@ export const DisclaimerModal = () => {
 				<ModalBody color="white" pb={4}>
 					<VStack spacing={6}>
 						<Text color="white">
-							Welcome to Electron Network, your hub for innovative speculation and decentralized
+							Welcome to Electron Protocol, your hub for innovative speculation and decentralized
 							finance services. Accessing or using our services means you accept these terms:
 						</Text>
 						<VStack align="start">

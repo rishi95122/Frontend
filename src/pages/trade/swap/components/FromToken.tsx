@@ -258,7 +258,7 @@ export const FromToken = () => {
 		<Box
 			_dark={{
 				bg: "gray.700",
-				bgGradient: "linear(to-br, gray.600 1%, gray.800 80%)"
+				bgGradient: "linear(to-b, #0a2b33, #1a001e)"
 			}}
 			as={motion.div}
 			bg="gray.700"

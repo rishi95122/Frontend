@@ -25,7 +25,7 @@ export const PoolCardSkeleton = ({
 		<Flex
 			_dark={{
 				bg: "gray.700",
-				bgGradient: "linear(to-b, gray.600 1%, gray.700 80%)"
+				bgGradient: "linear(to-b, blue.900 1%, purple.300 80%)"
 			}}
 			align="start"
 			bg="white"

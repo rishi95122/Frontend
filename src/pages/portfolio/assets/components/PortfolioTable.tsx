@@ -119,7 +119,7 @@ export const PortfolioTable = <Data extends object>({
 
 	return (
 		<Flex
-			_dark={{ bgGradient: "linear(to-b, gray.600, gray.800)" }}
+			_dark={{ bgGradient: "linear(to-b, #0a2b33, #1a001e)" }}
 			bg="white"
 			bgGradient="linear(to-b, gray.600, gray.800)"
 			flexDir="column"

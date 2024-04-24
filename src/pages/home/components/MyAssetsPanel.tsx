@@ -74,7 +74,7 @@ export const MyAssetsPanel = () => {
 				/>
 			)}
 			<motion.h1
-				animate={isHovering ? { top: -50 } : { top: 10 }}
+				animate={isHovering ? { top: 10 } : { top: 10 }}
 				initial={{ bottom: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",

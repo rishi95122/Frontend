@@ -14,7 +14,8 @@ const colors = {
 	},
 	brand: {
 		"1": "#61a9bb",
-		"2": "#ec80fe"
+		"2": "#ec80fe",
+		"3": "#ffffff"
 	},
 	cyan: {
 		"50": "#CEF9FF",
