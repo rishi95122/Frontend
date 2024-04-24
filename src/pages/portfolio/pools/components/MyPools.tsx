@@ -49,9 +49,9 @@ export const MyPools = ({ pools }: { pools: Array<{ apr: number; pool: TPool }> 
 	if (breakpoint === "base" || breakpoint === "sm") {
 		return (
 			<Center
-				_dark={{ bgGradient: "linear(to-b, gray.600, gray.800)" }}
+				_dark={{ bgGradient: "linear(to-b, #0a2b33, #1a001e)" }}
 				bg="gray.800"
-				bgGradient="linear(to-b, gray.600, gray.800)"
+				bgGradient="linear(to-b, #0a2b33, #1a001e)"
 				flexDir="column"
 				h="26.5rem"
 				overflow="hidden"
@@ -157,9 +157,9 @@ export const MyPools = ({ pools }: { pools: Array<{ apr: number; pool: TPool }> 
 
 	return (
 		<Flex
-			_dark={{ bgGradient: "linear(to-b, gray.600, gray.800)" }}
+			_dark={{ bgGradient: "linear(to-b, #0a2b33, #1a001e)" }}
 			bg="gray.800"
-			bgGradient="linear(to-b, gray.600, gray.800)"
+			bgGradient="linear(to-b, #0a2b33, #1a001e)"
 			flexDir="column"
 			py={3}
 			px={4}

@@ -30,7 +30,7 @@ export const GovernancePanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src={isMobile ? "/assets/home/Governance_Square.mp4" : "/assets/home/Governance.mp4"}
+				src={isMobile ? "/assets/home/Governance.mp4" : "/assets/home/Governance.mp4"}
 				blurHash="LA6]tNoy00WC.jfkDRaf8zaz??oK"
 				isHovering={false}
 			/>
@@ -47,7 +47,7 @@ export const GovernancePanel = () => {
 			<motion.div
 				animate={
 					isHovering
-						? { backdropFilter: "blur(0px)", opacity: 0, scale: 1.1 }
+						? { backdropFilter: "blur(0px)", opacity: 1, scale: 1.1 }
 						: { backdropFilter: "blur(6px)", opacity: 1, scale: 1 }
 				}
 				initial={{ opacity: 0 }}
@@ -61,12 +61,12 @@ export const GovernancePanel = () => {
 				}}
 				transition={{ type: "tween" }}
 			>
-				<Heading color="gray" size={centeredFontSize}>
+				<Heading color="white" size={centeredFontSize}>
 					Coming Soon
 				</Heading>
 			</motion.div>
 			<motion.h1
-				animate={isHovering ? { top: -50 } : { top: 10 }}
+				animate={isHovering ? { top: 10 } : { top: 10 }}
 				initial={{ bottom: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",

@@ -53,7 +53,7 @@ export const useCreateIDO = () => {
 						banner_images: [
 							"https://raw.githubusercontent.com/Electron-Protocol/Branding/main/ido_banner.png"
 						],
-						full_name: "Electron Network",
+						full_name: "Electron Protocol",
 						header: "Welcome to Electron",
 						highlights: [
 							"Electron is the premier fully permissionless decentralized exchange, on Neutron."

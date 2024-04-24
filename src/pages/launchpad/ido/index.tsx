@@ -9,7 +9,7 @@ const IDOMockup: IDOCardType[] = [
 		bannerImages: [
 			"https://raw.githubusercontent.com/Electron-Protocol/Branding/main/ido_banner.png"
 		],
-		fullName: "Electron Network",
+		fullName: "Electron Protocol",
 		logo: "https://raw.githubusercontent.com/Electron-Protocol/Branding/main/logo.svg",
 		shortDesc: "Welcome to the jungle!",
 		tokenSymbol: "UNKNOWN"
@@ -18,7 +18,7 @@ const IDOMockup: IDOCardType[] = [
 		bannerImages: [
 			"https://raw.githubusercontent.com/Electron-Protocol/Branding/main/ido_banner.png"
 		],
-		fullName: "Electron Network II",
+		fullName: "Electron Protocol II",
 		logo: "https://raw.githubusercontent.com/Electron-Protocol/Branding/main/logo.svg",
 		shortDesc: "Welcome to the jungle again!",
 		tokenSymbol: "UNKNOWN"
@@ -27,7 +27,7 @@ const IDOMockup: IDOCardType[] = [
 		bannerImages: [
 			"https://raw.githubusercontent.com/Electron-Protocol/Branding/main/ido_banner.png"
 		],
-		fullName: "Electron Network III",
+		fullName: "Electron Protocol III",
 		logo: "https://raw.githubusercontent.com/Electron-Protocol/Branding/main/logo.svg",
 		shortDesc: "Welcome to the jungle again again!",
 		tokenSymbol: "UNKNOWN"

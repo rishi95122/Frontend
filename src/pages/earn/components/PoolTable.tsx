@@ -104,7 +104,7 @@ export const PoolTable = <Data extends object>({ data, columns }: DataTableProps
 
 	return (
 		<Flex
-			bgGradient="linear(to-br, slate.700, slate.800)"
+			bgGradient="linear(to-b, #0a2b33, #1a001e)"
 			flexDir="column"
 			px={2}
 			py={3}

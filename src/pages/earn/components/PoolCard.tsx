@@ -37,7 +37,7 @@ export const PoolCard = ({
 		<Flex
 			_dark={{
 				bg: "gray.700",
-				bgGradient: "linear(to-b, gray.600 1%, gray.700 80%)"
+				bgGradient: "linear(to-b, #0a2b33, #1a001e)"
 			}}
 			align="start"
 			bg="white"
