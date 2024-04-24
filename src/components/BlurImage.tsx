@@ -27,6 +27,7 @@ export const BlurImage = ({
 				autoPlay
 				loop
 				muted
+				controls={false}
 				ref={videoRef}
 				src={src}
 				style={{
