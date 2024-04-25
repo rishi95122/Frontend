@@ -1,10 +1,12 @@
 /* eslint-disable id-length */
 /* eslint-disable react/no-unstable-nested-components */
+import { Footer } from "../../../components/Layout/Footer"
 import { IBCModal } from "./components/IBCModal"
 import { PortfolioTable } from "./components/PortfolioTable"
 import {
 	Button,
 	Flex,
+	Grid,
 	HStack,
 	Icon,
 	IconButton,
@@ -109,15 +111,15 @@ const MyAssets = () => {
 										border="none"
 										src={info.row.original.logoURI ?? "/assets/electron.png"}
 										blurHash={info.row.original.logoHash}
-										w="3rem"
-										h="3rem"
+										w={{ base: "3rem", md: "3rem" }}
+										h={{ base: "3rem", md: "3rem" }}
 									/>
 								</Skeleton>
 								<Skeleton isLoaded={Boolean(info.row.original.symbol)} rounded="full">
-									<VStack align="start" minW="6rem" spacing={{ base: 0, md: 2 }}>
+									<VStack align="start" minW="2rem" spacing={{ base: 0, md: 2 }}>
 										<Text
 											fontFamily="heading"
-											fontSize={{ base: "md", sm: "18" }}
+											fontSize={{ base: "0.8rem", sm: "18" }}
 											fontWeight="400"
 											lineHeight={1}
 											textAlign="start"
@@ -126,7 +128,7 @@ const MyAssets = () => {
 										</Text>
 										<Text
 											lineHeight={1}
-											fontSize={{ base: "0.9em", sm: "14" }}
+											fontSize={{ base: "0.5em", sm: "14" }}
 											textAlign="start"
 											fontWeight="400"
 											fontFamily="body"
@@ -155,7 +157,7 @@ const MyAssets = () => {
 				cell: (info) => {
 					return (
 						<Skeleton isLoaded={Boolean(info)} rounded="full">
-							<VStack align="end" spacing={0}>
+							<VStack align="end" spacing={3}>
 								<Text fontFamily="heading">
 									{`${shortenNumber(
 										convertMicroDenomToDenom(
@@ -356,6 +358,15 @@ const MyAssets = () => {
 			{isWalletConnected && externalToken && (
 				<IBCModal type={modalType} isOpen={isOpen} onClose={onClose} token={externalToken} />
 			)}
+			<Grid
+				placeItems="center" // Center items horizontally and vertically
+				gridColumnStart="1"
+				gridColumnEnd="3"
+				gridRowStart="4"
+				gridRowEnd="5"
+			>
+				<Footer />
+			</Grid>
 		</Flex>
 	)
 }

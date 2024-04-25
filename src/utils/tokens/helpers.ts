@@ -42,7 +42,7 @@ export const initialNeutronToken: Token = {
 	isNativeCoin: true,
 	logoHash: "L3EAsd9=00$~2gR~}ESK00,C%LJ-",
 	logoURI:
-		"https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/assets/mainnet/ntrn.png",
+		"https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/assets/testnet/ntrn.png",
 	symbol: "NTRN",
 	tokenPrettyName: "Neutron Testnet"
 }
