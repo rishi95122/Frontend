@@ -5,7 +5,7 @@ import { useMemo } from "react"
 import { type TPool } from "utils/tokens/pools"
 
 export const poolListUrl = `https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/${
-	import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet" ? "mainnet/" : "testnet/"
+	import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet" ? "testnet/" : "mainnet/"
 }poolList.json`
 
 export const usePoolList = () => {
