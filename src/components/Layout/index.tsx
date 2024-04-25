@@ -1,7 +1,6 @@
 /* eslint-disable id-length */
 import { BackgroundAnimation } from "./components/BackgroundAnimation"
 import { DisclaimerModal } from "./components/DisclaimerModal"
-import { Footer } from "./Footer"
 import Navigation from "./Header/Navigation"
 import { Flex, useBreakpoint, useColorModeValue } from "@chakra-ui/react"
 import { type ReactNode } from "react"
@@ -52,7 +51,6 @@ const Layout = ({ children }: LayoutProps) => {
 					{children}
 				</Flex>
 			</Flex>
-			{/* <Footer /> */}
 			<DisclaimerModal />
 			<ToastContainer
 				autoClose={3_000}
@@ -86,7 +84,6 @@ const Layout = ({ children }: LayoutProps) => {
 					width: "25rem"
 				}}
 			/>
-			<Footer />
 		</Flex>
 	)
 }

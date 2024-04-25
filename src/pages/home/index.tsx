@@ -1,3 +1,4 @@
+import { Footer } from "../../components/Layout/Footer"
 import { AssetsPanel } from "./components/AssetsPanel"
 import { GovernancePanel } from "./components/GovernancePanel"
 import { MyAssetsPanel } from "./components/MyAssetsPanel"
@@ -38,6 +39,15 @@ const Home = () => {
 					<GovernancePanel />
 					<Grid gridColumnStart="1" gridColumnEnd="3" gridRowStart="3" gridRowEnd="4">
 						<MyAssetsPanel />
+					</Grid>
+					<Grid
+						placeItems="center" // Center items horizontally and vertically
+						gridColumnStart="1"
+						gridColumnEnd="3"
+						gridRowStart="4"
+						gridRowEnd="5"
+					>
+						<Footer />
 					</Grid>
 				</Grid>
 			) : (

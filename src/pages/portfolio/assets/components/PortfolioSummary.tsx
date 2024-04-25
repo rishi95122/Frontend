@@ -40,7 +40,7 @@ export const PortfolioSummary = () => {
 				w={{ base: "full", md: "full" }}
 			>
 				<VStack align="start" h="full" spacing={0} w="full">
-					<Heading as="h2" fontSize="22" fontWeight="400" mb={1}>
+					<Heading as="h2" fontSize="18" fontWeight="400" mb={1}>
 						Total
 					</Heading>
 					<Flex align="center" flex={1} w="full">

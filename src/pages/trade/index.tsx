@@ -1,4 +1,5 @@
 // eslint-disable-next-line canonical/filename-match-exported
+import { Footer } from "../../components/Layout/Footer"
 import { PoolsPanel } from "./components/PoolsPanel"
 import { SwapPanel } from "./components/SwapPanel"
 import { Flex, Grid, Heading, useBreakpoint } from "@chakra-ui/react"
@@ -35,6 +36,15 @@ const Trade = () => {
 					<PoolsPanel />
 				</Grid>
 			)}
+			<Grid
+				placeItems="center" // Center items horizontally and vertically
+				gridColumnStart="1"
+				gridColumnEnd="3"
+				gridRowStart="4"
+				gridRowEnd="5"
+			>
+				<Footer />
+			</Grid>
 		</Flex>
 	)
 }
