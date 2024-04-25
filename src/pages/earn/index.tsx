@@ -255,7 +255,7 @@ const Earn = () => {
 							<Button
 								_dark={{
 									_disabled: {
-										_hover: { bg: "gray.600" },
+										_hover: { bg: "rgba(33, 33, 33, 0.5)" },
 										cursor: "not-allowed",
 										opacity: 0.5
 									},
