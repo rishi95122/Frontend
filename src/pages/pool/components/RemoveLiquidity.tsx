@@ -31,9 +31,9 @@ export const RemoveLiquidity = ({ pool }: { pool: TPool }) => {
 	return (
 		<Flex flexDir="column" gap={3} h="full" w="full">
 			<VStack
-				_dark={{ bg: "gray.800" }}
+				_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
 				align="center"
-				bg="gray.800"
+				bg="rgba(33, 33, 33, 0.5)"
 				p={4}
 				rounded="1.25em"
 				shadow="md"
@@ -88,11 +88,11 @@ export const RemoveLiquidity = ({ pool }: { pool: TPool }) => {
 						// eslint-disable-next-line react/jsx-key
 						<Button
 							_dark={{
-								bg: "gray.700",
+								bg: "rgba(33, 33, 33, 0.5)",
 								bgGradient: removeValue.eq(value) ? "linear(45deg,brand.1,brand.2)" : ""
 							}}
 							_hover={{ filter: "brightness(110%)" }}
-							bg="gray.600"
+							bg="rgba(33, 33, 33, 0.5)"
 							color="white"
 							onClick={() => setRemoveValue(BigNumber(value))}
 							rounded="1em"
@@ -116,7 +116,7 @@ export const RemoveLiquidity = ({ pool }: { pool: TPool }) => {
 				}}
 				_disabled={{
 					bg: "offwhite.4",
-					color: "gray.800",
+					color: "rgba(33, 33, 33, 0.5)",
 					cursor: "not-allowed",
 					opacity: 0.5
 				}}

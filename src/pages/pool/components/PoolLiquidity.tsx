@@ -48,8 +48,8 @@ export const PoolLiquidity = ({ pool }: { pool: TPool }) => {
 
 	return (
 		<Flex
-			bg="gray.700"
-			bgGradient="linear(to-br, gray.600 1%, gray.800 80%)"
+			bg="linear(to-b, #0a2b33, #1a001e)"
+			bgGradient="linear(to-b, #0a2b33, #1a001e)"
 			// _dark={{
 			//   bg: "gray.700",
 			//   bgGradient: "linear(to-br, gray.600 1%, gray.800 80%)"
@@ -68,7 +68,7 @@ export const PoolLiquidity = ({ pool }: { pool: TPool }) => {
 					fontWeight="600"
 					px={3}
 					py={2}
-					bg="gray.800"
+					bg="linear(to-b, #0a2b33, #1a001e)"
 					shadow="md"
 					// _dark={{ bg: "gray.800" }}
 					rounded="0.8em"
@@ -95,7 +95,7 @@ export const PoolLiquidity = ({ pool }: { pool: TPool }) => {
 			</Flex>
 			<Flex align="center" gap={2} justifyContent="flex-end" pe={3} w="full">
 				<Tooltip
-					bg={useColorModeValue("gray.800", "gray.800")}
+					bg={useColorModeValue("rgba(33, 33, 33, 0.5)", "rgba(33, 33, 33, 0.5)")}
 					border="none"
 					color={useColorModeValue("white", "white")}
 					hasArrow
@@ -118,7 +118,7 @@ export const PoolLiquidity = ({ pool }: { pool: TPool }) => {
 						}}
 						shadow="md"
 						bgGradient="linear(45deg, brand.1, brand.2)"
-						color="gray.800"
+						color="rgba(33, 33, 33, 0.5)"
 						disabled={!isWalletConnected || !tokenA || !tokenB}
 						fontSize="16"
 						leftIcon={<LiquidityIcon h="1.5rem" w="1.5rem" />}

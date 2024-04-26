@@ -15,8 +15,8 @@ import { useEffect } from "react"
 
 export const SimpleConnectModalBaseStyle = (breakpoint: string) => ({
 	_dark: {
-		bg: "gray.700",
-		bgGradient: "linear(to-br, gray.600 1%, gray.800 80%)",
+		bg: "rgba(33, 33, 33, 0.5)",
+		bgGradient: "linear(to-b, #0a2b33, #1a001e)",
 		color: "white"
 	},
 	_focus: { outline: "none" },

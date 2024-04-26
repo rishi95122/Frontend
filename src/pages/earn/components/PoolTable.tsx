@@ -166,12 +166,12 @@ export const PoolTable = <Data extends object>({ data, columns }: DataTableProps
 							<Icon as={FaSearch} color="white" />
 						</InputLeftElement>
 						<Input
-							_hover={{ bg: "gray.800" }}
+							_hover={{ bg: "rgba(33, 33, 33, 0.5)" }}
 							_focus={{ border: "none", shadow: "glowMd" }}
 							_placeholder={{
 								color: "white"
 							}}
-							bg="gray.700"
+							bg="rgba(33, 33, 33, 0.5)"
 							color="white"
 							fontSize="14"
 							onChange={handleChange}
@@ -206,7 +206,7 @@ export const PoolTable = <Data extends object>({ data, columns }: DataTableProps
 												roundedStart: "1.25em"
 											}}
 											_last={{ roundedEnd: "1.25em" }}
-											bg="gray.700"
+											bg="rgba(33, 33, 33, 0.5)"
 											borderBottom="none"
 											color="white"
 											fontSize="14"
@@ -223,7 +223,7 @@ export const PoolTable = <Data extends object>({ data, columns }: DataTableProps
 														bgGradient: "linear(45deg, brand.1,brand.2)",
 														color: "gray.800"
 													}}
-													bg="gray.600"
+													bg="rgb(186,85,211, 0.1)"
 													color="white"
 													rounded="0.8em"
 													size="sm"
@@ -252,7 +252,7 @@ export const PoolTable = <Data extends object>({ data, columns }: DataTableProps
 					<Tbody>
 						{table.getRowModel().rows.map((row) => (
 							<Tr
-								_hover={{ bg: "gray.700", shadow: "md" }}
+								_hover={{ bg: "rgba(33, 33, 33, 0.5)", shadow: "md" }}
 								key={row.id}
 								pos="relative"
 								rounded="1.25em"

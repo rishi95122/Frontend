@@ -152,11 +152,11 @@ export const PortfolioTable = <Data extends object>({
 						<Input
 							_dark={{
 								_placeholder: { color: "white" },
-								bg: "gray.700",
+								bg: "rgba(33, 33, 33, 0.5)",
 								color: "white"
 							}}
-							_placeholder={{ color: "gray.800" }}
-							bg="gray.700"
+							_placeholder={{ color: "rgba(33, 33, 33, 0.5)" }}
+							bg="rgba(33, 33, 33, 0.5)"
 							color="white"
 							fontSize="14"
 							onChange={handleChange}
@@ -189,15 +189,15 @@ export const PortfolioTable = <Data extends object>({
 						<Input
 							_dark={{
 								_placeholder: { color: "white" },
-								bg: "gray.700",
+								bg: "rgba(33, 33, 33, 0.5)",
 								color: "white"
 							}}
-							_hover={{ bg: "gray.800" }}
+							_hover={{ bg: "rgba(33, 33, 33, 0.5)" }}
 							_placeholder={{
 								color: "white"
 							}}
-							bg="gray.700"
-							color="gray.800"
+							bg="rgba(33, 33, 33, 0.5)"
+							color="rgba(33, 33, 33, 0.5)"
 							fontSize="14"
 							onChange={handleChange}
 							placeholder="Search..."
@@ -218,7 +218,7 @@ export const PortfolioTable = <Data extends object>({
 									const meta: any = header.column.columnDef.meta
 									return (
 										<Th
-											_dark={{ bg: "gray.700", color: "white" }}
+											_dark={{ bg: "rgba(33, 33, 33, 0.5)", color: "white" }}
 											_first={{
 												roundedStart: "1.25em"
 											}}
@@ -243,7 +243,7 @@ export const PortfolioTable = <Data extends object>({
 															bgGradient: "linear(45deg, brand.1,brand.2)",
 															color: "gray.800"
 														},
-														bg: "gray.600",
+														bg: "rgb(186,85,211, 0.1)",
 														color: "white"
 													}}
 													_hover={{
@@ -309,9 +309,9 @@ export const PortfolioTable = <Data extends object>({
 					{table.getRowModel().rows.map((row) => (
 						<Tr
 							_dark={{
-								_hover: { bg: "gray.700" }
+								_hover: { bg: "rgba(33, 33, 33, 0.5)" }
 							}}
-							_hover={{ bg: "gray.600", shadow: "md" }}
+							_hover={{ bg: "rgba(33, 33, 33, 0.5)", shadow: "md" }}
 							key={row.id}
 							pos="relative"
 							rounded="1.25em"

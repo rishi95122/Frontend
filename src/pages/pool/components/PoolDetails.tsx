@@ -201,10 +201,10 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 		<Flex flexDirection={{ base: "column", md: "row" }} gap={2} maxW="5xl" w="full">
 			<Flex
 				_dark={{
-					bg: "gray.700",
-					bgGradient: "linear(to-br, gray.600 1%, gray.800 80%)"
+					bg: "rgba(33, 33, 33, 0.5)",
+					bgGradient: "linear(to-b, #0a2b33, #1a001e)"
 				}}
-				bg="gray.700"
+				bg="rgba(33, 33, 33, 0.5)"
 				bgGradient="linear(to-br, gray.600 1%, gray.800 80%)"
 				flex={1.5}
 				flexDirection={{ base: "column", md: "row" }}
@@ -230,7 +230,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 							}
 							aria-label="Toggle Total View"
 							onClick={handleDetailToggle}
-							bg="gray.600"
+							bg="rgba(33, 33, 33, 0.7)"
 							isDisabled={!totalUnderlyingAssets.bondedTokensPerPeriod.length}
 							_disabled={{
 								_hover: { cursor: "not-allowed", filter: "brightness(100%)" },
@@ -253,7 +253,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 							icon={isShowingTotal ? <Icon as={FaUserAlt} /> : <Icon as={FaGlobeAmericas} />}
 							aria-label="Toggle Total View"
 							onClick={handleTotalToggle}
-							bg="gray.600"
+							bg="rgba(33, 33, 33, 0.5)"
 							_hover={{ filter: "brightness(110%)" }}
 							_active={{ filter: "brightness(90%)" }}
 						/>
@@ -262,7 +262,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 						<VStack w="20rem">
 							<Skeleton isLoaded={!isLoadingTotalPoolValues} rounded="0.8em" w="full">
 								<Tooltip
-									bg="gray.800"
+									bg="rgba(33, 33, 33, 0.8)"
 									border="none"
 									color="white"
 									hasArrow
@@ -291,7 +291,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 									<Flex
 										justify="start"
 										w="full"
-										bg="gray.800"
+										bg="rgba(33, 33, 33, 0.5)"
 										px={5}
 										py={3}
 										direction="column"
@@ -327,7 +327,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 									align="start"
 									flex={1}
 									spacing={0}
-									bg="gray.800"
+									bg="rgba(33, 33, 33, 0.5)"
 									px={5}
 									py={2}
 									rounded="1rem"
@@ -366,7 +366,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 									align="center"
 									flex={1}
 									spacing={0}
-									bg="gray.800"
+									bg="rgba(33, 33, 33, 0.5)"
 									px={5}
 									py={2}
 									rounded="1rem"
@@ -408,7 +408,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 						<VStack w="20rem">
 							<Skeleton isLoaded={!isLoadingMyPoolValues} rounded="0.8em" w="full">
 								<Tooltip
-									bg="gray.800"
+									bg="rgba(33, 33, 33, 0.5)"
 									border="none"
 									color="white"
 									hasArrow
@@ -437,7 +437,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 									<Flex
 										justify="start"
 										w="full"
-										bg="gray.800"
+										bg="rgba(33, 33, 33, 0.5)"
 										px={5}
 										py={3}
 										direction="column"
@@ -468,7 +468,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 									align="center"
 									flex={1}
 									spacing={0}
-									bg="gray.800"
+									bg="rgba(33, 33, 33, 0.5)"
 									px={5}
 									py={2}
 									rounded="1rem"
@@ -508,7 +508,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 									align="center"
 									flex={1}
 									spacing={0}
-									bg="gray.800"
+									bg="rgba(33, 33, 33, 0.5)"
 									px={5}
 									py={2}
 									rounded="1rem"
@@ -806,10 +806,10 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 
 			<Flex
 				_dark={{
-					bg: "gray.700",
-					bgGradient: "linear(to-br, gray.600 1%, gray.800 80%)"
+					bg: "rgba(33, 33, 33, 0.5)",
+					bgGradient: "linear(to-b, #0a2b33, #1a001e)"
 				}}
-				bg="gray.700"
+				bg="rgba(33, 33, 33, 0.5)"
 				bgGradient="linear(to-br, gray.600 1%, gray.800 80%)"
 				flex={1}
 				rounded="1.25em"
@@ -823,7 +823,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 						<Flex
 							justify="start"
 							w="full"
-							bg="gray.800"
+							bg="rgba(33, 33, 33, 0.5)"
 							px={5}
 							py={3}
 							direction="column"
@@ -857,7 +857,7 @@ export const PoolDetails = ({ pool, apr }: { apr: number; pool: TPool }) => {
 							return (
 								<VStack
 									align="center"
-									bg="blackAlpha.400"
+									bg="rgba(33, 33, 33, 0.5)"
 									key={value}
 									px={2}
 									py={1}

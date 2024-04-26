@@ -15,9 +15,9 @@ export const BondButton = (props: any) => {
 				_checked={{
 					bgGradient: "linear(45deg, brand.1, brand.2)",
 					color: "white",
-					filter: "drop-shadow(0px 0px 2px rgba(2,226,150, 1))"
+					filter: "drop-shadow(0px 0px 2px rgba(33, 33, 33, 0.5))"
 				}}
-				_dark={{ bg: "gray.800" }}
+				_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
 				_focus={{
 					boxShadow: "glowMd"
 				}}
@@ -25,7 +25,7 @@ export const BondButton = (props: any) => {
 					filter:
 						state.isChecked || props.isDisabled
 							? ""
-							: "brightness(110%) drop-shadow(0px 0px 3px rgba(2,226,150, 1))"
+							: "brightness(110%) drop-shadow(0px 0px 3px rgba(33, 33, 33, 0.5))"
 				}}
 				bg="gray.800"
 				borderRadius="1.25em"

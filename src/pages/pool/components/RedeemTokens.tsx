@@ -59,8 +59,8 @@ export const RedeemTokens = () => {
 	return (
 		<Flex flexDir="column" gap={1} h="full" w="full">
 			<VStack
-				_dark={{ bg: "gray.800" }}
-				bg="gray.800"
+				_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
+				bg="rgba(33, 33, 33, 0.5)"
 				px={2}
 				py={2}
 				rounded="1.25em"

@@ -189,7 +189,7 @@ export const FromToken = () => {
 		control: (provided: SystemStyleObject) => ({
 			...provided,
 			_placeholder: { color: "white !important" },
-			bg: useColorModeValue("gray.600", "gray.700"),
+			bg: useColorModeValue("rgba(33, 33, 33, 0.5)", "rgba(33, 33, 33, 0.5)"),
 			border: "none",
 			borderRadius: "1.25em",
 			color: "white !important",
@@ -240,9 +240,11 @@ export const FromToken = () => {
 				bgGradient: state.isSelected
 					? "linear(45deg, brand.1,brand.2)"
 					: useColorModeValue("whiteAlpha.300", "whiteAlpha.200"),
-				color: "gray.800"
+				color: "rgba(33, 33, 33, 0.5)"
 			},
-			bg: state.isSelected ? useColorModeValue("gray.600", "gray.600") : "transparent",
+			bg: state.isSelected
+				? useColorModeValue("rgba(33, 33, 33, 0.5)", "rgba(33, 33, 33, 0.5)")
+				: "transparent",
 
 			borderRadius: "1.5em",
 			color: "white",
@@ -309,7 +311,7 @@ export const FromToken = () => {
 				<HStack>
 					<Button
 						_active={{ filter: "brightness(90%)" }}
-						_dark={{ bg: "gray.600", color: "white" }}
+						_dark={{ bg: "rgba(33, 33, 33, 0.5)", color: "white" }}
 						_hover={{ filter: "brightness(110%)" }}
 						bg="gray.600"
 						color="white"
@@ -337,7 +339,7 @@ export const FromToken = () => {
 					</Button>
 					<Button
 						_active={{ filter: "brightness(90%)" }}
-						_dark={{ bg: "gray.600", color: "white" }}
+						_dark={{ bg: "rgba(33, 33, 33, 0.5)", color: "white" }}
 						_hover={{ filter: "brightness(110%)" }}
 						bg="gray.600"
 						color="white"
@@ -370,9 +372,9 @@ export const FromToken = () => {
 					<>
 						<Flex align="space-between" direction="row" gap={3} w="full">
 							<MenuButton
-								_dark={{ bg: "gray.800" }}
+								_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
 								as={Button}
-								bg="gray.800"
+								bg="rgba(33, 33, 33, 0.5)"
 								flex={1}
 								h="3rem"
 								px={1}
@@ -424,10 +426,10 @@ export const FromToken = () => {
 							{from && (
 								<Flex align="end" direction="column" flex={1} gap={3} maxW="14rem">
 									<NumericFormat
-										_dark={{ _focus: { bg: "gray.800" } }}
+										_dark={{ _focus: { bg: "rgba(33, 33, 33, 0.5)" } }}
 										allowLeadingZeros={false}
 										allowNegative={false}
-										bg="gray.800"
+										bg="rgba(33, 33, 33, 0.5)"
 										color={useColorModeValue("white", "white")}
 										customInput={Input}
 										decimalScale={from.token.decimal}
@@ -499,8 +501,8 @@ export const FromToken = () => {
 						</Flex>
 						<Portal>
 							<MenuList
-								_dark={{ bg: "gray.800" }}
-								bg="gray.700"
+								_dark={{ bgGradient: "linear(to-b, #1a001e, #0a2b33 20%)" }}
+								bg="rgba(33, 33, 33, 0.5)"
 								border="none"
 								left={{ base: -3, md: -3 }}
 								maxW={{ base: "18rem", md: "32rem" }}

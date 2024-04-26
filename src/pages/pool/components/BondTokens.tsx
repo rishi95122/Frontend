@@ -120,8 +120,8 @@ export const BondTokens = () => {
 				</SimpleGrid>
 			</RadioGroup>
 			<Box
-				_dark={{ bg: "gray.800" }}
-				bg="gray.800"
+				_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
+				bg="rgba(33, 33, 33, 0.5)"
 				opacity={unbondedTokens.isZero() || !radioValue ? 0.5 : 1}
 				pb={4}
 				pt={1}
@@ -158,7 +158,7 @@ export const BondTokens = () => {
 					{gaps.map((value) => (
 						// eslint-disable-next-line react/jsx-key
 						<Button
-							_dark={{ bg: "gray.700" }}
+							_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
 							_disabled={{
 								_active: {
 									bg: "whiteAlpha.200",
@@ -175,7 +175,7 @@ export const BondTokens = () => {
 								cursor: "not-allowed"
 							}}
 							_hover={{ filter: "brightness(110%)" }}
-							bg="gray.700"
+							bg="rgba(33, 33, 33, 0.5)"
 							bgGradient={value === bondPercentage ? "linear(45deg,brand.1,brand.2)" : ""}
 							color="white"
 							isDisabled={unbondedTokens.isZero() || !radioValue}

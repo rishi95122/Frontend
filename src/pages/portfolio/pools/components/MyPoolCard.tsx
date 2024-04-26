@@ -98,7 +98,7 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 	return (
 		<Flex
 			_dark={{
-				bg: "gray.800"
+				bg: "rgba(33, 33, 33, 0.5)"
 			}}
 			align="start"
 			bg="gray.800"
@@ -139,7 +139,7 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 				</HStack>
 				<Flex direction="column" flex={1} gap={1.5} h="full" w="full">
 					<HStack
-						_dark={{ bg: "gray.700", color: "white" }}
+						_dark={{ bg: "gray.800", color: "white" }}
 						bg="gray.700"
 						color="white"
 						h="3rem"
@@ -180,7 +180,7 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 
 					{claimableRewards.length !== 0 && (
 						<HStack
-							_dark={{ bg: "gray.700", color: "white" }}
+							_dark={{ bg: "gray.800", color: "white" }}
 							bg="gray.700"
 							color="white"
 							h="3rem"
@@ -230,8 +230,8 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 						</HStack>
 					)}
 					<HStack
-						_dark={{ bg: "gray.700", color: "white" }}
-						bg="gray.700"
+						_dark={{ bg: "gray.800", color: "white" }}
+						bg="linear(to-b, #0a2b33, #1a001e)"
 						color="white"
 						justify="space-between"
 						px={3}
