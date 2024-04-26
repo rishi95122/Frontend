@@ -14,8 +14,8 @@ export const SwapPanel = () => {
 			_hover={{ cursor: "pointer" }}
 			as={motion.div}
 			bg="white"
-			h="full"
-			minH="18rem"
+			h="50%"
+			minH={{ base: "9rem", md: "18rem" }}
 			onClick={() => {
 				navigate("/trade/swap")
 			}}
