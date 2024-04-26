@@ -18,6 +18,7 @@ const Trade = () => {
 			initial={{ opacity: 0 }}
 			p={{ base: 4, lg: 24, md: 16 }}
 			w="full"
+			mt={-10}
 		>
 			<Heading>Trade</Heading>
 			{breakpoint === "base" || breakpoint === "sm" ? (
