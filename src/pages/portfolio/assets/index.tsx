@@ -85,11 +85,11 @@ const MyAssets = () => {
 								<IconButton
 									_dark={{
 										_hover: {
-											bg: "gray.600"
+											bg: "rgba(33, 33, 33, 0.5)"
 										},
 										color: favourites?.includes(info.row.original.denom) ? "yellow.600" : "white"
 									}}
-									_hover={{ bg: "gray.600" }}
+									_hover={{ bg: "rgba(33, 33, 33, 0.5)" }}
 									aria-label="add/remove favourite token"
 									bg="transparent"
 									color={favourites?.includes(info.row.original.denom) ? "yellow.400" : "gray.800"}
@@ -207,7 +207,7 @@ const MyAssets = () => {
 										onOpen()
 									}}
 									bg="white"
-									color="gray.800"
+									color="rgba(33, 33, 33, 0.5)"
 									bgGradient="linear(45deg, brand.1, brand.2)"
 									rounded="full"
 									aria-label="Open Actions Modal"
@@ -222,7 +222,7 @@ const MyAssets = () => {
 							<Button
 								_hover={{ filter: "brightness(120%)" }}
 								bg="white"
-								color="gray.800"
+								color="rgba(33, 33, 33, 0.5)"
 								bgGradient="linear(45deg, brand.1, brand.2)"
 								shadow="md"
 								as="a"
@@ -235,14 +235,14 @@ const MyAssets = () => {
 								}}
 								_dark={{
 									_disabled: {
-										_hover: { bg: "gray.600" },
+										_hover: { bg: "rgba(33, 33, 33, 0.5)" },
 										cursor: "not-allowed",
 										opacity: 0.5
 									},
 									_hover: {
 										filter: "brightness(120%)"
 									},
-									bg: "gray.600",
+									bg: "rgba(33, 33, 33, 0.5)",
 									bgGradient: "linear(45deg, brand.1, brand.2)"
 								}}
 								rounded="1em"
@@ -259,7 +259,7 @@ const MyAssets = () => {
 							<Button
 								_hover={{ filter: "brightness(120%)" }}
 								bg="white"
-								color="gray.800"
+								color="rgba(33, 33, 33, 0.5)"
 								bgGradient="linear(45deg, brand.1, brand.2)"
 								shadow="md"
 								_disabled={{
@@ -269,14 +269,14 @@ const MyAssets = () => {
 								}}
 								_dark={{
 									_disabled: {
-										_hover: { bg: "gray.600" },
+										_hover: { bg: "rgba(33, 33, 33, 0.5)" },
 										cursor: "not-allowed",
 										opacity: 0.5
 									},
 									_hover: {
 										filter: "brightness(120%)"
 									},
-									bg: "gray.600",
+									bg: "rgba(33, 33, 33, 0.5)",
 									bgGradient: "linear(45deg, brand.1, brand.2)"
 								}}
 								rounded="1em"
@@ -295,7 +295,7 @@ const MyAssets = () => {
 								size="sm"
 								_hover={{ filter: "brightness(120%)" }}
 								bg="white"
-								color="gray.800"
+								color="rgba(33, 33, 33, 0.5)"
 								bgGradient="linear(45deg, brand.1, brand.2)"
 								shadow="md"
 								_disabled={{
@@ -305,14 +305,14 @@ const MyAssets = () => {
 								}}
 								_dark={{
 									_disabled: {
-										_hover: { bg: "gray.600" },
+										_hover: { bg: "rgba(33, 33, 33, 0.5)" },
 										cursor: "not-allowed",
 										opacity: 0.5
 									},
 									_hover: {
 										filter: "brightness(120%)"
 									},
-									bg: "gray.600",
+									bg: "rgba(33, 33, 33, 0.5)",
 									bgGradient: "linear(45deg, brand.1, brand.2)"
 								}}
 								rounded="1em"

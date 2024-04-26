@@ -69,7 +69,7 @@ const Pool = () => {
 					}}
 					_hover={{ filter: "brightness(120%)" }}
 					bg="gray.700"
-					bgGradient="linear(to-br, gray.600, gray.800)"
+					bgGradient="linear(to-b, #0a2b33, #1a001e)"
 					color="white"
 					leftIcon={<FaAngleLeft />}
 					onClick={() => {
@@ -88,7 +88,7 @@ const Pool = () => {
 					}}
 					_hover={{ filter: "brightness(120%)" }}
 					bg="gray.700"
-					bgGradient="linear(to-br, gray.600, gray.800)"
+					bgGradient="linear(to-b, #0a2b33, #1a001e)"
 					color="white"
 					leftIcon={<TradeIcon />}
 					onClick={() => {

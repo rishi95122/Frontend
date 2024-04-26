@@ -87,11 +87,11 @@ export const LiquidityModal = ({
 			<ModalOverlay backdropFilter="blur(70px)" />
 			<ModalContent
 				_dark={{
-					bg: "gray.700",
-					bgGradient: "linear(to-br, gray.600 1%, gray.800 80%)"
+					bg: "rgba(33, 33, 33, 0.5)",
+					bgGradient: "linear(to-b, #0a2b33, #1a001e)"
 				}}
-				bg="gray.700"
-				bgGradient="linear(to-br, gray.600 1%, gray.800 80%)"
+				bg="rgba(33, 33, 33, 0.5)"
+				bgGradient="linear(to-b, #0a2b33, #1a001e)"
 				h="30rem"
 				shadow="lg"
 				rounded="1.25em"
@@ -105,7 +105,7 @@ export const LiquidityModal = ({
 						<TabList
 							_dark={{ color: "white" }}
 							bg="whiteAlpha.200"
-							color="gray.800"
+							color="rgba(33, 33, 33, 0.5)"
 							gap={2}
 							h="3rem"
 							rounded="1.25em"
@@ -113,12 +113,12 @@ export const LiquidityModal = ({
 						>
 							<Tab
 								_dark={{
-									_selected: { color: "gray.800" },
+									_selected: { color: "gray-800" },
 									color: "white"
 								}}
 								_selected={{
 									bgGradient: "linear(45deg, brand.1, brand.2)",
-									color: "gray.800",
+									color: "gray-800",
 									shadow: "glowMd"
 								}}
 								color="white"
@@ -129,12 +129,12 @@ export const LiquidityModal = ({
 							</Tab>
 							<Tab
 								_dark={{
-									_selected: { color: "gray.800" },
+									_selected: { color: "gray-800" },
 									color: "white"
 								}}
 								_selected={{
 									bgGradient: "linear(45deg, brand.1, brand.2)",
-									color: "gray.800",
+									color: "gray-800",
 									shadow: "glowMd"
 								}}
 								color="white"
@@ -149,9 +149,9 @@ export const LiquidityModal = ({
 								<Flex flexDir="column" gap={3} h="full" w="full">
 									<Flex flex={1} flexDir="column" gap={6} justify="center" w="full">
 										<Flex
-											_dark={{ bg: "gray.800" }}
+											_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
 											align="center"
-											bg="gray.800"
+											bg="rgba(33, 33, 33, 0.5)"
 											shadow={`${transparentize(
 												tokenAColor,
 												0.45
@@ -167,7 +167,7 @@ export const LiquidityModal = ({
 										>
 											<Circle
 												alignItems="center"
-												bg="gray.900"
+												bg="rgba(33, 33, 33, 0.5)"
 												shadow={`${transparentize(
 													tokenAColor,
 													0.45
@@ -253,9 +253,9 @@ export const LiquidityModal = ({
 													<HStack ms="auto" spacing={1}>
 														<Button
 															_active={{ filter: "brightness(90%)" }}
-															_dark={{ bg: "gray.600", color: "white" }}
+															_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
 															_hover={{ filter: "brightness(110%)" }}
-															bg="gray.600"
+															bg="rgba(33, 33, 33, 0.2)"
 															color="white"
 															fontSize="sm"
 															h={7}
@@ -291,9 +291,9 @@ export const LiquidityModal = ({
 														</Button>
 														<Button
 															_active={{ filter: "brightness(90%)" }}
-															_dark={{ bg: "gray.600", color: "white" }}
+															_dark={{ bg: "rgba(33, 33, 33, 0.5)", color: "white" }}
 															_hover={{ filter: "brightness(110%)" }}
-															bg="gray.600"
+															bg="rgba(33, 33, 33, 0.5)"
 															color="white"
 															fontSize="sm"
 															h={7}
@@ -337,7 +337,7 @@ export const LiquidityModal = ({
 												</Flex>
 												<VStack align="end" w="full">
 													<NumericFormat
-														_dark={{ _focus: { bg: "gray.800" } }}
+														_dark={{ _focus: { bg: "rgba(33, 33, 33, 0.5)" } }}
 														allowLeadingZeros={false}
 														allowNegative={false}
 														bg="transparent"
@@ -419,9 +419,9 @@ export const LiquidityModal = ({
 											</VStack>
 										</Flex>
 										<Flex
-											_dark={{ bg: "gray.800" }}
+											_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
 											align="center"
-											bg="gray.800"
+											bg="rgba(33, 33, 33, 0.5)"
 											shadow={`${transparentize(
 												tokenBColor,
 												0.45
@@ -436,7 +436,7 @@ export const LiquidityModal = ({
 										>
 											<Circle
 												alignItems="center"
-												bg="gray.900"
+												bg="rgba(33, 33, 33, 0.5)"
 												shadow={`${transparentize(
 													tokenBColor,
 													0.45
@@ -522,7 +522,7 @@ export const LiquidityModal = ({
 												</Flex>
 												<VStack align="end" spacing={0} w="full">
 													<NumericFormat
-														_dark={{ _focus: { bg: "gray.800" } }}
+														_dark={{ _focus: { bg: "rgba(33, 33, 33, 0.5)" } }}
 														_invalid={{
 															border: `1px solid ${red500}`
 														}}
@@ -621,7 +621,7 @@ export const LiquidityModal = ({
 										}}
 										_disabled={{
 											bg: "offwhite.4",
-											color: "gray.800",
+											color: "rgba(33, 33, 33, 0.5)",
 											cursor: "not-allowed",
 											opacity: 0.5
 										}}

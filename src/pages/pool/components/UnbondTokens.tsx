@@ -121,7 +121,7 @@ export const UnbondTokens = ({ pool }: { pool: TPool }) => {
 				</SimpleGrid>
 			</RadioGroup>
 			<Box
-				_dark={{ bg: "gray.800" }}
+				_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
 				bg="gray.800"
 				pb={4}
 				pt={1}
@@ -163,7 +163,7 @@ export const UnbondTokens = ({ pool }: { pool: TPool }) => {
 						<Button
 							// eslint-disable-next-line react/no-array-index-key
 							key={"unbondButton-" + index}
-							_dark={{ bg: "gray.700" }}
+							_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
 							shadow={value === bondPercentage ? "glowMd" : "md"}
 							_disabled={{
 								_active: {

@@ -38,7 +38,7 @@ export const PoolSummary = ({ pool }: { pool: TPool }) => {
 	return (
 		<Flex
 			bg="gray.700"
-			bgGradient="linear(to-br, gray.600 1%, gray.800 80%)"
+			bgGradient="linear(to-b, #0a2b33, #1a001e)"
 			// _dark={{
 			//   bg: "gray.700",
 			//   bgGradient: "linear(to-br, gray.600 1%, gray.800 80%)"

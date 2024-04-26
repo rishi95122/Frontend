@@ -61,9 +61,9 @@ export const RedeemItem = ({
 
 	return (
 		<Flex
-			_dark={{ bg: "gray.700" }}
+			_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
 			align="center"
-			bg="gray.700"
+			bg="rgba(33, 33, 33, 0.5)"
 			key={unbonding_info.time}
 			px={2}
 			py={2}
