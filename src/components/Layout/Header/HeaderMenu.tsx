@@ -1,7 +1,8 @@
 import { HStack, IconButton, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react"
 // import { CGWhite } from "components/Assets/CGWhite"
 import { BsThreeDots } from "react-icons/bs"
-import { FaDiscord, FaGithub, FaTelegram, FaTwitter } from "react-icons/fa"
+import { FaGithub, FaMedium, FaTelegram } from "react-icons/fa"
+import { FaXTwitter } from "react-icons/fa6"
 import { HiExternalLink } from "react-icons/hi"
 
 export const HeaderMenu = () => {
@@ -79,7 +80,7 @@ export const HeaderMenu = () => {
 					_hover={{ bg: "blackAlpha.100" }}
 					as="a"
 					bg="transparent"
-					href="https://electron.network/social/telegram"
+					href="https://t.me/hoperscommunity"
 					icon={<FaTelegram size="18" />}
 					target="_blank"
 				>
@@ -93,8 +94,8 @@ export const HeaderMenu = () => {
 					_hover={{ bg: "blackAlpha.100" }}
 					as="a"
 					bg="transparent"
-					href="https://x.com/Electronnetwork"
-					icon={<FaTwitter size="18" />}
+					href="https://twitter.com/Hopers_io"
+					icon={<FaXTwitter size="18" />}
 					target="_blank"
 				>
 					<HStack>
@@ -107,8 +108,8 @@ export const HeaderMenu = () => {
 					_hover={{ bg: "blackAlpha.100" }}
 					as="a"
 					bg="transparent"
-					href="https://electron.network/social/discord"
-					icon={<FaDiscord size="18" />}
+					href="https://medium.com/@Electron-Protocol"
+					icon={<FaMedium size="18" />}
 					target="_blank"
 				>
 					<HStack>

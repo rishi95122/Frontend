@@ -1,5 +1,5 @@
 import { Box, Flex, Icon, useBreakpoint } from "@chakra-ui/react"
-import { FaDiscord, FaGithub, FaTelegram } from "react-icons/fa"
+import { FaGithub, FaMedium, FaTelegram } from "react-icons/fa"
 import { FaXTwitter } from "react-icons/fa6"
 
 export const Footer = () => {
@@ -13,7 +13,7 @@ export const Footer = () => {
 					_hover={{ bg: "blackAlpha.100" }}
 					as="a"
 					bg="transparent"
-					href=""
+					href="https://twitter.com/Hopers_io"
 					target="_blank"
 					alignItems="center"
 					justifyContent="center"
@@ -26,33 +26,33 @@ export const Footer = () => {
 					_hover={{ bg: "blackAlpha.100" }}
 					as="a"
 					bg="transparent"
-					href=""
+					href="https://t.me/hoperscommunity"
 					target="_blank"
 					alignItems="center"
 					justifyContent="center"
 					mx={2}
 				>
-					<Icon as={FaDiscord} h="1.5rem" w="1.5rem" />
+					<Icon as={FaTelegram} h="1.2rem" w="1.2rem" />
 				</Flex>
 				<Flex
 					_dark={{ _hover: { bg: "whiteAlpha.200" } }}
 					_hover={{ bg: "blackAlpha.100" }}
 					as="a"
 					bg="transparent"
-					href=""
+					href="https://medium.com/@Electron-Protocol"
 					target="_blank"
 					alignItems="center"
 					justifyContent="center"
 					mx={2}
 				>
-					<Icon as={FaTelegram} h="1.3rem" w="1.3rem" />
+					<Icon as={FaMedium} h="1.3rem" w="1.3rem" />
 				</Flex>
 				<Flex
 					_dark={{ _hover: { bg: "whiteAlpha.200" } }}
 					_hover={{ bg: "blackAlpha.100" }}
 					as="a"
 					bg="transparent"
-					href=""
+					href="https://github.com/Electron-Protocol"
 					target="_blank"
 					alignItems="center"
 					justifyContent="center"
