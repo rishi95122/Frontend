@@ -31,7 +31,7 @@ import ConnectButton from "components/ConnectButton"
 import { motion } from "framer-motion"
 import { type ReactElement } from "react"
 import { useCallback, useEffect, useMemo } from "react"
-import { FaBook, FaDiscord, FaGithub, FaTelegram } from "react-icons/fa"
+import { FaBook, FaGithub, FaMedium, FaTelegram } from "react-icons/fa"
 import { FaXTwitter } from "react-icons/fa6"
 import { HiExternalLink, HiOutlineMenuAlt3 } from "react-icons/hi"
 import { useLocation } from "react-router-dom"
@@ -279,14 +279,14 @@ export const RouterArea = () => {
 											_hover={{ bg: "blackAlpha.100" }}
 											as="a"
 											bg="transparent"
-											href="https://x.com/"
+											href="https://twitter.com/Hopers_io"
 											target="_blank"
 										>
 											<HStack justify="space-between" w="full">
 												<HStack>
 													<Icon as={FaXTwitter} h="1.5rem" w="1.5rem" zIndex={1} />
 													<Text fontSize="20" w="full">
-														Twitter
+														X
 													</Text>
 												</HStack>
 												<HiExternalLink />
@@ -297,14 +297,14 @@ export const RouterArea = () => {
 											_hover={{ bg: "blackAlpha.100" }}
 											as="a"
 											bg="transparent"
-											href="https://discord.com"
+											href="https://medium.com/@Electron-Protocol"
 											target="_blank"
 										>
 											<HStack justify="space-between" w="full">
 												<HStack>
-													<Icon as={FaDiscord} h="1.5rem" w="1.5rem" zIndex={1} />
+													<Icon as={FaMedium} h="1.5rem" w="1.5rem" zIndex={1} />
 													<Text fontSize="20" w="full">
-														Discord
+														Medium
 													</Text>
 												</HStack>
 												<HiExternalLink />
@@ -353,33 +353,20 @@ export const RouterArea = () => {
 						_hover={{ bg: "blackAlpha.100" }}
 						as="a"
 						bg="transparent"
-						href=""
+						href="https://twitter.com/Hopers_io"
 						target="_blank"
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
 					>
-						<Icon as={FaXTwitter} h="1.2rem" w="1.2rem" />
+						<Icon as={FaXTwitter} h="1.3rem" w="1.3rem" />
 					</Flex>
 					<Flex
 						_dark={{ _hover: { bg: "whiteAlpha.200" } }}
 						_hover={{ bg: "blackAlpha.100" }}
 						as="a"
 						bg="transparent"
-						href=""
-						target="_blank"
-						alignItems="center" // Align items vertically
-						justifyContent="center" // Align items horizontally
-						mx={2} // Add margin between icons
-					>
-						<Icon as={FaDiscord} h="1.5rem" w="1.5rem" />
-					</Flex>
-					<Flex
-						_dark={{ _hover: { bg: "whiteAlpha.200" } }}
-						_hover={{ bg: "blackAlpha.100" }}
-						as="a"
-						bg="transparent"
-						href=""
+						href="https://t.me/hoperscommunity"
 						target="_blank"
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
@@ -392,7 +379,20 @@ export const RouterArea = () => {
 						_hover={{ bg: "blackAlpha.100" }}
 						as="a"
 						bg="transparent"
-						href=""
+						href="https://medium.com/@Electron-Protocol"
+						target="_blank"
+						alignItems="center" // Align items vertically
+						justifyContent="center" // Align items horizontally
+						mx={2} // Add margin between icons
+					>
+						<Icon as={FaMedium} h="1.3rem" w="1.3rem" />
+					</Flex>
+					<Flex
+						_dark={{ _hover: { bg: "whiteAlpha.200" } }}
+						_hover={{ bg: "blackAlpha.100" }}
+						as="a"
+						bg="transparent"
+						href="https://github.com/Electron-Protocol"
 						target="_blank"
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
