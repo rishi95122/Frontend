@@ -96,10 +96,12 @@ export const MyAssetsPanel = () => {
 						fontFamily: "var(--chakra-fonts-heading)",
 						fontSize: paragraphFontSize,
 						justifyContent: "center",
-						marginLeft: "3.1rem",
 						position: "absolute",
 						textAlign: "center",
-						width: "75%",
+						width: "75%", // Adjusted width to 100%
+						// eslint-disable-next-line canonical/sort-keys
+						left: "50%", // Center horizontally
+						transform: "translateX(-50%)", // Center horizontally
 						zIndex: 2 // Set a lower z-index for the text
 					}}
 				>
