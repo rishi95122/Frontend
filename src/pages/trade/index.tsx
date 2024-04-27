@@ -22,7 +22,7 @@ const Trade = () => {
 		>
 			<Heading>Trade</Heading>
 			{breakpoint === "base" || breakpoint === "sm" ? (
-				<Grid gap={4} h="full" minH="50vh" templateColumns="1fr" templateRows="1fr 1fr" w="full">
+				<Grid gap={4} h="full" minH="53.5vh" templateColumns="1fr" templateRows="1fr 1fr" w="full">
 					<SwapPanel />
 					<PoolsPanel />
 				</Grid>
@@ -44,7 +44,7 @@ const Trade = () => {
 				gridColumnEnd="3"
 				gridRowStart="4"
 				gridRowEnd="5"
-				mt="36px"
+				mt="8px"
 			>
 				<Footer />
 			</Grid>
