@@ -15,7 +15,7 @@ export const PoolsPanel = () => {
 			as={motion.div}
 			bg="white"
 			h="full"
-			minH={{ base: "12rem", md: "18rem" }}
+			minH={{ base: "12rem", md: "14.35rem" }}
 			onClick={() => {
 				navigate("/trade/pools")
 			}}
