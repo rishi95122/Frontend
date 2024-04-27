@@ -25,7 +25,7 @@ const LogoArea = () => {
 			w="full"
 		>
 			{/* <Image src="/assets/electronnameW.svg" w="3rem" /> */}
-			<Image pl={2} pr={0} h={imageHeight} src="/assets/electronnameW.svg" />
+			<Image pl={0} pr={2} h={imageHeight} src="/assets/electronnameW.svg" />
 		</HStack>
 	)
 }
