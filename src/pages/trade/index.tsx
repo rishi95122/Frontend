@@ -34,6 +34,7 @@ const Trade = () => {
 					w="full"
 				>
 					<SwapPanel />
+
 					<PoolsPanel />
 				</Grid>
 			)}
@@ -43,6 +44,7 @@ const Trade = () => {
 				gridColumnEnd="3"
 				gridRowStart="4"
 				gridRowEnd="5"
+				mt="6px"
 			>
 				<Footer />
 			</Grid>
