@@ -74,7 +74,7 @@ export const MyAssetsPanel = () => {
 				/>
 			)}
 			<motion.h1
-				animate={isHovering ? { top: 10 } : { top: 10 }}
+				animate={isHovering ? { top: 5 } : { top: 10 }}
 				initial={{ bottom: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
@@ -90,7 +90,7 @@ export const MyAssetsPanel = () => {
 			</motion.h1>
 			{!isMobile && ( // Render the ConnectButton only if not on mobile
 				<motion.p
-					animate={isHovering ? { bottom: 60 } : { bottom: -60 }}
+					animate={isHovering ? { bottom: 45 } : { bottom: -60 }}
 					initial={{ bottom: -30 }}
 					style={{
 						fontFamily: "var(--chakra-fonts-heading)",

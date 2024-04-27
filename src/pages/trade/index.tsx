@@ -13,12 +13,12 @@ const Trade = () => {
 			as={motion.main}
 			exit={{ opacity: 0 }}
 			flexDirection="column"
-			gap={4}
+			gap={2}
 			h="full"
 			initial={{ opacity: 0 }}
 			p={{ base: 4, lg: 24, md: 16 }}
 			w="full"
-			mt={{ base: -5, md: -10 }}
+			mt={{ base: -3, md: -10 }}
 		>
 			<Heading>Trade</Heading>
 			{breakpoint === "base" || breakpoint === "sm" ? (
