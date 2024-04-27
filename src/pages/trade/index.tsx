@@ -44,7 +44,7 @@ const Trade = () => {
 				gridColumnEnd="3"
 				gridRowStart="4"
 				gridRowEnd="5"
-				mt="6px"
+				mt="36px"
 			>
 				<Footer />
 			</Grid>
