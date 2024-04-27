@@ -16,9 +16,9 @@ const Home = () => {
 			as={motion.main}
 			exit={{ opacity: 0 }}
 			flexDirection="column"
-			gap={4}
+			gap={2}
 			h="full"
-			mt={2}
+			mt={-4}
 			initial={{ opacity: 0 }}
 			p={{ base: 5, lg: 24, md: 16 }}
 			w="full"

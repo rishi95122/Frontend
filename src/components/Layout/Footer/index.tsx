@@ -18,6 +18,7 @@ export const Footer = () => {
 					alignItems="center"
 					justifyContent="center"
 					mx={2}
+					mb={2}
 				>
 					<Icon as={FaXTwitter} h="1.2rem" w="1.2rem" />
 				</Flex>
@@ -31,6 +32,7 @@ export const Footer = () => {
 					alignItems="center"
 					justifyContent="center"
 					mx={2}
+					mb={2}
 				>
 					<Icon as={FaTelegram} h="1.2rem" w="1.2rem" />
 				</Flex>
@@ -44,6 +46,7 @@ export const Footer = () => {
 					alignItems="center"
 					justifyContent="center"
 					mx={2}
+					mb={2}
 				>
 					<Icon as={FaMedium} h="1.3rem" w="1.3rem" />
 				</Flex>
@@ -57,6 +60,7 @@ export const Footer = () => {
 					alignItems="center"
 					justifyContent="center"
 					mx={2}
+					mb={2}
 				>
 					<Icon as={FaGithub} h="1.3rem" w="1.3rem" />
 				</Flex>
