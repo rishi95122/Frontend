@@ -18,11 +18,11 @@ const Trade = () => {
 			initial={{ opacity: 0 }}
 			p={{ base: 4, lg: 24, md: 16 }}
 			w="full"
-			mt={{ base: -3, md: -10 }}
+			mt={{ base: -3, md: -4 }}
 		>
 			<Heading>Trade</Heading>
 			{breakpoint === "base" || breakpoint === "sm" ? (
-				<Grid gap={4} h="full" minH="60vh" templateColumns="1fr" templateRows="1fr 1fr" w="full">
+				<Grid gap={4} h="full" minH="53.8vh" templateColumns="1fr" templateRows="1fr 1fr" w="full">
 					<SwapPanel />
 					<PoolsPanel />
 				</Grid>
