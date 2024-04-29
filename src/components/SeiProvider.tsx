@@ -53,7 +53,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 			apis: {
 				grpc: [
 					{
-						address: "grpc-falcron.pion-1.ntrn.tech:80",
+						address: "neutron-grpc.publicnode.com:443",
 						provider: "Neutron"
 					},
 					{
@@ -63,7 +63,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 				],
 				rest: [
 					{
-						address: "https://rest-falcron.pion-1.ntrn.tech",
+						address: "https://neutron-rest.publicnode.com",
 						provider: "Neutron"
 					},
 					{
@@ -76,7 +76,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 					}
 				],
 				rpc: [
-					"https://rpc-palvus.pion-1.ntrn.tech:443"
+					"https://neutron-rpc.publicnode.com:443"
 					// {
 					// 	address: "grpc.baryon.remedy.tm.p2p.org:443",
 					// 	provider: "P2P.ORG",
@@ -204,12 +204,12 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 						rpc: ["https://rpc.juno.basementnodes.ca"]
 					},
 					neutron: {
-						rpc: ["https://rpc-palvus.pion-1.ntrn.tech:443"]
+						rpc: ["https://neutron-rpc.publicnode.com:443"]
 					},
 					neutrontestnet: {
 						rpc: [
-							"https://rpc-palvus.pion-1.ntrn.tech:443",
-							"https://rpc-palvus.pion-1.ntrn.tech:443"
+							"https://neutron-rpc.publicnode.com:443",
+							"https://neutron-rpc.publicnode.com:443"
 						]
 					},
 					osmosis: {

@@ -22,18 +22,18 @@ export const convertDenomToMicroDenom = (
 
 export const initialNeutronToken: Token = {
 	chain: {
-		chainId: "pion-1",
-		chainName: "neutrontestnet",
-		chainPrettyName: "Neutron Testnet",
+		chainId: "neutron-1",
+		chainName: "neutron",
+		chainPrettyName: "Neutron",
 		gasPrice: {
 			amount: "200000",
 			denom: "ntrn"
 		},
-		grpc: ["grpc-falcron.pion-1.ntrn.tech:80"],
+		grpc: ["neutron-grpc.publicnode.com:443"],
 		isEVM: false,
 		localDenom: "ntrn",
-		rest: ["https://rest-falcron.pion-1.ntrn.tech"],
-		rpc: ["https://rpc-falcron.pion-1.ntrn.tech"]
+		rest: ["https://neutron-rest.publicnode.com"],
+		rpc: ["https://neutron-rpc.publicnode.com:443"]
 	},
 	decimal: 6,
 	denom: "untrn",
@@ -49,9 +49,9 @@ export const initialNeutronToken: Token = {
 
 export const initialUSDCToken: Token = {
 	chain: {
-		chainId: "pion-1",
-		chainName: "neutrontestnet",
-		chainPrettyName: "Neutron Testnet",
+		chainId: "neutron-1",
+		chainName: "neutron",
+		chainPrettyName: "Neutron",
 		gasPrice: {
 			amount: "200000",
 			denom: "untrn"
@@ -97,9 +97,9 @@ export const initialUSTTwoToken: Token = {
 
 export const initialAtomToken: Token = {
 	chain: {
-		chainId: "pion-1",
-		chainName: "neutrontestnet",
-		chainPrettyName: "Neutron Testnet",
+		chainId: "neutron-1",
+		chainName: "neutron",
+		chainPrettyName: "Neutron",
 		gasPrice: {
 			amount: "200000",
 			denom: "untrn"
@@ -121,9 +121,9 @@ export const initialAtomToken: Token = {
 
 export const initialBTCToken: Token = {
 	chain: {
-		chainId: "pion-1",
-		chainName: "neutrontestnet",
-		chainPrettyName: "Neutron Testnet",
+		chainId: "neutron-1",
+		chainName: "neutron",
+		chainPrettyName: "Neutron",
 		gasPrice: {
 			amount: "200000",
 			denom: "untrn"
@@ -145,9 +145,9 @@ export const initialBTCToken: Token = {
 
 export const initialEleToken: Token = {
 	chain: {
-		chainId: "pion-1",
-		chainName: "neutrontestnet",
-		chainPrettyName: "Neutron Testnet",
+		chainId: "neutron-1",
+		chainName: "neutront",
+		chainPrettyName: "Neutron",
 		gasPrice: {
 			amount: "200000",
 			denom: "untrn"

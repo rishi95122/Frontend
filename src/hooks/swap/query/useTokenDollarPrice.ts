@@ -15,7 +15,9 @@ export const useTokenDollarPriceQuery = ({ token }: { token: Token }) => {
 
 	const validPair = useValidPool(
 		token.denom,
-		import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet" ? initialUSDCToken.denom : initialUSTTwoToken.denom
+		import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet"
+			? initialUSDCToken.denom
+			: initialUSTTwoToken.denom
 	)
 
 	return useQuery<BigNumber>(

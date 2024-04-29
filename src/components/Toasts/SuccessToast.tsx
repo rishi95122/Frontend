@@ -32,7 +32,7 @@ const SuccessToast = ({
 				_hover={{ bg: "whiteAlpha.200" }}
 				aria-label="Go to Block Explorer"
 				as="a"
-				href={`https://rpc-falcron.pion-1.ntrn.tech/${chainName ?? "sei%20atlantic%202"}/tx/${
+				href={`https://neutron-rpc.publicnode.com:443/${chainName ?? "sei%20atlantic%202"}/tx/${
 					data.transactionHash
 				}`}
 				icon={<HiExternalLink />}
