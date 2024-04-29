@@ -114,7 +114,7 @@ const MyPoolsPage = () => {
 			{poolsList?.poolsWithAPR && poolsList?.poolsWithAPR.length > 0 && (
 				<MyPools pools={poolsList?.poolsWithAPR} />
 			)}
-			<Flex h="2rem" w="full" />
+			<Flex h="0rem" w="full" />
 		</Flex>
 	)
 }

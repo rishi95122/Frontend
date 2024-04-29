@@ -102,17 +102,18 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 			}}
 			align="start"
 			bg="gray.800"
-			pb={{ base: 10, md: 3 }}
+			pb={{ base: 12, md: 3 }}
 			pos="relative"
 			pt={3}
 			px={3}
 			rounded="1.25em"
 			shadow="md"
 			w={{ base: "full", md: "full" }}
+			h={{ base: "80%", md: "full" }}
 		>
 			<Flex direction="column" flex={1} gap={2} h="full" w="full">
 				<HStack>
-					<AvatarGroup size="md">
+					<AvatarGroup size={{ base: "sm", md: "md" }}>
 						<Avatar border="none" name={tokenA?.symbol ?? ""} src={tokenA?.logoURI ?? ""} />
 						<Avatar
 							border="none"
@@ -122,14 +123,14 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 						/>
 					</AvatarGroup>
 					<VStack align="start" h="full" spacing={0}>
-						<Heading fontSize="xl" fontWeight="400">
+						<Heading fontSize={{ base: "sm", md: "xl" }} fontWeight="400">
 							{tokenA?.symbol}
 							<chakra.span color="gray.400" fontWeight="900" px="4px">
 								/
 							</chakra.span>
 							{tokenB?.symbol}
 						</Heading>
-						<Text fontSize="lg">
+						<Text fontSize={{ base: "sm", md: "lg" }}>
 							<chakra.span color="gray.400" fontSize="sm" fontWeight="900" pe="2px">
 								#
 							</chakra.span>
@@ -139,16 +140,18 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 				</HStack>
 				<Flex direction="column" flex={1} gap={1.5} h="full" w="full">
 					<HStack
-						_dark={{ bg: "gray.800", color: "white" }}
-						bg="gray.700"
+						_dark={{ bg: "rgba(33, 33, 33, 0.7)", color: "white" }}
+						bg="rgba(33, 33, 33, 0.7)"
 						color="white"
-						h="3rem"
+						h={{ base: "1.25rem", md: "3rem" }}
 						justify="space-between"
 						px={3}
-						py={1}
+						py={2}
+						mt={-1}
 						rounded="0.8em"
 						shadow="md"
 						w="full"
+						fontSize={{ base: "12", md: "16" }}
 					>
 						<Text fontFamily="heading">APR</Text>
 						<Skeleton isLoaded={Boolean(pool.highestApr)}>
@@ -160,7 +163,7 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 											bgClip="text"
 											bgGradient="linear(45deg, brand.1, brand.2)"
 											fontFamily="heading"
-											fontSize="20"
+											fontSize={{ base: "14", md: "20" }}
 											ps={1}
 										>
 											{shortenNumber(BigNumber(pool.highestApr.highestAprValue), 2) ?? 0}%
@@ -169,9 +172,9 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 								</Text>
 								{pool.highestApr.highestAprToken && (
 									<Avatar
-										h="2rem"
+										h={{ base: "1rem", md: "2rem" }}
 										src={highestAprToken?.logoURI ?? "/assets/unknownToken.svg"}
-										w="2rem"
+										w={{ base: "1rem", md: "2rem" }}
 									/>
 								)}
 							</HStack>
@@ -180,16 +183,17 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 
 					{claimableRewards.length !== 0 && (
 						<HStack
-							_dark={{ bg: "gray.800", color: "white" }}
-							bg="gray.700"
+							_dark={{ bg: "rgba(33, 33, 33, 0.7)", color: "white" }}
+							bg="rgba(33, 33, 33, 0.7)"
 							color="white"
-							h="3rem"
+							h={{ base: "1.25rem", md: "3rem" }}
 							justify="space-between"
 							px={3}
 							py={1}
 							rounded="0.8em"
 							shadow="md"
 							w="full"
+							fontSize={{ base: "12", md: "16" }}
 						>
 							<Text fontFamily="heading">Rewards</Text>
 							<Skeleton isLoaded={!isLoadingPoolRewards} rounded="1em">
@@ -207,7 +211,7 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 													bgClip="text"
 													bgGradient="linear(45deg, brand.1, brand.2)"
 													fontFamily="heading"
-													fontSize="20"
+													fontSize={{ base: "14", md: "20" }}
 													ps={1}
 												>
 													{convertMicroDenomToDenom(
@@ -217,9 +221,9 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 												</Text>
 												{tokenInfo && (
 													<Avatar
-														h="1.5rem"
+														h={{ base: "1rem", md: "1.5rem" }}
 														src={tokenInfo?.logoURI ?? "/assets/unknownToken.svg"}
-														w="1.5rem"
+														w={{ base: "1rem", md: "1.5rem" }}
 													/>
 												)}
 											</HStack>
@@ -230,28 +234,35 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 						</HStack>
 					)}
 					<HStack
-						_dark={{ bg: "gray.800", color: "white" }}
+						_dark={{ bg: "rgba(33, 33, 33, 0.7)", color: "white" }}
 						bg="linear(to-b, #0a2b33, #1a001e)"
 						color="white"
 						justify="space-between"
 						px={3}
-						py={1}
+						py={0.2}
 						rounded="0.8em"
 						shadow="md"
 						w="full"
 					>
-						<VStack align="start" spacing={0.5}>
-							<Text fontFamily="heading">Unbonded</Text>
-							<Text fontFamily="heading">Bonded</Text>
-							<Text fontFamily="heading">Redeemable</Text>
+						<VStack align="start" spacing={{ base: "0.3", md: "0.5" }}>
+							<Text fontFamily="heading" fontSize={{ base: "12", md: "16" }}>
+								Unbonded
+							</Text>
+							<Text fontFamily="heading" fontSize={{ base: "12", md: "16" }}>
+								Bonded
+							</Text>
+							<Text fontFamily="heading" fontSize={{ base: "12", md: "16" }}>
+								Redeemable
+							</Text>
 						</VStack>
-						<VStack align="end" spacing={0.5}>
+						<VStack align="end" spacing={{ base: "0.3", md: "0.5" }}>
 							<Skeleton isLoaded={!isLoadingPoolDollarValue} rounded="1em">
 								<Text
 									bgClip="text"
 									bgGradient="linear(45deg, brand.1, brand.2)"
 									fontFamily="heading"
 									ps={1}
+									fontSize={{ base: "14", md: "20" }}
 								>
 									{poolDollarValue.unbondedDollarValue < 0.01 &&
 									poolDollarValue.unbondedDollarValue !== 0
@@ -265,6 +276,7 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 									bgGradient="linear(45deg, brand.1, brand.2)"
 									fontFamily="heading"
 									ps={1}
+									fontSize={{ base: "14", md: "20" }}
 								>
 									{poolDollarValue.totalBondedDollarValue < 0.01 &&
 									poolDollarValue.totalBondedDollarValue !== 0
@@ -278,6 +290,7 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 									bgGradient="linear(45deg, brand.1, brand.2)"
 									fontFamily="heading"
 									ps={1}
+									fontSize={{ base: "14", md: "20" }}
 								>
 									{poolDollarValue.totalRedeemableDollarValue < 0.01 &&
 									poolDollarValue.totalRedeemableDollarValue !== 0
@@ -288,7 +301,7 @@ export const MyPoolCard = ({ pool }: { pool: TPool }) => {
 						</VStack>
 					</HStack>
 				</Flex>
-				<HStack justify="space-evenly" mt={2}>
+				<HStack justify="space-evenly" mt={{ base: "-0.5", md: "2" }} mb={{ base: "2", md: "0" }}>
 					<Button
 						_active={{
 							filter: "brightness(110%) drop-shadow(0px 0px 2px rgba(2,226,150, 1))",

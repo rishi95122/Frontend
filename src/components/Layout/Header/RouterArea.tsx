@@ -31,7 +31,7 @@ import ConnectButton from "components/ConnectButton"
 import { motion } from "framer-motion"
 import { type ReactElement } from "react"
 import { useCallback, useEffect, useMemo } from "react"
-import { FaBook, FaGithub, FaMedium, FaTelegram } from "react-icons/fa"
+import { FaGithub, FaMedium, FaTelegram } from "react-icons/fa"
 import { FaXTwitter } from "react-icons/fa6"
 import { HiExternalLink, HiOutlineMenuAlt3 } from "react-icons/hi"
 import { useLocation } from "react-router-dom"
@@ -69,15 +69,15 @@ export const RouterArea = () => {
 				icon: <Icon as={AssetsIcon} h="full" w="full" zIndex={1} />,
 				isDisabled: false,
 				label: <div style={{ marginLeft: "6px" }}>Assets</div>,
-				navId: 3,
+				navId: 1,
 				url: "/portfolio/assets"
 			},
 			{
 				icon: <Icon as={StakingIcon} h="full" w="full" zIndex={1} />,
 				isDisabled: true,
 				label: <div style={{ marginLeft: "6px" }}>Staking</div>,
-				navId: 4,
-				url: "/governance"
+				navId: 2,
+				url: "/staking"
 			},
 			{
 				icon: <Icon as={GovernanceIcon} h="full" w="full" zIndex={1} />,
@@ -193,6 +193,19 @@ export const RouterArea = () => {
 								roundedStart="2em"
 								shadow="md"
 							>
+								{isWalletConnected && (
+									<Accordion allowToggle>
+										{data.map((item) => (
+											<NavigationButton
+												key={item.navId}
+												activeIndex={activeIndex}
+												isDisabled={item.isDisabled}
+												onClick={() => handleClick(item.navId, item.subLinks)}
+												{...item}
+											/>
+										))}
+									</Accordion>
+								)}
 								<DrawerBody bg="transparent" flex={1} flexDirection="column" p={3}>
 									<Flex
 										bgGradient="linear(45deg, brand.1, brand.2)"
@@ -203,23 +216,6 @@ export const RouterArea = () => {
 										w="full"
 									/>
 									<Flex direction="column" gap={{ base: 4, md: 1 }} px={3}>
-										<Flex
-											_dark={{ _hover: { bg: "whiteAlpha.200" } }}
-											_hover={{ bg: "blackAlpha.100" }}
-											as="a"
-											bg="transparent"
-											target="_blank"
-										>
-											<HStack justify="space-between" w="full">
-												<HStack>
-													<Icon as={FaBook} h="1.5rem" w="1.5rem" zIndex={1} />
-													<Text fontSize="20" w="full">
-														Documentation
-													</Text>
-												</HStack>
-												<HiExternalLink />
-											</HStack>
-										</Flex>
 										<Flex
 											_dark={{ _hover: { bg: "whiteAlpha.200" } }}
 											_hover={{ bg: "blackAlpha.100" }}
