@@ -30,7 +30,7 @@ export const GovernancePanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src={isMobile ? "/assets/home/Governance.mp4" : "/assets/home/Governance.mp4"}
+				src={isMobile ? "/assets/home/mobile/4-3_Governance.mp4" : "/assets/home/Governance.mp4"}
 				blurHash="LA6]tNoy00WC.jfkDRaf8zaz??oK"
 				isHovering={false}
 			/>
@@ -66,7 +66,15 @@ export const GovernancePanel = () => {
 				</Heading>
 			</motion.div>
 			<motion.h1
-				animate={isHovering ? { top: 10 } : { top: 10 }}
+				animate={{
+					top: isMobile
+						? isHovering
+							? "0px" // Mobile measure when hovering
+							: "0px" // Mobile measure when not hovering
+						: isHovering
+						? "-50px" // Desktop measure when hovering
+						: "-50px" // Desktop measure when not hovering
+				}}
 				initial={{ bottom: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",

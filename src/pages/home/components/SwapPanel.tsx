@@ -42,7 +42,7 @@ export const SwapPanel = () => {
 			whileHover={{ scale: 1.02 }}
 		>
 			<BlurImage
-				src={isMobile ? "/assets/home/Trade.mp4" : "/assets/home/Trade.mp4"}
+				src={isMobile ? "/assets/home/mobile/4-3_Trade.mp4" : "/assets/home/Trade.mp4"}
 				blurHash="L77-=pIu02-O0:xY}mI=qIs,T^NL"
 				isHovering={false}
 			/>
@@ -60,8 +60,8 @@ export const SwapPanel = () => {
 			<motion.div
 				animate={
 					isHovering
-						? { backdropFilter: "blur(0px)", opacity: 0, scale: 1.1 }
-						: { backdropFilter: "blur(6px)", opacity: 1, scale: 1 }
+						? { backdropFilter: "blur(4px)", opacity: 1, scale: 1.1 }
+						: { backdropFilter: "blur(6px)", opacity: 0, scale: 1 }
 				}
 				initial={{ opacity: 0 }}
 				style={{
@@ -75,7 +75,15 @@ export const SwapPanel = () => {
 				transition={{ type: "tween" }}
 			/>
 			<motion.h1
-				animate={isHovering ? { top: 20 } : { top: 20 }}
+				animate={{
+					top: isMobile
+						? isHovering
+							? "0px" // Mobile measure when hovering
+							: "0px" // Mobile measure when not hovering
+						: isHovering
+						? "20px" // Desktop measure when hovering
+						: "-50px" // Desktop measure when not hovering
+				}}
 				initial={{ top: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
@@ -88,7 +96,15 @@ export const SwapPanel = () => {
 				Trade
 			</motion.h1>
 			<motion.p
-				animate={isHovering ? { bottom: 20 } : { bottom: -60 }}
+				animate={{
+					bottom: isMobile
+						? isHovering
+							? 20 // Mobile measure when hovering
+							: 5 // Mobile measure when not hovering
+						: isHovering
+						? 20 // Desktop measure when hovering
+						: -60 // Desktop measure when not hovering
+				}}
 				initial={{ bottom: -30 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
