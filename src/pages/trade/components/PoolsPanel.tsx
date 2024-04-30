@@ -68,7 +68,7 @@ export const PoolsPanel = () => {
         <Heading color="white">Coming Soon</Heading>
       </motion.div> */}
 			<motion.h1
-				animate={isHovering ? { bottom: 40 } : { bottom: 0 }}
+				animate={isHovering ? { bottom: 40 } : { bottom: -50 }}
 				initial={{ bottom: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
@@ -81,7 +81,7 @@ export const PoolsPanel = () => {
 				Pools
 			</motion.h1>
 			<motion.p
-				animate={isHovering ? { bottom: 20 } : { bottom: -30 }}
+				animate={isHovering ? { bottom: 20 } : { bottom: 20 }}
 				initial={{ bottom: -30 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",

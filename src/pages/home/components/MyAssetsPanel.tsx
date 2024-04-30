@@ -39,42 +39,30 @@ export const MyAssetsPanel = () => {
 			style={{ zIndex: 1 }} // Set the z-index of the box
 		>
 			<BlurImage
-				src={isMobile ? "/assets/home/My_Asset.mp4" : "/assets/home/My_Asset.mp4"}
+				src={isMobile ? "/assets/home/mobile/11-4_my_asset.mp4" : "/assets/home/My_Asset.mp4"}
 				blurHash="L7D8%:3d00:eG^tO:ijK00{p^*CD"
-				isHovering={false}
+				isHovering={false} // Always pass true to isHovering
 			/>
 			<motion.div
-				animate={isHovering ? { height: "15rem" } : { height: "10rem" }}
-				initial={{ height: "10rem" }}
+				animate={
+					isHovering
+						? { backdropFilter: "blur(4px)", opacity: 1, scale: 1.1 }
+						: { backdropFilter: "blur(6px)", opacity: 0, scale: 1 }
+				}
+				initial={{ opacity: 0 }}
 				style={{
-					bottom: "0",
+					alignItems: "center",
+					display: "flex",
+					height: "100%",
+					justifyContent: "center",
 					position: "absolute",
 					width: "100%",
-					zIndex: 1 // Set a lower z-index for the blur effect
+					zIndex: 1 // Set a higher z-index for the button
 				}}
+				transition={{ type: "tween" }}
 			/>
-			{!isWalletConnected && (
-				<motion.div
-					animate={
-						isHovering
-							? { backdropFilter: "blur(0px)", opacity: 0, scale: 1.1 }
-							: { backdropFilter: "blur(6px)", opacity: 1, scale: 1 }
-					}
-					initial={{ opacity: 0 }}
-					style={{
-						alignItems: "center",
-						display: "flex",
-						height: "100%",
-						justifyContent: "center",
-						position: "absolute",
-						width: "100%",
-						zIndex: 1 // Set a higher z-index for the button
-					}}
-					transition={{ type: "tween" }}
-				/>
-			)}
 			<motion.h1
-				animate={isHovering ? { top: 5 } : { top: 10 }}
+				animate={isHovering ? { top: 5 } : { top: -50 }}
 				initial={{ bottom: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
@@ -88,7 +76,7 @@ export const MyAssetsPanel = () => {
 			>
 				My Assets
 			</motion.h1>
-			{!isMobile && ( // Render the ConnectButton only if not on mobile
+			{!isMobile && (
 				<motion.p
 					animate={isHovering ? { bottom: 45 } : { bottom: -60 }}
 					initial={{ bottom: -30 }}
@@ -106,8 +94,8 @@ export const MyAssetsPanel = () => {
 					}}
 				>
 					<ConnectButton
-						onMouseEnter={() => setIsHovering(true)} // Set isHovering to true when mouse enters the button
-						onMouseLeave={() => setIsHovering(false)} // Set isHovering to false when mouse leaves the button
+						onMouseEnter={() => setIsHovering(true)}
+						onMouseLeave={() => setIsHovering(false)}
 					/>
 				</motion.p>
 			)}
