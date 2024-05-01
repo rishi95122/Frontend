@@ -1,3 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+// eslint-disable-next-line import/no-extraneous-dependencies, import/no-unassigned-import
+import "react-tooltip/dist/react-tooltip.css"
+import { InfoIcon } from "@chakra-ui/icons"
 import {
 	Button,
 	type ButtonProps,
@@ -17,6 +21,8 @@ import { AnimatePresence, motion, type Variants } from "framer-motion"
 import { type FC, useEffect } from "react"
 import { FaClipboardList, FaSignInAlt, FaSignOutAlt } from "react-icons/fa"
 import { toast } from "react-toastify"
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Tooltip } from "react-tooltip"
 import { convertMicroDenomToDenom } from "utils/tokens/helpers"
 import shortenNumber from "utils/ui/shortenNumber"
 import truncateAddress from "utils/ui/truncateAddress"
@@ -119,18 +125,46 @@ const ConnectButton: FC<ConnectButtonProps> = () => {
 								fontWeight="900"
 								textAlign="start"
 								w="full"
-								css={{
-									animation: `${gradientAnimation} 2s ease infinite`,
-									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-									backgroundSize: "400% 400%",
-									WebkitBackgroundClip: "text",
-									WebkitTextFillColor: "transparent"
-								}}
+								display="inline-flex"
+								alignItems="center"
 							>
-								Rewards
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "400% 400%",
+										marginRight: "4px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
+								>
+									Rewards
+								</span>
 							</Text>
 						</HStack>
+						<a data-tooltip-id="my-tooltip" style={{ position: "absolute" }}>
+							<Icon as={InfoIcon} boxSize={2} mb={-1} py={-1} ml={170} color="gray.300" />
+						</a>
 						<Divider maxW="95%" />
+						<Tooltip
+							id="my-tooltip"
+							style={{
+								background: "linear-gradient(to right, #61a9bb, #ec80fe)",
+								borderRadius: "10px",
+								fontSize: "0.5rem",
+								marginLeft: "10.6em",
+								marginTop: "0.8rem",
+								textAlign: "center"
+							}}
+						>
+							<div>
+								<p>Liquidity providers are eligible</p>
+								<p>to earn $Particles rewards.</p>
+								<p>These rewards will be swapped to</p>
+								<p>$ELE, the official governance</p>
+								<p>token of Electron once it goes live.</p>
+							</div>
+						</Tooltip>
 						<HStack
 							align="end"
 							animate="show"
