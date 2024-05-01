@@ -235,7 +235,7 @@ export const RouterArea = () => {
 								roundedStart="2em"
 								shadow="md"
 							>
-								{isWalletConnected && (
+								{/* {isWalletConnected && (
 									<Accordion allowToggle>
 										{data.map((item) => (
 											<NavigationButton
@@ -247,7 +247,18 @@ export const RouterArea = () => {
 											/>
 										))}
 									</Accordion>
-								)}
+								)} */}
+								<Accordion allowToggle>
+									{data.map((item) => (
+										<NavigationButton
+											key={item.navId}
+											activeIndex={activeIndex}
+											isDisabled={item.isDisabled}
+											onClick={() => handleClick(item.navId, item.subLinks)}
+											{...item}
+										/>
+									))}
+								</Accordion>
 								<DrawerBody bg="transparent" flex={1} flexDirection="column" p={3}>
 									<Flex
 										bgGradient="linear(45deg, brand.1, brand.2)"
@@ -438,7 +449,7 @@ export const RouterArea = () => {
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
-						mb={isWalletConnected ? 10 : 0}
+						mb={isWalletConnected ? 9 : 0}
 					>
 						<Icon as={FaGithub} h="1.3rem" w="1.3rem" />
 					</Flex>
