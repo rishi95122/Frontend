@@ -129,8 +129,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 
 				clientId: import.meta.env.VITE_WEB3AUTHID,
 
-				web3AuthNetwork:
-					import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet" ? "cyan" : "testnet"
+				web3AuthNetwork: import.meta.env.VITE_NEUTRONNETWORK === "MAINNET" ? "cyan" : "testnet"
 			},
 			loginMethods: [
 				{
@@ -363,13 +362,13 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 						description: "Bridging the gap between CEX and DeFi",
 						icons: ["/assets/electron.png"],
 						name:
-							import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet"
+							import.meta.env.VITE_NEUTRONNETWORK === "MAINNET"
 								? "Neutron Network"
 								: "Neutron Network Testnet",
 						url:
-							import.meta.env.VITE_NEUTRONNETWORK === "neutrontestnet"
-								? "https://app.electron.network"
-								: "https://testnet.electron.network"
+							import.meta.env.VITE_NEUTRONNETWORK === "MAINNET"
+								? "https://app.electronprotocol.io"
+								: "https://testnet.electronprotocol.io"
 					},
 					name: "Electron Protocol",
 					projectId: import.meta.env.VITE_WCCLIENT as string,
