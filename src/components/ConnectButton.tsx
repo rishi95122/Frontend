@@ -11,6 +11,7 @@ import {
 	VStack
 } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
+import { keyframes } from "@emotion/react"
 import { useTokenBalance } from "@hooks/tokens/query/useTokenBalance"
 import { AnimatePresence, motion, type Variants } from "framer-motion"
 import { type FC, useEffect } from "react"
@@ -23,6 +24,18 @@ import truncateAddress from "utils/ui/truncateAddress"
 export type ConnectButtonProps = ButtonProps & {
 	activeIndex?: number
 }
+
+const gradientAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`
 
 const connectWalletVariants: Variants = {
 	hide: {
@@ -94,25 +107,26 @@ const ConnectButton: FC<ConnectButtonProps> = () => {
 			<AnimatePresence mode="wait">
 				{isWalletConnected && (
 					<VStack align="center" as={motion.div} p={2} w="full">
-						<Text
-							bgClip="text"
-							bgGradient="linear(45deg, brand.1,brand.2)"
-							fontFamily="heading"
-							fontSize="md"
-							fontWeight="900"
-							mb={-2}
-							textAlign="center"
-							w="full"
-						>
-							{truncateAddress(address!, 8, 8)}
-						</Text>
 						<Divider maxW="95%" />
 						<HStack justify="center" w="full">
 							<Image src="/assets/tokens/particle.png" w="1rem" ml="0.8rem" />
 							<Text fontFamily="body" fontSize="md" fontWeight="900" textAlign="start" w="full">
 								{shortenNumber(convertMicroDenomToDenom(ParticleBalance, 6), 2)}
 							</Text>
-							<Text fontFamily="body" fontSize="sm" fontWeight="900" textAlign="start" w="full">
+							<Text
+								fontFamily="body"
+								fontSize="sm"
+								fontWeight="900"
+								textAlign="start"
+								w="full"
+								css={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "400% 400%",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
 								Rewards
 							</Text>
 						</HStack>
@@ -205,6 +219,19 @@ const ConnectButton: FC<ConnectButtonProps> = () => {
 								/>
 							</HStack>
 						</HStack>
+						<Divider maxW="95%" />
+						<Text
+							bgClip="text"
+							bgGradient="linear(45deg, brand.1,brand.2)"
+							fontFamily="heading"
+							fontSize="md"
+							fontWeight="900"
+							mb={-2}
+							textAlign="center"
+							w="full"
+						>
+							{truncateAddress(address!, 8, 8)}
+						</Text>
 					</VStack>
 				)}
 			</AnimatePresence>

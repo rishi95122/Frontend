@@ -62,7 +62,7 @@ export const MyAssetsPanel = () => {
 				transition={{ type: "tween" }}
 			/>
 			<motion.h1
-				animate={isHovering ? { top: 5 } : { top: -50 }}
+				animate={isHovering ? { top: -50 } : { top: -50 }}
 				initial={{ bottom: 0 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",
@@ -78,7 +78,7 @@ export const MyAssetsPanel = () => {
 			</motion.h1>
 			{!isMobile && (
 				<motion.p
-					animate={isHovering ? { bottom: 45 } : { bottom: -60 }}
+					animate={isHovering ? { bottom: 45 } : { bottom: -90 }}
 					initial={{ bottom: -30 }}
 					style={{
 						fontFamily: "var(--chakra-fonts-heading)",

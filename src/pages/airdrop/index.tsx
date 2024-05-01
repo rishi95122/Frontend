@@ -1,17 +1,32 @@
 import { Footer } from "../../components/Layout/Footer"
-import { SwapPanel } from "./components/SwapPanel"
 import WhitelistComponent from "./components/Whitelist"
-import { Button, Flex, Grid, Heading, useBreakpoint } from "@chakra-ui/react"
+import { Button, Flex, Grid, Heading } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { motion } from "framer-motion"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const Airdrop = () => {
 	const [isEligible, setIsEligible] = useState<boolean | null>(null) // Initialize with null to indicate no check has been made yet
 	const whitelist = WhitelistComponent()
 	const [buttonClicked, setButtonClicked] = useState(false) // Track if the button has been clicked
-	const breakpoint = useBreakpoint({ ssr: false })
 	const { address, isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const [stake, setStake] = useState(null)
+
+	const handleWalletConnect = () => {
+		// Your wallet connection logic here...
+
+		// Reset isEligible to null and stake to null upon wallet connection
+		setIsEligible(null)
+		setStake(null)
+	}
+
+	// UseEffect to listen for changes in wallet connection status
+	useEffect(() => {
+		if (isWalletConnected) {
+			handleWalletConnect()
+		}
+	}, [isWalletConnected])
 
 	// Function to verify address against the whitelist
 	const handleCheckEligibility = async () => {
@@ -36,6 +51,8 @@ const Airdrop = () => {
 			return null // Render nothing if the button hasn't been clicked
 		} else if (!isWalletConnected) {
 			return <p>Please connect your wallet</p>
+		} else if (isEligible === null) {
+			return null // No eligibility status yet, wait for it to be determined
 		} else if (isEligible) {
 			return <p>Wallet is eligible for airdrop</p>
 		} else {
@@ -57,24 +74,10 @@ const Airdrop = () => {
 			mt={{ base: -3, md: -4 }}
 		>
 			<Heading>Airdrop</Heading>
-			{breakpoint === "base" || breakpoint === "sm" ? (
-				<Grid gap={4} h="full" minH="53.8vh" templateColumns="1fr" templateRows="1fr 1fr" w="full">
-					<SwapPanel />
-				</Grid>
-			) : (
-				<Grid
-					gap={{ base: 3, md: 6 }}
-					h="full"
-					templateColumns={{ base: "1fr", md: "1fr" }}
-					w="full"
-				>
-					<SwapPanel />
-				</Grid>
-			)}
 			<Button onClick={handleCheckEligibility}>Check Eligibility</Button>
-			{renderEligibilityMessage()} {/* Render the eligibility message */}
+			{renderEligibilityMessage()}
 			<Grid
-				placeItems="center" // Center items horizontally and vertically
+				placeItems="center"
 				gridColumnStart="1"
 				gridColumnEnd="3"
 				gridRowStart="4"
