@@ -100,7 +100,15 @@ export const MyAssetsPanel = () => {
 				</motion.p>
 			)}
 			<motion.p
-				animate={isHovering ? { bottom: 20 } : { bottom: -60 }}
+				animate={{
+					top: isMobile
+						? isHovering
+							? "100px" // Mobile measure when hovering
+							: "100px" // Mobile measure when not hovering
+						: isHovering
+						? "140px" // Desktop measure when hovering
+						: "200px" // Desktop measure when not hovering
+				}}
 				initial={{ bottom: -30 }}
 				style={{
 					fontFamily: "var(--chakra-fonts-heading)",

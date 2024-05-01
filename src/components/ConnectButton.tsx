@@ -76,6 +76,9 @@ const ConnectButton: FC<ConnectButtonProps> = () => {
 	const { onCopy, setValue } = useClipboard("")
 
 	// TODO: Add Electron denom once minted
+	const [ParticleBalance] = useTokenBalance(
+		"factory/neutron14n0asvvxcks0x3t88chhhwzeesckekt5tvsc26/PARTICLE"
+	)
 	const [EleBalance] = useTokenBalance("factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/ELE")
 	const [ntrnBalance] = useTokenBalance("untrn")
 
@@ -97,11 +100,22 @@ const ConnectButton: FC<ConnectButtonProps> = () => {
 							fontFamily="heading"
 							fontSize="md"
 							fontWeight="900"
+							mb={-2}
 							textAlign="center"
 							w="full"
 						>
 							{truncateAddress(address!, 8, 8)}
 						</Text>
+						<Divider maxW="95%" />
+						<HStack justify="center" w="full">
+							<Image src="/assets/tokens/particle.png" w="1rem" ml="0.8rem" />
+							<Text fontFamily="body" fontSize="md" fontWeight="900" textAlign="start" w="full">
+								{shortenNumber(convertMicroDenomToDenom(ParticleBalance, 6), 2)}
+							</Text>
+							<Text fontFamily="body" fontSize="sm" fontWeight="900" textAlign="start" w="full">
+								Rewards
+							</Text>
+						</HStack>
 						<Divider maxW="95%" />
 						<HStack
 							align="end"
