@@ -129,7 +129,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 
 				clientId: import.meta.env.VITE_WEB3AUTHID,
 
-				web3AuthNetwork: import.meta.env.VITE_NEUTRONNETWORK === "MAINNET" ? "cyan" : "testnet"
+				web3AuthNetwork: import.meta.env.VITE_NEUTRONNETWORK === "neutron" ? "cyan" : "testnet"
 			},
 			loginMethods: [
 				{
@@ -205,11 +205,8 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 					neutron: {
 						rpc: ["https://neutron-rpc.publicnode.com:443"]
 					},
-					neutrontestnet: {
-						rpc: [
-							"https://neutron-rpc.publicnode.com:443",
-							"https://neutron-rpc.publicnode.com:443"
-						]
+					neutronmainnet: {
+						rpc: ["https://neutron-rpc.publicnode.com:443"]
 					},
 					osmosis: {
 						rpc: ["https://rpc.osl.zone"]
@@ -362,11 +359,11 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 						description: "Bridging the gap between CEX and DeFi",
 						icons: ["/assets/electron.png"],
 						name:
-							import.meta.env.VITE_NEUTRONNETWORK === "MAINNET"
+							import.meta.env.VITE_NEUTRONNETWORK === "neutron"
 								? "Neutron Network"
 								: "Neutron Network Testnet",
 						url:
-							import.meta.env.VITE_NEUTRONNETWORK === "MAINNET"
+							import.meta.env.VITE_NEUTRONNETWORK === "neutron"
 								? "https://app.electronprotocol.io"
 								: "https://testnet.electronprotocol.io"
 					},

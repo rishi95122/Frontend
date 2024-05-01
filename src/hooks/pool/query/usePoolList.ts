@@ -5,7 +5,7 @@ import { useMemo } from "react"
 import { type TPool } from "utils/tokens/pools"
 
 export const poolListUrl = `https://raw.githubusercontent.com/Electron-Protocol/Assetlist/main/${
-	import.meta.env.VITE_NEUTRONNETWORK === "MAINNET" ? "mainnet/" : "testnet/"
+	import.meta.env.VITE_NEUTRONNETWORK === "neutron" ? "mainnet/" : "testnet/"
 }poolList.json`
 
 export const usePoolList = () => {
@@ -18,7 +18,7 @@ export const usePoolList = () => {
 		["@fuzio/poolsList"],
 		async () => {
 			const response = await fetch(
-				import.meta.env.VITE_NEUTRONNETWORK === "MAINNET"
+				import.meta.env.VITE_NEUTRONNETWORK === "neutron"
 					? "https://api.electronprotocol.io/poolList"
 					: "https://apit.electronprotocol.io/poolList"
 			)
