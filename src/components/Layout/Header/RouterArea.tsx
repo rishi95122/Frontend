@@ -16,12 +16,14 @@ import {
 	useBreakpoint,
 	useDisclosure
 } from "@chakra-ui/react"
+import { ParachuteIcon } from "@components/Assets/AirdropIcon"
 import { AssetsIcon } from "@components/Assets/AssetsIcon"
 import { GovernanceIcon } from "@components/Assets/GovernanceIcon"
 import { MyaccountIcon } from "@components/Assets/MyaccountIcon"
 import { SwapIcon } from "@components/Assets/SwapIcon"
 import { TradeIcon } from "@components/Assets/TradeIcon"
 import { useChain } from "@cosmos-kit/react"
+import { keyframes } from "@emotion/react"
 // import { CGWhite } from "components/Assets/CGWhite"
 import { LiquidityIcon } from "components/Assets/earn/LiquidityIcon"
 import { FarmIcon } from "components/Assets/FarmIcon"
@@ -39,6 +41,18 @@ import { useRecoilState } from "recoil"
 import { activeIndexState, activeRouteState } from "state/UIState"
 
 export const RouterArea = () => {
+	const gradientAnimation = keyframes`
+	0% {
+	  background-position: 0% 50%;
+	}
+	50% {
+	  background-position: 100% 50%;
+	}
+	100% {
+	  background-position: 0% 50%;
+	}
+  `
+
 	const location = useLocation()
 	const [, setActiveRoute] = useRecoilState(activeRouteState)
 	const [activeIndex, setActiveIndex] = useRecoilState(activeIndexState)
@@ -87,13 +101,6 @@ export const RouterArea = () => {
 				url: "/governance"
 			},
 			{
-				icon: <Icon as={AssetsIcon} h="full" w="full" zIndex={1} />,
-				isDisabled: false,
-				label: <div style={{ marginLeft: "6px" }}>Airdrop</div>,
-				navId: 1,
-				url: "/airdrop"
-			},
-			{
 				icon: <Icon as={MyaccountIcon} h="full" w="1rem" zIndex={1} />,
 				isDisabled: !isWalletConnected,
 				label: <div style={{ marginLeft: "6px" }}>My Account</div>,
@@ -113,9 +120,33 @@ export const RouterArea = () => {
 					// }
 				},
 				url: "/portfolio"
+			},
+			{
+				// Divider element
+				isDivider: true
+			},
+			{
+				icon: <Icon as={ParachuteIcon} h="full" w="full" zIndex={1} />,
+				isDisabled: false,
+				label: (
+					<Text
+						css={{
+							animation: `${gradientAnimation} 2s ease infinite`,
+							background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+							backgroundSize: "400% 400%",
+							marginLeft: "6px",
+							WebkitBackgroundClip: "text",
+							WebkitTextFillColor: "transparent"
+						}}
+					>
+						Airdrop
+					</Text>
+				),
+				navId: 5,
+				url: "/airdrop"
 			}
 		]
-	}, [isWalletConnected])
+	}, [gradientAnimation, isWalletConnected])
 
 	const initialIndex = useCallback(() => {
 		let initialIndexId = 0
@@ -139,6 +170,10 @@ export const RouterArea = () => {
 			case "portfolio":
 				initialIndexId = 4
 				setActiveRoute(data[4].subLinks)
+				break
+			case "airdrop":
+				initialIndexId = 5
+				setActiveRoute(data[5].subLinks)
 				break
 			default:
 				initialIndexId = -1
@@ -361,7 +396,7 @@ export const RouterArea = () => {
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
-						mb={isWalletConnected ? 9 : 0}
+						mb={isWalletConnected ? 10 : 0}
 					>
 						<Icon as={FaXTwitter} h="1.3rem" w="1.3rem" />
 					</Flex>
@@ -375,7 +410,7 @@ export const RouterArea = () => {
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
-						mb={isWalletConnected ? 9 : 0}
+						mb={isWalletConnected ? 10 : 0}
 					>
 						<Icon as={FaTelegram} h="1.3rem" w="1.3rem" />
 					</Flex>
@@ -389,7 +424,7 @@ export const RouterArea = () => {
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
-						mb={isWalletConnected ? 9 : 0}
+						mb={isWalletConnected ? 10 : 0}
 					>
 						<Icon as={FaMedium} h="1.3rem" w="1.3rem" />
 					</Flex>
@@ -403,7 +438,7 @@ export const RouterArea = () => {
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
-						mb={isWalletConnected ? 9 : 0}
+						mb={isWalletConnected ? 10 : 0}
 					>
 						<Icon as={FaGithub} h="1.3rem" w="1.3rem" />
 					</Flex>
