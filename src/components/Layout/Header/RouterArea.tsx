@@ -354,6 +354,7 @@ export const RouterArea = () => {
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
+						mb={isWalletConnected ? 9 : 0}
 					>
 						<Icon as={FaXTwitter} h="1.3rem" w="1.3rem" />
 					</Flex>
@@ -367,6 +368,7 @@ export const RouterArea = () => {
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
+						mb={isWalletConnected ? 9 : 0}
 					>
 						<Icon as={FaTelegram} h="1.3rem" w="1.3rem" />
 					</Flex>
@@ -380,6 +382,7 @@ export const RouterArea = () => {
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
+						mb={isWalletConnected ? 9 : 0}
 					>
 						<Icon as={FaMedium} h="1.3rem" w="1.3rem" />
 					</Flex>
@@ -393,6 +396,7 @@ export const RouterArea = () => {
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
+						mb={isWalletConnected ? 9 : 0}
 					>
 						<Icon as={FaGithub} h="1.3rem" w="1.3rem" />
 					</Flex>
