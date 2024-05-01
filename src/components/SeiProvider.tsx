@@ -205,8 +205,8 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 					neutron: {
 						rpc: ["https://neutron-rpc.publicnode.com:443"]
 					},
-					neutronmainnet: {
-						rpc: ["https://neutron-rpc.publicnode.com:443"]
+					neutrontestnet: {
+						rpc: ["https://rpc-falcron.pion-1.ntrn.tech"]
 					},
 					osmosis: {
 						rpc: ["https://rpc.osl.zone"]
