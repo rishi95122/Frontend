@@ -87,6 +87,13 @@ export const RouterArea = () => {
 				url: "/governance"
 			},
 			{
+				icon: <Icon as={AssetsIcon} h="full" w="full" zIndex={1} />,
+				isDisabled: false,
+				label: <div style={{ marginLeft: "6px" }}>Airdrop</div>,
+				navId: 1,
+				url: "/airdrop"
+			},
+			{
 				icon: <Icon as={MyaccountIcon} h="full" w="1rem" zIndex={1} />,
 				isDisabled: !isWalletConnected,
 				label: <div style={{ marginLeft: "6px" }}>My Account</div>,
