@@ -1,4 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
+import Airdrop from "pages/airdrop"
 import Earn from "pages/earn"
 import Games from "pages/games"
 import Prediction from "pages/games/prediction"
@@ -47,6 +48,10 @@ export const routes: PathRouteProps[] = [
 	{
 		element: <Trade />,
 		path: "/trade"
+	},
+	{
+		element: <Airdrop />,
+		path: "/airdrop"
 	},
 	{
 		element: <Swap />,
