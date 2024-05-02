@@ -23,7 +23,7 @@ const Home = () => {
 			p={{ base: 5, lg: 24, md: 16 }}
 			w="full"
 		>
-			<Heading>Welcome to ELECTRON</Heading>
+			<Heading>Welcome</Heading>
 			{breakpoint === "base" || breakpoint === "sm" ? (
 				<Grid
 					gap={{ base: 4, md: 2 }}

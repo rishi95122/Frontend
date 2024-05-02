@@ -17,7 +17,7 @@ export const BlurImage = ({
 
 	useEffect(() => {
 		if (isVideo && videoRef.current) {
-			videoRef.current.playbackRate = 0.5 // Adjust the playback rate here
+			videoRef.current.playbackRate = 0.4 // Adjust the playback rate here
 		}
 	}, [isVideo])
 
@@ -33,16 +33,17 @@ export const BlurImage = ({
 				src={src}
 				style={{
 					filter: isHovering ? "blur(8px)" : "blur(0px)",
-					transition: "filter 0.5s ease-in-out",
-					width: "100%",
 					height: "100%",
 					objectFit: "fill",
-					position: "absolute"
+					position: "absolute",
+					transition: "filter 0.5s ease-in-out",
+					width: "100%"
 				}}
 			/>
-		);
+		)
 	} else {
-		const imageStatus = useImage({ src });
+		// eslint-disable-next-line react-hooks/rules-of-hooks
+		const imageStatus = useImage({ src })
 		return imageStatus === "loaded" ? (
 			<motion.img
 				animate={isHovering ? { scale: 1.1 } : { scale: 1 }}

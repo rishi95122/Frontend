@@ -29,10 +29,11 @@ const Airdrop = () => {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [stake, setStake] = useState(null)
 
-	const [ParticleBalance] = useTokenBalance(
-		"factory/neutron14n0asvvxcks0x3t88chhhwzeesckekt5tvsc26/PARTICLE"
+	const [EleBalance] = useTokenBalance(
+		import.meta.env.VITE_NEUTRONNETWORK === "neutron"
+			? "untrn"
+			: "factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/ELE"
 	)
-
 	const handleWalletConnect = () => {
 		// Your wallet connection logic here...
 
@@ -119,13 +120,20 @@ const Airdrop = () => {
 				>
 					<HStack w="full">
 						<Image
-							src="/assets/tokens/particle.png"
+							src="/assets/tokens/electron.png"
 							w="1.5rem"
 							ml={{ base: "2.1rem", md: "51rem" }}
 						/>
 
-						<Text fontFamily="body" fontSize="2xl" fontWeight="900" textAlign="right" w="full">
-							{shortenNumber(convertMicroDenomToDenom(ParticleBalance, 6), 2)}
+						<Text
+							fontFamily="body"
+							fontSize="2xl"
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
 						</Text>
 						<Text
 							fontFamily="body"
@@ -146,7 +154,7 @@ const Airdrop = () => {
 									WebkitTextFillColor: "transparent"
 								}}
 							>
-								Particle
+								ELE
 							</span>
 						</Text>
 					</HStack>
