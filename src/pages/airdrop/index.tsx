@@ -1,9 +1,25 @@
 import { Footer } from "../../components/Layout/Footer"
 import WhitelistComponent from "./components/Whitelist"
-import { Button, Flex, Grid, Heading } from "@chakra-ui/react"
+import { Button, Flex, Grid, Heading, HStack, Image, Text } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
+import { keyframes } from "@emotion/react"
+import { useTokenBalance } from "@hooks/tokens/query/useTokenBalance"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { convertMicroDenomToDenom } from "utils/tokens/helpers"
+import shortenNumber from "utils/ui/shortenNumber"
+
+const gradientAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`
 
 const Airdrop = () => {
 	const [isEligible, setIsEligible] = useState<boolean | null>(null) // Initialize with null to indicate no check has been made yet
@@ -12,6 +28,10 @@ const Airdrop = () => {
 	const { address, isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [stake, setStake] = useState(null)
+
+	const [ParticleBalance] = useTokenBalance(
+		"factory/neutron14n0asvvxcks0x3t88chhhwzeesckekt5tvsc26/PARTICLE"
+	)
 
 	const handleWalletConnect = () => {
 		// Your wallet connection logic here...
@@ -74,18 +94,90 @@ const Airdrop = () => {
 			mt={{ base: -3, md: -4 }}
 		>
 			<Heading>Airdrop</Heading>
-			<Button onClick={handleCheckEligibility}>Check Eligibility</Button>
-			{renderEligibilityMessage()}
-			<Grid
-				placeItems="center"
-				gridColumnStart="1"
-				gridColumnEnd="3"
-				gridRowStart="4"
-				gridRowEnd="5"
-				mt="8px"
+
+			<Flex
+				bgGradient="linear(to-b, #0a2b33, #1a001e)"
+				flexDir="column"
+				px={2}
+				py={3}
+				rounded="1.25em"
+				shadow="md"
+				w="full"
+				maxW="5xl"
+				justifyContent="space-between" // Added this line
+				mt="1rem"
 			>
-				<Footer />
-			</Grid>
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/particle.png"
+							w="1.5rem"
+							ml={{ base: "2.1rem", md: "51rem" }}
+						/>
+
+						<Text fontFamily="body" fontSize="2xl" fontWeight="900" textAlign="right" w="full">
+							{shortenNumber(convertMicroDenomToDenom(ParticleBalance, 6), 2)}
+						</Text>
+						<Text
+							fontFamily="body"
+							fontSize="sm"
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "400% 400%",
+									fontSize: "larger",
+									marginRight: "4px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Particle
+							</span>
+						</Text>
+					</HStack>
+				</Flex>
+				<div style={{ display: "flex", justifyContent: "center" }}>
+					<Button
+						onClick={handleCheckEligibility}
+						style={{
+							background: "linear-gradient(to bottom, #61a9bb, #ec80fe)",
+							borderRadius: "20px",
+							marginTop: "1rem",
+							width: "80%"
+						}}
+					>
+						Check Eligibility
+					</Button>
+				</div>
+				<div style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}>
+					{renderEligibilityMessage()}
+				</div>
+				<Grid
+					placeItems="center"
+					gridColumnStart="1"
+					gridColumnEnd="3"
+					gridRowStart="4"
+					gridRowEnd="5"
+					mt="8px"
+				>
+					<Footer />
+				</Grid>
+			</Flex>
 		</Flex>
 	)
 }

@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { type NavigationButtonProps } from "./NavigationButton"
 import NavigationButton from "./NavigationButton"
+import { InfoIcon } from "@chakra-ui/icons"
 import {
 	Accordion,
 	Box,
@@ -274,14 +276,32 @@ export const RouterArea = () => {
 											_hover={{ bg: "blackAlpha.100" }}
 											as="a"
 											bg="transparent"
-											href="https://github.com/Electron-Protocol"
+											href="https://twitter.com/Hopers_io"
 											target="_blank"
 										>
 											<HStack justify="space-between" w="full">
 												<HStack>
-													<Icon as={FaGithub} h="1.5rem" w="1.5rem" zIndex={1} />
-													<Text fontSize="20" w="full">
-														Github
+													<Icon as={FaXTwitter} h="1rem" w="1rem" zIndex={1} />
+													<Text fontSize="14" w="full">
+														X
+													</Text>
+												</HStack>
+												<HiExternalLink />
+											</HStack>
+										</Flex>
+										<Flex
+											_dark={{ _hover: { bg: "whiteAlpha.200" } }}
+											_hover={{ bg: "blackAlpha.100" }}
+											as="a"
+											bg="transparent"
+											href="https://electron.network/social/telegram"
+											target="_blank"
+										>
+											<HStack justify="space-between" w="full">
+												<HStack>
+													<Icon as={FaTelegram} h="1rem" w="1rem" zIndex={1} />
+													<Text fontSize="14" w="full">
+														Telegram
 													</Text>
 												</HStack>
 												<HiExternalLink />
@@ -305,37 +325,20 @@ export const RouterArea = () => {
                     <HiExternalLink />
                 </HStack>
             </Flex> */}
+
 										<Flex
 											_dark={{ _hover: { bg: "whiteAlpha.200" } }}
 											_hover={{ bg: "blackAlpha.100" }}
 											as="a"
 											bg="transparent"
-											href="https://electron.network/social/telegram"
+											href="https://github.com/Electron-Protocol"
 											target="_blank"
 										>
 											<HStack justify="space-between" w="full">
 												<HStack>
-													<Icon as={FaTelegram} h="1.5rem" w="1.5rem" zIndex={1} />
-													<Text fontSize="20" w="full">
-														Telegram
-													</Text>
-												</HStack>
-												<HiExternalLink />
-											</HStack>
-										</Flex>
-										<Flex
-											_dark={{ _hover: { bg: "whiteAlpha.200" } }}
-											_hover={{ bg: "blackAlpha.100" }}
-											as="a"
-											bg="transparent"
-											href="https://twitter.com/Hopers_io"
-											target="_blank"
-										>
-											<HStack justify="space-between" w="full">
-												<HStack>
-													<Icon as={FaXTwitter} h="1.5rem" w="1.5rem" zIndex={1} />
-													<Text fontSize="20" w="full">
-														X
+													<Icon as={FaGithub} h="1rem" w="1rem" zIndex={1} />
+													<Text fontSize="14" w="full">
+														Github
 													</Text>
 												</HStack>
 												<HiExternalLink />
@@ -351,8 +354,8 @@ export const RouterArea = () => {
 										>
 											<HStack justify="space-between" w="full">
 												<HStack>
-													<Icon as={FaMedium} h="1.5rem" w="1.5rem" zIndex={1} />
-													<Text fontSize="20" w="full">
+													<Icon as={FaMedium} h="1rem" w="1rem" zIndex={1} />
+													<Text fontSize="14" w="full">
 														Medium
 													</Text>
 												</HStack>
@@ -449,10 +452,15 @@ export const RouterArea = () => {
 						alignItems="center" // Align items vertically
 						justifyContent="center" // Align items horizontally
 						mx={2} // Add margin between icons
-						mb={isWalletConnected ? 9 : 0}
+						mb={isWalletConnected ? 10 : 0}
 					>
 						<Icon as={FaGithub} h="1.3rem" w="1.3rem" />
 					</Flex>
+					{isWalletConnected && (
+						<a data-tooltip-id="my-tooltip" style={{ position: "absolute" }}>
+							<Icon as={InfoIcon} boxSize={2} mb={-14} py={-1} ml={157} color="gray.300" />
+						</a>
+					)}
 				</Flex>
 			</Box>
 		</>
