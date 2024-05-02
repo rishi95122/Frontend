@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 // eslint-disable-next-line import/no-extraneous-dependencies, import/no-unassigned-import
 import "react-tooltip/dist/react-tooltip.css"
-import { InfoIcon } from "@chakra-ui/icons"
 import {
 	Button,
 	type ButtonProps,
@@ -142,9 +141,6 @@ const ConnectButton: FC<ConnectButtonProps> = () => {
 								</span>
 							</Text>
 						</HStack>
-						<a data-tooltip-id="my-tooltip" style={{ position: "absolute" }}>
-							<Icon as={InfoIcon} boxSize={2} mb={-1} py={-1} ml={170} color="gray.300" />
-						</a>
 						<Divider maxW="95%" />
 						<Tooltip
 							id="my-tooltip"
@@ -152,8 +148,8 @@ const ConnectButton: FC<ConnectButtonProps> = () => {
 								background: "linear-gradient(to right, #61a9bb, #ec80fe)",
 								borderRadius: "10px",
 								fontSize: "0.5rem",
-								marginLeft: "10.6em",
-								marginTop: "0.8rem",
+								marginLeft: "9.8em",
+								marginTop: "2.25rem",
 								textAlign: "center"
 							}}
 						>

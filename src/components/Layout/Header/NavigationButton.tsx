@@ -96,7 +96,7 @@ const NavigationButton = ({
 										}
 										filter={isActive ? "drop-shadow(0 0 0.2rem var(--chakra-colors-cyan-500))" : ""}
 										fontFamily="heading"
-										fontSize={{ base: "1em", md: "1.1em" }}
+										fontSize={{ base: "1.3em", md: "1.1em" }}
 										fontWeight="400"
 										letterSpacing={0.8}
 										textAlign="start"
