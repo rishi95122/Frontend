@@ -4,7 +4,7 @@ import {
 	type MsgExecuteContractEncodeObject,
 	type SigningCosmWasmClient
 } from "@cosmjs/cosmwasm-stargate"
-import { contracts } from "@fuzio/contracts"
+import { contracts } from "@electronprotocol/contracts"
 import { type BigNumber } from "bignumber.js"
 import { convertDenomToMicroDenom } from "utils/tokens/helpers"
 import { type TPool } from "utils/tokens/pools"
@@ -18,9 +18,9 @@ export const removeLiquidity = async (
 	removeAmount: BigNumber
 ) => {
 	const client = await getSigningCosmWasmClient()
-	const { FuzioPoolMessageComposer } = contracts.FuzioPool
+	const { FuzioPoolMsgComposer } = contracts.FuzioPool
 
-	const swapMessageComposer = new FuzioPoolMessageComposer(address, contractAddress)
+	const swapMessageComposer = new FuzioPoolMsgComposer(address, contractAddress)
 
 	const transactions: MsgExecuteContractEncodeObject[] = []
 

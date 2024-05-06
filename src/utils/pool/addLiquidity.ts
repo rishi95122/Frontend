@@ -5,7 +5,7 @@ import {
 	type SigningCosmWasmClient
 } from "@cosmjs/cosmwasm-stargate"
 import { type Coin } from "@cosmjs/stargate"
-import { contracts } from "@fuzio/contracts"
+import { contracts } from "@electronprotocol/contracts"
 import { getRecoil } from "recoil-nexus"
 import { addLiquidityState } from "state/poolState"
 
@@ -18,9 +18,9 @@ export const addLiquidity = async (
 
 	const client = await getSigningCosmWasmClient()
 
-	const { FuzioPoolMessageComposer } = contracts.FuzioPool
+	const { FuzioPoolMsgComposer } = contracts.FuzioPool
 
-	const swapMessageComposer = new FuzioPoolMessageComposer(address, contractAddress)
+	const swapMessageComposer = new FuzioPoolMsgComposer(address, contractAddress)
 
 	let funds: Coin[] = []
 	const transactions: MsgExecuteContractEncodeObject[] = []

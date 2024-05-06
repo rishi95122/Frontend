@@ -12,7 +12,7 @@ import {
 	Text,
 	VStack
 } from "@chakra-ui/react"
-import { type Denom } from "@fuzio/contracts/types/FuzioPool.types"
+import { type Denom } from "@electronprotocol/contracts/types/FuzioPool.types"
 import { usePoolDollarValues } from "@hooks/pool/query/usePoolDollarValues"
 import { usePoolRewards } from "@hooks/pool/query/usePoolRewards"
 import { useRedeemHistory } from "@hooks/pool/query/useRedeemHistory"

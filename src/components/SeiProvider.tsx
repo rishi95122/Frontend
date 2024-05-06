@@ -1,20 +1,13 @@
 /* eslint-disable canonical/id-match */
-import { TxModal } from "./TxModal"
 import { getModal } from "./WalletModal/getModal"
 import { type Chain } from "@chain-registry/types"
-import { Decimal } from "@cosmjs/math"
 import { Registry } from "@cosmjs/proto-signing"
 import { type AminoConverters } from "@cosmjs/stargate"
 import { AminoTypes, GasPrice } from "@cosmjs/stargate"
-import { wallets as coin98wallets } from "@cosmos-kit/coin98"
-import { wallets as compassWallets } from "@cosmos-kit/compass"
+import { type ChainName } from "@cosmos-kit/core"
 import { wallets as keplrWallets } from "@cosmos-kit/keplr"
-import { wallets as leapWallets } from "@cosmos-kit/leap"
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ChainProvider } from "@cosmos-kit/react"
-// import { wallets as finWallets } from "@cosmos-kit/fin"
-import { wallets as shellWallets } from "@cosmos-kit/shell"
-import { wallets as defiWallets } from "@cosmos-kit/xdefi"
-import { makeWeb3AuthWallets, type SignData } from "@fuzio/web3auth"
 import {
 	cosmwasmAminoConverters,
 	cosmwasmProtoRegistry,
@@ -24,27 +17,7 @@ import {
 	seiprotocolProtoRegistry
 } from "@sei-js/proto"
 import { assets, chains } from "chain-registry"
-import { useMemo, useState } from "react"
-
-// const defaultGasForChain = (chain: Chain) => {
-//   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-//   let gasPrice: any = `0.04uatom`
-//   if (chain?.fees && chain?.fees.fee_tokens) {
-//     const fee = chain?.fees.fee_tokens[0]
-//     const feeDenom = `${fee.denom}`.search("ibc/") === -1 ? fee.denom : "token"
-//     const feeUnit = `${
-//       // fee.average_gas_price ||
-//       // fee.low_gas_price ||
-//       // fee.fixed_min_gas_price ||
-//       // 0
-//       0.1
-//     }${feeDenom}`
-
-//     gasPrice = GasPrice.fromString(feeUnit)
-//   }
-
-//   return { gasPrice }
-// }
+import { useMemo } from "react"
 
 export const NeutronProvider = ({ children }: { children?: React.ReactNode }) => {
 	// @ts-expect-error types
@@ -111,78 +84,6 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 		}
 	}, [])
 
-	const [web3AuthPrompt, setWeb3AuthPrompt] = useState<
-		| {
-				resolve: (approved: boolean) => void
-				signData: SignData
-		  }
-		| undefined
-	>()
-
-	const web3AuthWallets = useMemo(() => {
-		return makeWeb3AuthWallets({
-			client: {
-				chainConfig: {
-					// @ts-expect-error types
-					chainNamespace: "other"
-				},
-
-				clientId: import.meta.env.VITE_WEB3AUTHID,
-
-				web3AuthNetwork: import.meta.env.VITE_NEUTRONNETWORK === "neutron" ? "cyan" : "testnet"
-			},
-			loginMethods: [
-				{
-					logo: "/assets/google-logo.svg",
-					name: "Google",
-					provider: "google"
-				},
-				{
-					logo: "https://upload.wikimedia.org/wikipedia/commons/4/46/Apple_Store_logo.svg",
-					name: "Apple",
-					provider: "apple"
-				},
-				{
-					logo: "https://upload.wikimedia.org/wikipedia/en/0/04/Facebook_f_logo_%282021%29.svg",
-					name: "Facebook",
-					provider: "facebook"
-				},
-				{
-					logo: "/assets/discord-logo.svg",
-					name: "Discord",
-					provider: "discord"
-				},
-				{
-					logo: "/assets/x-logo.svg",
-					name: "X",
-					provider: "twitter"
-				},
-				{
-					logo: "/assets/electron.png",
-					name: "Email",
-					provider: "email_passwordless"
-				},
-				{
-					logo: "/assets/electron.png",
-					name: "Phone",
-					provider: "sms_passwordless"
-				}
-			],
-			// set state to show data to sign and approve/reject buttons in modal
-			promptSign: async (_, signData) =>
-				await new Promise((resolve) =>
-					// eslint-disable-next-line no-promise-executor-return
-					setWeb3AuthPrompt({
-						resolve: (approved) => {
-							setWeb3AuthPrompt(undefined)
-							resolve(approved)
-						},
-						signData
-					})
-				)
-		})
-	}, [])
-
 	return (
 		<ChainProvider
 			assetLists={assets}
@@ -190,38 +91,22 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 			defaultNameService="icns"
 			endpointOptions={{
 				endpoints: {
-					comdex: {
-						rpc: ["https://rpc.comdex.one"]
-					},
-					cosmoshub: {
-						rpc: ["https://rpc-cosmoshub-ia.cosmosia.notional.ventures"]
-					},
-					evmos: {
-						rpc: ["https://rpc-evmos-ia.cosmosia.notional.ventures"]
-					},
-					juno: {
-						rpc: ["https://rpc.juno.basementnodes.ca"]
-					},
 					neutron: {
 						rpc: ["https://neutron-rpc.publicnode.com:443"]
 					},
 					neutrontestnet: {
 						rpc: ["https://rpc-falcron.pion-1.ntrn.tech"]
-					},
-					osmosis: {
-						rpc: ["https://rpc.osl.zone"]
-					},
-					planq: {
-						rpc: ["https://rpc.planq.network"]
 					}
 				},
 				isLazy: true
 			}}
 			key="chainProvider"
 			signerOptions={{
-				signingCosmwasm: (chain: Chain) => {
+				signingCosmwasm: (chain: Chain | ChainName) => {
 					// const { gasPrice } = defaultGasForChain(chain)
 					// registry
+					const chainName = typeof chain === "string" ? chain : chain.chain_name
+
 					const neutronRegistry = new Registry([
 						...seiprotocolProtoRegistry,
 						...ibcProtoRegistry,
@@ -236,7 +121,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 
 					const aminoTypes = new AminoTypes(aminoConverters)
 
-					switch (chain.chain_name) {
+					switch (chainName) {
 						case "neutrontestnet":
 							return {
 								aminoTypes,
@@ -260,7 +145,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 							}
 					}
 				},
-				signingStargate: (chain: Chain) => {
+				signingStargate: (chain: Chain | ChainName) => {
 					// const { gasPrice } = defaultGasForChain(chain)
 					// registry
 					const neutronRegistry = new Registry([...seiprotocolProtoRegistry, ...ibcProtoRegistry])
@@ -272,77 +157,15 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 
 					const aminoTypes = new AminoTypes(aminoConverters)
 
-					switch (chain.chain_name) {
-						case "seitestnet2":
+					const chainName = typeof chain === "string" ? chain : chain.chain_name
+
+					switch (chainName) {
+						case "neutron":
 							return {
 								aminoTypes,
 								broadcastPollIntervalMs: 200,
-								gasPrice: GasPrice.fromString("0.1usei"),
+								gasPrice: GasPrice.fromString("0.06untrn"),
 								registry: neutronRegistry
-							}
-
-						case "sei":
-							return {
-								aminoTypes,
-								broadcastPollIntervalMs: 200,
-								gasPrice: GasPrice.fromString("0.1usei"),
-								registry: neutronRegistry
-							}
-
-						case "juno":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: GasPrice.fromString("0.075ujuno")
-							}
-						case "cosmoshub":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: new GasPrice(Decimal.fromAtomics("25000", 6), "uatom")
-							}
-						case "osmosis":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: new GasPrice(Decimal.fromAtomics("25000", 6), "uosmo")
-							}
-						case "axelar":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: new GasPrice(Decimal.fromAtomics("25000", 6), "uaxl")
-							}
-						case "kujira":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: new GasPrice(Decimal.fromAtomics("25000", 6), "ukuji")
-							}
-						case "stargaze":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: new GasPrice(Decimal.fromAtomics("25000", 6), "ustars")
-							}
-						case "comdex":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: new GasPrice(Decimal.fromAtomics("25000", 6), "ucmdx")
-							}
-						case "chihuahua":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: new GasPrice(Decimal.fromAtomics("5000000", 6), "uhuahua")
-							}
-						case "mars":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: new GasPrice(Decimal.fromAtomics("25000", 6), "umars")
-							}
-						case "evmos":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: new GasPrice(Decimal.fromAtomics("40000000000", 2), "aevmos")
-							}
-						case "planq":
-							return {
-								broadcastPollIntervalMs: 1_000,
-								gasPrice: new GasPrice(Decimal.fromAtomics("40000000000", 2), "aplanq")
 							}
 
 						default:
@@ -373,27 +196,8 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 				}
 			}}
 			walletModal={getModal()}
-			wallets={[
-				...compassWallets,
-				...shellWallets,
-				// ...finWallets,
-				...keplrWallets,
-				...leapWallets,
-
-				...web3AuthWallets,
-				...coin98wallets,
-				...defiWallets
-			]}
+			wallets={[...keplrWallets]}
 		>
-			{web3AuthPrompt?.signData && (
-				<TxModal
-					isOpen
-					onClose={() => web3AuthPrompt?.resolve(false)}
-					rejectTx={() => web3AuthPrompt?.resolve(false)}
-					signData={web3AuthPrompt?.signData}
-					signTx={() => web3AuthPrompt?.resolve(true)}
-				/>
-			)}
 			{children}
 		</ChainProvider>
 	)

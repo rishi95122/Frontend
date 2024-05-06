@@ -1,5 +1,5 @@
 import { useChain } from "@cosmos-kit/react"
-import { contracts } from "@fuzio/contracts"
+import { contracts } from "@electronprotocol/contracts"
 import { useQuery } from "@tanstack/react-query"
 import { BigNumber } from "bignumber.js"
 import { type TPool } from "utils/tokens/pools"

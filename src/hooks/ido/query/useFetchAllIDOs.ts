@@ -1,5 +1,5 @@
 import { useChain } from "@cosmos-kit/react"
-import { cosmwasm } from "@fuzio/sei-rpc"
+import { cosmwasm } from "@sei-js/proto"
 import { useQuery } from "@tanstack/react-query"
 
 export const useFetchAllIDOs = () => {

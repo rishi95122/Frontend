@@ -1,6 +1,6 @@
 import { type SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate"
 import { coins } from "@cosmjs/stargate"
-import { contracts } from "@fuzio/contracts"
+import { contracts } from "@electronprotocol/contracts"
 import { getRecoil } from "recoil-nexus"
 import { slippageState, tokenSwapState } from "state/swapState"
 import { type TValidPair } from "utils/tokens/pools"
@@ -18,9 +18,9 @@ export const tokenSwap = async (
 
 	const client = await getSigningCosmWasmClient()
 
-	const { FuzioPoolMessageComposer } = contracts.FuzioPool
+	const { FuzioPoolMsgComposer } = contracts.FuzioPool
 
-	const swapMessageComposer = new FuzioPoolMessageComposer(
+	const swapMessageComposer = new FuzioPoolMsgComposer(
 		address,
 		validPool?.pool.swapAddress ?? ""
 	)

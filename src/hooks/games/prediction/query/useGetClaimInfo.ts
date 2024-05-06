@@ -1,6 +1,6 @@
 import { useChain } from "@cosmos-kit/react"
-import { contracts } from "@fuzio/contracts"
-import { type ClaimInfo } from "@fuzio/contracts/types/FuzioNativePrediction.types"
+import { contracts } from "@electronprotocol/contracts"
+import { type ClaimInfo } from "@electronprotocol/contracts/types/FuzioNativePrediction.types"
 import { useQuery } from "@tanstack/react-query"
 
 export const useGetClaimInfo = () => {

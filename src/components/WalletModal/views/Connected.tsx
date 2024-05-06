@@ -32,7 +32,7 @@ export const ConnectedView = ({ onClose, onReturn, wallet }: WalletViewProps) =>
 				/>
 			}
 			username={username}
-			walletIcon={logo}
+			walletIcon={typeof logo === "string" ? logo : undefined}
 		/>
 	)
 

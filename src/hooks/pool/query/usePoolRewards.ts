@@ -1,6 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useChain } from "@cosmos-kit/react"
-import { contracts } from "@fuzio/contracts"
-import { type Denom } from "@fuzio/contracts/types/FuzioStaking.types"
+import { contracts } from "@electronprotocol/contracts"
+import { type Denom } from "@electronprotocol/contracts/types/FuzioStaking.types"
 import { useQuery } from "@tanstack/react-query"
 import { type TPool } from "utils/tokens/pools"
 

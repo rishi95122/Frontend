@@ -146,7 +146,7 @@ export const initialBTCToken: Token = {
 export const initialEleToken: Token = {
 	chain: {
 		chainId: "neutron-1",
-		chainName: "neutront",
+		chainName: "neutron",
 		chainPrettyName: "Neutron",
 		gasPrice: {
 			amount: "200000",

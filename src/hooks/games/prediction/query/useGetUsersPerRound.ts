@@ -1,6 +1,6 @@
 import { useChain } from "@cosmos-kit/react"
-import { contracts } from "@fuzio/contracts"
-import { type BetInfo } from "@fuzio/contracts/types/FuzioNativePrediction.types"
+import { contracts } from "@electronprotocol/contracts"
+import { type BetInfo } from "@electronprotocol/contracts/types/FuzioNativePrediction.types"
 import { useQuery } from "@tanstack/react-query"
 
 export const useGetUsersPerRound = ({ roundId }: { roundId: string }) => {

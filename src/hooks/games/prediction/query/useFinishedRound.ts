@@ -1,6 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { useChain } from "@cosmos-kit/react"
-import { contracts } from "@fuzio/contracts"
-import { type FinishedRound } from "@fuzio/contracts/types/FuzioNativePrediction.types"
+import { contracts } from "@electronprotocol/contracts"
+import { type FinishedRound } from "@electronprotocol/contracts/types/FuzioNativePrediction.types"
 import { useQuery } from "@tanstack/react-query"
 
 export const useFinishedRound = ({ roundId }: { roundId: string }) => {
