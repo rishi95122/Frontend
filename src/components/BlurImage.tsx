@@ -17,7 +17,10 @@ export const BlurImage = ({
 
 	useEffect(() => {
 		if (isVideo && videoRef.current) {
-			videoRef.current.playbackRate = 0.4 // Adjust the playback rate here
+			// Check if it's a mobile device
+			const isMobileDevice = /mobi|android/iu.test(navigator.userAgent)
+			// Set the playback rate accordingly
+			videoRef.current.playbackRate = isMobileDevice ? 0.7 : 0.4
 		}
 	}, [isVideo])
 

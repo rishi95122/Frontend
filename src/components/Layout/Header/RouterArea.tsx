@@ -106,7 +106,7 @@ export const RouterArea = () => {
 				icon: <Icon as={MyaccountIcon} h="full" w="1rem" zIndex={1} />,
 				isDisabled: !isWalletConnected,
 				label: <div style={{ marginLeft: "6px" }}>My Account</div>,
-				navId: 5,
+				navId: 4,
 				subLinks: {
 					"My Assets": {
 						icon: <Icon as={PortfolioIcon} h="1.25rem" w="1.25rem" zIndex={1} />,
