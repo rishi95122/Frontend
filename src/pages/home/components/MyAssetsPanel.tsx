@@ -39,7 +39,7 @@ export const MyAssetsPanel = () => {
 			style={{ zIndex: 1 }} // Set the z-index of the box
 		>
 			<BlurImage
-				src={isMobile ? "/assets/home/mobile/11-4_my_asset.mp4" : "/assets/home/My_Asset.mp4"}
+				src={isMobile ? "/assets/home/mobile/11-4_MyAsset.mp4" : "/assets/home/My_Asset.mp4"}
 				blurHash="L7D8%:3d00:eG^tO:ijK00{p^*CD"
 				isHovering={false} // Always pass true to isHovering
 			/>
