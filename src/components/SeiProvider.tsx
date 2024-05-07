@@ -1,5 +1,5 @@
 /* eslint-disable canonical/id-match */
-import { TxModal } from "./TxModal"
+// import { TxModal } from "./TxModal"
 import { getModal } from "./WalletModal/getModal"
 import { type Chain } from "@chain-registry/types"
 import { Decimal } from "@cosmjs/math"
@@ -9,7 +9,7 @@ import { AminoTypes, GasPrice } from "@cosmjs/stargate"
 import { wallets as keplrWallets } from "@cosmos-kit/keplr"
 import { wallets as leapWallets } from "@cosmos-kit/leap"
 import { ChainProvider } from "@cosmos-kit/react"
-import { makeWeb3AuthWallets, type SignData } from "@fuzio/web3auth"
+// import { makeWeb3AuthWallets, type SignData } from "@fuzio/web3auth"
 import {
 	cosmwasmAminoConverters,
 	cosmwasmProtoRegistry,
@@ -19,7 +19,7 @@ import {
 	seiprotocolProtoRegistry
 } from "@sei-js/proto"
 import { assets, chains } from "chain-registry"
-import { useMemo, useState } from "react"
+import { useMemo } from "react"
 
 // const defaultGasForChain = (chain: Chain) => {
 //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -106,6 +106,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 		}
 	}, [])
 
+	/*
 	const [web3AuthPrompt, setWeb3AuthPrompt] = useState<
 		| {
 				resolve: (approved: boolean) => void
@@ -113,7 +114,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 		  }
 		| undefined
 	>()
-
+	
 	const web3AuthWallets = useMemo(() => {
 		return makeWeb3AuthWallets({
 			client: {
@@ -176,7 +177,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 					})
 				)
 		})
-	}, [])
+	}, [])  */
 
 	return (
 		<ChainProvider
@@ -368,8 +369,11 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 				}
 			}}
 			walletModal={getModal()}
-			wallets={[...keplrWallets, ...leapWallets, ...web3AuthWallets]}
+			wallets={[...keplrWallets, ...leapWallets]}
 		>
+			{/*
+			
+			{" "}
 			{web3AuthPrompt?.signData && (
 				<TxModal
 					isOpen
@@ -379,6 +383,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 					signTx={() => web3AuthPrompt?.resolve(true)}
 				/>
 			)}
+			*/}
 			{children}
 		</ChainProvider>
 	)

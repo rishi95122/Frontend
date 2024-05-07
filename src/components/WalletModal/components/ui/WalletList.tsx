@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable id-length */
 import { type DisplayWalletListType } from "../types"
 import { EmailSMSInput } from "./EmailSMSInput"
@@ -45,15 +46,17 @@ export const SimpleDisplayWalletList = ({ walletsData }: DisplayWalletListType) 
 
 	return (
 		<Box pb={4} pos="relative">
-			<EmailSMSInput emailLogin={emailLogin!} phoneLogin={phoneLogin!} />
+			{/* <EmailSMSInput emailLogin={emailLogin!} phoneLogin={phoneLogin!} /> */}
 			<HStack pt={2}>
 				<Divider />
+
 				<Text color="gray.100" fontSize="sm" fontWeight="900" minW="10rem" textAlign="center">
-					or continue with
+					Select your wallet
 				</Text>
+
 				<Divider />
 			</HStack>
-			<HStack sx={SimpleDisplayWalletListBaseStyle()}>
+			{/*	<HStack sx={SimpleDisplayWalletListBaseStyle()}>
 				{walletsData
 					.filter(
 						(wallet) =>
@@ -112,6 +115,7 @@ export const SimpleDisplayWalletList = ({ walletsData }: DisplayWalletListType) 
 				</Text>
 				<Divider />
 			</HStack>
+			*/}
 			<HStack sx={SimpleDisplayWalletListBaseStyle()}>
 				{walletsData
 					.filter((wallet) => !wallet.name.includes("web3auth"))
