@@ -6,14 +6,9 @@ import { Decimal } from "@cosmjs/math"
 import { Registry } from "@cosmjs/proto-signing"
 import { type AminoConverters } from "@cosmjs/stargate"
 import { AminoTypes, GasPrice } from "@cosmjs/stargate"
-import { wallets as coin98wallets } from "@cosmos-kit/coin98"
-import { wallets as compassWallets } from "@cosmos-kit/compass"
 import { wallets as keplrWallets } from "@cosmos-kit/keplr"
 import { wallets as leapWallets } from "@cosmos-kit/leap"
 import { ChainProvider } from "@cosmos-kit/react"
-// import { wallets as finWallets } from "@cosmos-kit/fin"
-import { wallets as shellWallets } from "@cosmos-kit/shell"
-import { wallets as defiWallets } from "@cosmos-kit/xdefi"
 import { makeWeb3AuthWallets, type SignData } from "@fuzio/web3auth"
 import {
 	cosmwasmAminoConverters,
@@ -373,17 +368,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 				}
 			}}
 			walletModal={getModal()}
-			wallets={[
-				...compassWallets,
-				...shellWallets,
-				// ...finWallets,
-				...keplrWallets,
-				...leapWallets,
-
-				...web3AuthWallets,
-				...coin98wallets,
-				...defiWallets
-			]}
+			wallets={[...keplrWallets, ...leapWallets, ...web3AuthWallets]}
 		>
 			{web3AuthPrompt?.signData && (
 				<TxModal
