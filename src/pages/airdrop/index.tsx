@@ -1,9 +1,10 @@
+/* eslint-disable eslint-comments/disable-enable-pair */
 import { Footer } from "../../components/Layout/Footer"
-import WhitelistComponent from "./components/Whitelist"
-import { Button, Flex, Grid, Heading, HStack, Image, Text } from "@chakra-ui/react"
+import { Flex, Grid, Heading, HStack, Image, Text } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { keyframes } from "@emotion/react"
 import { useTokenBalance } from "@hooks/tokens/query/useTokenBalance"
+import ConnectButtonAkash from "components/ConnectButtonAkash"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import { convertMicroDenomToDenom } from "utils/tokens/helpers"
@@ -22,10 +23,8 @@ const gradientAnimation = keyframes`
 `
 
 const Airdrop = () => {
-	const [isEligible, setIsEligible] = useState<boolean | null>(null) // Initialize with null to indicate no check has been made yet
-	const whitelist = WhitelistComponent()
-	const [buttonClicked, setButtonClicked] = useState(false) // Track if the button has been clicked
-	const { address, isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
+	// Initialize with null to indicate no check has been made yet
+	const { isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [stake, setStake] = useState(null)
 
@@ -38,7 +37,7 @@ const Airdrop = () => {
 		// Your wallet connection logic here...
 
 		// Reset isEligible to null and stake to null upon wallet connection
-		setIsEligible(null)
+
 		setStake(null)
 	}
 
@@ -48,38 +47,6 @@ const Airdrop = () => {
 			handleWalletConnect()
 		}
 	}, [isWalletConnected])
-
-	// Function to verify address against the whitelist
-	const handleCheckEligibility = async () => {
-		try {
-			// Fetch currently connected wallet address (this is a placeholder)
-			const connectedAddress = isWalletConnected ? address : ""
-
-			// Check if the connected wallet address is in the whitelist
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-expect-error
-			setIsEligible(whitelist.includes(connectedAddress))
-			setButtonClicked(true) // Set buttonClicked to true after the button is clicked
-		} catch (error) {
-			// eslint-disable-next-line no-console
-			console.error("Error checking eligibility:", error)
-		}
-	}
-
-	// Render eligibility message based on the state and whether the button has been clicked
-	const renderEligibilityMessage = () => {
-		if (!buttonClicked) {
-			return null // Render nothing if the button hasn't been clicked
-		} else if (!isWalletConnected) {
-			return <p>Please connect your wallet</p>
-		} else if (isEligible === null) {
-			return null // No eligibility status yet, wait for it to be determined
-		} else if (isEligible) {
-			return <p>Wallet is eligible for airdrop</p>
-		} else {
-			return <p>Wallet is not eligible for airdrop</p>
-		}
-	}
 
 	return (
 		<Flex
@@ -108,6 +75,7 @@ const Airdrop = () => {
 				justifyContent="space-between" // Added this line
 				mt="1rem"
 			>
+				{/* Akash activity */}
 				<Flex
 					bgGradient="linear(rgba(33, 33, 33, 0.9))"
 					flexDir="column"
@@ -120,24 +88,13 @@ const Airdrop = () => {
 				>
 					<HStack w="full">
 						<Image
-							src="/assets/tokens/electron.png"
+							src="/assets/tokens/airdrop/akash.png"
 							w="1.5rem"
-							ml={{ base: "2.1rem", md: "51rem" }}
+							ml={{ base: "-0.5rem", md: "0rem" }}
 						/>
-
 						<Text
 							fontFamily="body"
-							fontSize="2xl"
-							fontWeight="900"
-							textAlign="right"
-							marginBottom="0.95"
-							w="full"
-						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-						</Text>
-						<Text
-							fontFamily="body"
-							fontSize="sm"
+							fontSize={{ base: "0.6rem", md: "lg" }}
 							fontWeight="900"
 							textAlign="start"
 							w="full"
@@ -147,34 +104,803 @@ const Airdrop = () => {
 								style={{
 									animation: `${gradientAnimation} 2s ease infinite`,
 									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-									backgroundSize: "400% 400%",
+									backgroundSize: "100% 100%",
 									fontSize: "larger",
-									marginRight: "4px",
+									marginRight: "0px",
 									WebkitBackgroundClip: "text",
 									WebkitTextFillColor: "transparent"
 								}}
 							>
-								ELE
+								Akash activity
 							</span>
 						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
 					</HStack>
 				</Flex>
-				<div style={{ display: "flex", justifyContent: "center" }}>
-					<Button
-						onClick={handleCheckEligibility}
-						style={{
-							background: "linear-gradient(to bottom, #61a9bb, #ec80fe)",
-							borderRadius: "20px",
-							marginTop: "1rem",
-							width: "80%"
-						}}
-					>
-						Check Eligibility
-					</Button>
-				</div>
-				<div style={{ display: "flex", justifyContent: "center", marginTop: "1rem" }}>
-					{renderEligibilityMessage()}
-				</div>
+				{/* Axelar activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/axelar.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Axelar activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Celestia activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/celestia.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Celestia activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Chihuahua activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/chihuahua.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Chihuahua activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Cosmoshub activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/cosmoshub.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Cosmoshub activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Dymension activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/dymension.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Dymension activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Dydx activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/dydx.svg"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Dydx activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Kava activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/kava.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Kava activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Juno activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/juno.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Juno activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Mars activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/mars.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Mars activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Noble activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/noble.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Noble activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Osmosis activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/osmosis.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Osmosis activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Saga activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/saga.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Saga activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Sei activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/sei.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Sei activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+				{/* Stargaze activity */}
+				<Flex
+					bgGradient="linear(rgba(33, 33, 33, 0.9))"
+					flexDir="column"
+					px={5}
+					py={3}
+					rounded="1.25em"
+					shadow="md"
+					w="full"
+					maxW="100%"
+				>
+					<HStack w="full">
+						<Image
+							src="/assets/tokens/airdrop/stars.png"
+							w="1.5rem"
+							ml={{ base: "-0.5rem", md: "0rem" }}
+						/>
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "0.6rem", md: "lg" }}
+							fontWeight="900"
+							textAlign="start"
+							w="full"
+							alignItems="start"
+						>
+							<span
+								style={{
+									animation: `${gradientAnimation} 2s ease infinite`,
+									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									backgroundSize: "100% 100%",
+									fontSize: "larger",
+									marginRight: "0px",
+									WebkitBackgroundClip: "text",
+									WebkitTextFillColor: "transparent"
+								}}
+							>
+								Stargaze activity
+							</span>
+						</Text>
+						<ConnectButtonAkash />
+
+						<Text
+							fontFamily="body"
+							fontSize={{ base: "lg", md: "xl" }}
+							fontWeight="900"
+							textAlign="right"
+							marginBottom="0.95"
+							w="full"
+							ml={{ base: "-5rem", md: "-10rem" }}
+						>
+							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+						</Text>
+						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+					</HStack>
+				</Flex>
+
 				<Grid
 					placeItems="center"
 					gridColumnStart="1"
