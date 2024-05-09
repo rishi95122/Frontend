@@ -3,12 +3,24 @@ import { Footer } from "../../components/Layout/Footer"
 import { Flex, Grid, Heading, HStack, Image, Text } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { keyframes } from "@emotion/react"
-import { useTokenBalance } from "@hooks/tokens/query/useTokenBalance"
+// import { useTokenBalance } from "@hooks/tokens/query/useTokenBalance"
 import ConnectButtonAkash from "components/ConnectButtonAkash"
+import ConnectButtonAxelar from "components/ConnectButtonAxelar"
+import ConnectButtonCelestia from "components/ConnectButtonCelestia"
+import ConnectButtonChihuahua from "components/ConnectButtonChihuahua"
+import ConnectButtonCosmoshub from "components/ConnectButtonCosmoshub"
+import ConnectButtonDydx from "components/ConnectButtonDydx"
+import ConnectButtonDymension from "components/ConnectButtonDymension"
+import ConnectButtonJuno from "components/ConnectButtonJuno"
+import ConnectButtonKava from "components/ConnectButtonKava"
+import ConnectButtonMars from "components/ConnectButtonMars"
+import ConnectButtonNoble from "components/ConnectButtonNoble"
+import ConnectButtonOsmosis from "components/ConnectButtonOsmosis"
+import ConnectButtonSaga from "components/ConnectButtonSaga"
+import ConnectButtonSei from "components/ConnectButtonSei"
+import ConnectButtonStargaze from "components/ConnectButtonStargaze"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
-import { convertMicroDenomToDenom } from "utils/tokens/helpers"
-import shortenNumber from "utils/ui/shortenNumber"
 
 const gradientAnimation = keyframes`
   0% {
@@ -28,11 +40,6 @@ const Airdrop = () => {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [stake, setStake] = useState(null)
 
-	const [EleBalance] = useTokenBalance(
-		import.meta.env.VITE_NEUTRONNETWORK === "neutron"
-			? "untrn"
-			: "factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/ELE"
-	)
 	const handleWalletConnect = () => {
 		// Your wallet connection logic here...
 
@@ -125,9 +132,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Axelar activity */}
@@ -169,7 +180,7 @@ const Airdrop = () => {
 								Axelar activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonAxelar />
 
 						<Text
 							fontFamily="body"
@@ -180,9 +191,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Celestia activity */}
@@ -224,7 +239,7 @@ const Airdrop = () => {
 								Celestia activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonCelestia />
 
 						<Text
 							fontFamily="body"
@@ -235,9 +250,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Chihuahua activity */}
@@ -279,7 +298,7 @@ const Airdrop = () => {
 								Chihuahua activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonChihuahua />
 
 						<Text
 							fontFamily="body"
@@ -290,9 +309,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Cosmoshub activity */}
@@ -334,7 +357,7 @@ const Airdrop = () => {
 								Cosmoshub activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonCosmoshub />
 
 						<Text
 							fontFamily="body"
@@ -345,9 +368,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Dymension activity */}
@@ -389,7 +416,7 @@ const Airdrop = () => {
 								Dymension activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonDymension />
 
 						<Text
 							fontFamily="body"
@@ -400,9 +427,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Dydx activity */}
@@ -444,7 +475,7 @@ const Airdrop = () => {
 								Dydx activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonDydx />
 
 						<Text
 							fontFamily="body"
@@ -455,9 +486,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Kava activity */}
@@ -499,7 +534,7 @@ const Airdrop = () => {
 								Kava activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonKava />
 
 						<Text
 							fontFamily="body"
@@ -510,9 +545,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Juno activity */}
@@ -554,7 +593,7 @@ const Airdrop = () => {
 								Juno activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonJuno />
 
 						<Text
 							fontFamily="body"
@@ -565,9 +604,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Mars activity */}
@@ -609,7 +652,7 @@ const Airdrop = () => {
 								Mars activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonMars />
 
 						<Text
 							fontFamily="body"
@@ -620,9 +663,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Noble activity */}
@@ -664,7 +711,7 @@ const Airdrop = () => {
 								Noble activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonNoble />
 
 						<Text
 							fontFamily="body"
@@ -675,9 +722,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Osmosis activity */}
@@ -719,7 +770,7 @@ const Airdrop = () => {
 								Osmosis activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonOsmosis />
 
 						<Text
 							fontFamily="body"
@@ -730,9 +781,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Saga activity */}
@@ -774,7 +829,7 @@ const Airdrop = () => {
 								Saga activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonSaga />
 
 						<Text
 							fontFamily="body"
@@ -785,9 +840,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Sei activity */}
@@ -829,7 +888,7 @@ const Airdrop = () => {
 								Sei activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonSei />
 
 						<Text
 							fontFamily="body"
@@ -840,9 +899,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 				{/* Stargaze activity */}
@@ -884,7 +947,7 @@ const Airdrop = () => {
 								Stargaze activity
 							</span>
 						</Text>
-						<ConnectButtonAkash />
+						<ConnectButtonStargaze />
 
 						<Text
 							fontFamily="body"
@@ -895,9 +958,13 @@ const Airdrop = () => {
 							w="full"
 							ml={{ base: "-5rem", md: "-10rem" }}
 						>
-							{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+							{/*	{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)} */}
 						</Text>
-						<Image src="/assets/tokens/particle.png" w="1.5rem" ml={{ base: "0rem", md: "0rem" }} />
+						<Image
+							src="/assets/tokens/electron.png"
+							w="1.5rem"
+							ml={{ base: "0rem", md: "-18rem" }}
+						/>
 					</HStack>
 				</Flex>
 

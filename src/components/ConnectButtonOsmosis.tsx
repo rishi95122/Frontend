@@ -71,8 +71,8 @@ export const walletToolbarItemVariants: Variants = {
 	show: { opacity: 1, y: 0 }
 }
 
-const ConnectButtonAkash: FC<ConnectButtonProps> = () => {
-	const { address, openView, isWalletConnected } = useChain("akash")
+const ConnectButtonOsmosis: FC<ConnectButtonProps> = () => {
+	const { address, openView, isWalletConnected } = useChain("osmosis")
 
 	const { setValue } = useClipboard("")
 
@@ -181,4 +181,4 @@ const ConnectButtonAkash: FC<ConnectButtonProps> = () => {
 	)
 }
 
-export default ConnectButtonAkash
+export default ConnectButtonOsmosis
