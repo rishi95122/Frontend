@@ -1,6 +1,6 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
 import { Footer } from "../../components/Layout/Footer"
-import { Button, Flex, Grid, HStack, Text } from "@chakra-ui/react"
+import { Button, Flex, Grid, HStack, Spacer, Text, VStack } from "@chakra-ui/react"
 import { keyframes } from "@emotion/react"
 // import { useTokenBalance } from "@hooks/tokens/query/useTokenBalance"
 import { motion } from "framer-motion"
@@ -28,6 +28,7 @@ const Welcome: React.FC<WelcomeProps> = ({ onNext }) => {
 			flexDirection="column"
 			gap={2}
 			h="full"
+			alignContent="center"
 			initial={{ opacity: 0 }}
 			p={{ base: 4, lg: 24, md: 16 }}
 			w="full"
@@ -42,10 +43,9 @@ const Welcome: React.FC<WelcomeProps> = ({ onNext }) => {
 				shadow="md"
 				w="full"
 				maxW="5xl"
-				justifyContent="space-between" // Added this line
+				justifyContent="space-between"
 				mt="1rem"
 			>
-				{/* Akash activity */}
 				<Flex
 					bgGradient="linear(rgba(33, 33, 33, 0.9))"
 					flexDir="column"
@@ -92,25 +92,44 @@ const Welcome: React.FC<WelcomeProps> = ({ onNext }) => {
 					w="full"
 					maxW="100%"
 				>
-					<HStack w="full">
+					<VStack w="full" align="center" spacing={4}>
+						<Spacer />
+						<Text
+							fontFamily="arial-regular"
+							fontSize={{ base: "0.6rem", md: "sm" }}
+							fontWeight="100"
+							textAlign="center"
+							w={{ base: "80%", md: "50%" }}
+						>
+							Electron is leveling up! We're pushing for deeper decentralization, and this airdrop
+							is all about getting there by spreading the love to our early stakeholders.
+						</Text>
+						<Spacer />
+						<Text
+							fontFamily="arial-regular"
+							fontSize={{ base: "0.6rem", md: "sm" }}
+							fontWeight="100"
+							textAlign="center"
+							w={{ base: "80%", md: "50%" }}
+						>
+							Think you might snag some $ELE? You're in luck if you've interacted with Electron,
+							hold specific tokens, or have staked tokens within the eligible Cosmos communities.
+						</Text>
+						<Spacer />
 						<Text
 							fontFamily="arial-regular"
 							fontSize={{ base: "0.6rem", md: "sm" }}
 							fontWeight="200"
 							textAlign="center"
-							w="full"
-							alignItems="start"
+							w={{ base: "80%", md: "50%" }}
 						>
-							The Electron platform is moving towards further decentralization. The purpose of this
-							airdrop is to support that vision by meaningfully distributing stakeholders from the
-							start. You may be eligible for this ELE airdrop if you've interacted with Cosmos
-							ecosystem chains, applications, or the community in the past. Please proceed to check
-							your eligibility and claim your ELE.
+							Oh, and just so you know, we snapped a snapshot on May 15th, 2024. Ready to see if
+							you're on the list? Head over to claim your $ELE now!
 						</Text>
-					</HStack>
+					</VStack>
 				</Flex>
 
-				<Flex justifyContent="center" mt={4}>
+				<Flex justifyContent="center" mt={0}>
 					<Button
 						onClick={onNext}
 						_active={{

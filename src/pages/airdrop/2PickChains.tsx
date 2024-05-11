@@ -17,7 +17,18 @@ import Sagawallet from "../../components/ConnectButtonSaga"
 import Seiwallet from "../../components/ConnectButtonSei"
 import Stargazewallet from "../../components/ConnectButtonStargaze"
 import { Footer } from "../../components/Layout/Footer"
-import { Box, Button, Flex, Grid, HStack, Image, Skeleton, Text, VStack } from "@chakra-ui/react"
+import {
+	Box,
+	Button,
+	Flex,
+	Grid,
+	Heading,
+	HStack,
+	Image,
+	Skeleton,
+	Text,
+	VStack
+} from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { keyframes } from "@emotion/react"
 import { useTokenBalance } from "@hooks/tokens/query/useTokenBalance"
@@ -88,7 +99,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 		"15": false
 	})
 
-	const { isWalletConnected, connect } = useChain("akash")
+	const { connect } = useChain("akash")
 
 	const handleImageClick = (id: string) => {
 		if (id === "1") {
@@ -212,7 +223,6 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 				setSelectionCount(selectionCount - 1)
 			}
 		}
-		// Handle other image clicks if needed
 	}
 
 	useEffect(() => {
@@ -263,7 +273,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 		{ id: "8", src: "/assets/tokens/airdrop/juno.png", text: "Juno" },
 		{ id: "9", src: "/assets/tokens/airdrop/kava.png", text: "Kava" },
 		{ id: "10", src: "/assets/tokens/airdrop/mars.png", text: "Mars" },
-		{ id: "11", src: "/assets/tokens/airdrop/noble.png", text: "Noble" },
+		{ id: "11", src: "/assets/tokens/airdrop/noble.png", text: "Neutron" },
 		{ id: "12", src: "/assets/tokens/airdrop/osmosis.png", text: "Osmosis" },
 		{ id: "13", src: "/assets/tokens/airdrop/saga.png", text: "Saga" },
 		{ id: "14", src: "/assets/tokens/airdrop/sei.png", text: "Sei" },
@@ -283,11 +293,13 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 			flexDirection="column"
 			gap={2}
 			h="full"
+			mt={-4}
 			initial={{ opacity: 0 }}
-			p={{ base: 4, lg: 24, md: 16 }}
+			p={{ base: 5, lg: 24, md: 16 }}
 			w="full"
-			mt={{ base: -3, md: -90 }}
+			justifyContent="center"
 		>
+			<Heading>Verify Eligibility</Heading>
 			<Flex
 				bgGradient="linear(to-b, #0a2b33, #1a001e)"
 				flexDir="column"
@@ -297,7 +309,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 				shadow="md"
 				w="full"
 				maxW="5xl"
-				justifyContent="space-between" // Added this line
+				justifyContent="space-between"
 				mt="1rem"
 			>
 				{isVisible && (
@@ -314,7 +326,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						<HStack w="full">
 							<Text
 								fontFamily="body"
-								fontSize={{ base: "0.6rem", md: "2xl" }}
+								fontSize={{ base: "0.6rem", md: "0.7rem" }}
 								fontWeight="900"
 								textAlign="center"
 								w="full"
@@ -325,13 +337,16 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										animation: `${gradientAnimation} 2s ease infinite`,
 										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
 										backgroundSize: "100% 100%",
-										fontSize: "larger",
+										fontSize: "sm",
 										marginRight: "0px",
 										WebkitBackgroundClip: "text",
 										WebkitTextFillColor: "transparent"
 									}}
 								>
-									Pick your chains
+									Ready to claim your $ELE? Connect the wallet you've used to interact with
+									Electron, or the one where you're holding or staking the eligible Cosmos tokens we
+									announced. Just a heads up—make sure your wallet is connected properly, or you
+									won't be able to move on and snag your $ELE.
 								</span>
 							</Text>
 						</HStack>
@@ -348,7 +363,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 					maxW="100%"
 				>
 					{isVisible && (
-						<HStack w="full">
+						<HStack w="full" justifyContent="center">
 							<VStack spacing={4}>
 								{rows.map((row) => (
 									<HStack key={-1} spacing={2} justifyContent="center">
@@ -360,19 +375,23 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 												borderRadius="md"
 												p={2}
 												cursor="pointer"
-												w={153.5}
-												h="80px"
+												w={{ base: "3em", md: 153.5 }}
+												h={{ base: "45px", md: "80px" }}
 												opacity={isBoxSelected[image.id] ? 0.9 : 0.4}
+												display="flex" // Use flexbox for centering
+												flexDirection="column" // Stack items vertically
+												alignItems="center" // Center items horizontally
+												justifyContent="space-between" // Space items evenly vertically
 											>
 												<Image
 													src={image.src}
 													boxSize="80px"
-													w="2em"
-													h="2em"
-													mr="-15px"
+													w={{ base: "1.2em", md: "2em" }}
+													h={{ base: "1.2em", md: "2em" }}
+													mr="0px"
 													opacity={0.9}
 												/>
-												<Text>{image.text}</Text>
+												<Text fontSize={{ base: "5px", md: "1em" }}>{image.text}</Text>
 											</Box>
 										))}
 									</HStack>
@@ -423,17 +442,16 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 								</Text>
 								<Button
 									variant="outline"
-									h={{ base: "1.5rem", md: "2rem" }}
+									h={{ base: "1.8rem", md: "2rem" }}
 									px={1}
 									position="relative"
-									marginLeft="auto"
+									fontSize={{ base: "0.5rem", md: "2rem" }}
 									rounded="0.7em"
 									colorScheme="purple"
 									onClick={connect}
-									mr={isWalletConnected ? 0 : 40}
 									mt={0}
 									pos="relative"
-									w={{ base: "25%", md: "23%" }}
+									w={{ base: "130%", md: "23%" }}
 									shadow="rgba(35, 233, 196, 0.42) 0px 0px 10px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
 								>
 									Check
@@ -1587,7 +1605,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 											WebkitTextFillColor: "transparent"
 										}}
 									>
-										Noble activity
+										Neutron activity
 									</span>
 								</Text>
 								<HStack
@@ -2078,9 +2096,9 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 							</HStack>
 						</Flex>
 					)}
-				<Flex justifyContent="space-between" mt={4}>
+				<Flex justifyContent="center" mt={2} mb={2} gap={{ base: 20, md: 250 }}>
 					<Button
-						marginLeft="12em"
+						marginLeft={{ base: "0", md: "12em" }}
 						onClick={onPrev}
 						_active={{
 							filter: "brightness(80%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
@@ -2092,18 +2110,18 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						alignSelf="end"
 						bgGradient="linear(45deg, brand.1, brand.2)"
 						color="gray.100"
-						fontSize="16"
-						maxW="6rem"
+						fontSize={{ base: "8", md: "16" }}
+						maxW={{ base: "6rem", md: "6rem" }}
 						mt={2}
 						rounded="0.9em"
 						transition="all 0.5s"
-						width="120px"
+						width={{ base: "120px", md: "120px" }}
 					>
 						Previous
 					</Button>
 					<Button
 						onClick={handleNextClick}
-						marginRight="12em"
+						marginRight={{ base: "0em", md: "12em" }}
 						_active={{
 							filter: "brightness(80%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
 						}}
@@ -2114,12 +2132,13 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						alignSelf="end"
 						bgGradient="linear(45deg, brand.1, brand.2)"
 						color="gray.100"
-						fontSize="16"
+						fontSize={{ base: "8", md: "16" }}
 						maxW="6rem"
 						mt={2}
+						ml={{ base: -50, md: 0 }}
 						rounded="0.9em"
 						transition="all 0.5s"
-						width="120px"
+						width={{ base: "120px", md: "120px" }}
 						disabled={!selectionMade}
 						bg={selectionMade ? "linear(45deg, brand.1, brand.2)" : "gray"}
 					>

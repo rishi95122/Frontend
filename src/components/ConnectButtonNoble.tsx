@@ -15,7 +15,7 @@ const gradientAnimation = keyframes`
 `
 
 const Noblewallet = () => {
-	const { address, isWalletConnected } = useChain("noble")
+	const { address, isWalletConnected } = useChain("neutron")
 	const [walletAddress, setWalletAddress] = useState("")
 
 	useEffect(() => {
