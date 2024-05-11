@@ -1,4 +1,4 @@
-import { keyframes, Text } from "@chakra-ui/react"
+import { Flex, keyframes, Text } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { useEffect, useState } from "react"
 
@@ -14,7 +14,7 @@ const gradientAnimation = keyframes`
   }
 `
 
-const Chihuauawallet = () => {
+const Chihuahuawallet = () => {
 	const { address, isWalletConnected } = useChain("chihuahua")
 	const [walletAddress, setWalletAddress] = useState("")
 
@@ -27,29 +27,33 @@ const Chihuauawallet = () => {
 	const wallet = `${walletAddress.slice(0, 6)}..${walletAddress.slice(-4)}`
 
 	return (
-		<Text
-			fontFamily="body"
-			fontSize={{ base: "0.6rem", md: "sm" }}
-			fontWeight="900"
-			textAlign="center"
-			w="full"
-			alignItems="start"
-		>
-			<span
-				style={{
-					animation: `${gradientAnimation} 2s ease infinite`,
-					background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-					backgroundSize: "100% 100%",
-					fontSize: "larger",
-					marginRight: "0px",
-					WebkitBackgroundClip: "text",
-					WebkitTextFillColor: "transparent"
-				}}
+		<Flex alignItems="center">
+			<Text
+				fontFamily="body"
+				fontSize={{ base: "0.6rem", md: "sm" }}
+				fontWeight="900"
+				position="relative"
+				textAlign="center"
+				w="full"
+				alignItems="start"
+				mr={isWalletConnected ? 0 : 0}
 			>
-				{wallet}
-			</span>
-		</Text>
+				<span
+					style={{
+						animation: `${gradientAnimation} 2s ease infinite`,
+						background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+						backgroundSize: "100% 100%",
+						fontSize: "larger",
+						marginRight: "0px",
+						WebkitBackgroundClip: "text",
+						WebkitTextFillColor: "transparent"
+					}}
+				>
+					{wallet}
+				</span>
+			</Text>
+		</Flex>
 	)
 }
 
-export default Chihuauawallet
+export default Chihuahuawallet

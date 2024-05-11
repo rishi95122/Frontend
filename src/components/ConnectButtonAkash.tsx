@@ -1,4 +1,4 @@
-import { Button, Flex, keyframes, Text } from "@chakra-ui/react"
+import { Flex, keyframes, Text } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { useEffect, useState } from "react"
 
@@ -15,7 +15,7 @@ const gradientAnimation = keyframes`
 `
 
 const Akashwallet = () => {
-	const { address, isWalletConnected, connect } = useChain("akash")
+	const { address, isWalletConnected } = useChain("akash")
 	const [walletAddress, setWalletAddress] = useState("")
 
 	useEffect(() => {
@@ -28,24 +28,6 @@ const Akashwallet = () => {
 
 	return (
 		<Flex alignItems="center">
-			<Flex alignItems="center">
-				<Button
-					variant="outline"
-					h={{ base: "1.5rem", md: "2rem" }}
-					px={1}
-					position="relative"
-					rounded="0.5em"
-					colorScheme="blue"
-					onClick={connect}
-					mr={isWalletConnected ? 5 : 40}
-					mt={0}
-					pos="relative"
-					w={{ base: "25%", md: "100%" }}
-					shadow="rgba(35, 233, 196, 0.42) 0px 0px 10px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
-				>
-					Check
-				</Button>
-			</Flex>
 			<Text
 				fontFamily="body"
 				fontSize={{ base: "0.6rem", md: "sm" }}
@@ -54,7 +36,7 @@ const Akashwallet = () => {
 				textAlign="center"
 				w="full"
 				alignItems="start"
-				mr={isWalletConnected ? 20 : 220}
+				mr={isWalletConnected ? 0 : 0}
 			>
 				<span
 					style={{
