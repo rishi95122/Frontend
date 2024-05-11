@@ -1,7 +1,7 @@
 /* eslint-disable no-negated-condition */
 /* eslint-disable eslint-comments/disable-enable-pair */
 import Akashwallet from "../../components/ConnectButtonAkash"
-// import Axelarwallet from "../../components/ConnectButtonAxelar"
+import Axelarwallet from "../../components/ConnectButtonAxelar"
 // import Celestiawallet from "../../components/ConnectButtonCelestia"
 // import Chihuahuawallet from "../../components/ConnectButtonChihuahua"
 // import Cosmoshubwallet from "../../components/ConnectButtonCosmoshub"
@@ -51,16 +51,31 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 	const [selectionMade, setSelectionMade] = useState(false)
 	const [isVisible, setIsVisible] = useState(true)
 	const [isAkashSelected, setIsAkashSelected] = useState(false)
+	const [isAxelarSelected, setIsAxelarSelected] = useState(false)
 	const [EleBalance] = useTokenBalance("factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/ELE")
 	const [selectionCount, setSelectionCount] = useState(0)
+	const [isBoxSelected, setIsBoxSelected] = useState<{ [key: string]: boolean }>({
+		"1": false,
+		"2": false
+		// Add more entries for other boxes (3 to 15)
+	})
 
 	const handleImageClick = (id: string) => {
 		if (id === "1") {
 			setIsAkashSelected(!isAkashSelected)
+			setIsBoxSelected({ ...isBoxSelected, "1": !isAkashSelected })
 			if (!isAkashSelected) {
-				setSelectionCount(selectionCount + 1) // Increment count when selected
+				setSelectionCount(selectionCount + 1)
 			} else {
-				setSelectionCount(selectionCount - 1) // Decrement count when unselected
+				setSelectionCount(selectionCount - 1)
+			}
+		} else if (id === "2") {
+			setIsAxelarSelected(!isAxelarSelected)
+			setIsBoxSelected({ ...isBoxSelected, "2": !isAxelarSelected })
+			if (!isAxelarSelected) {
+				setSelectionCount(selectionCount + 1)
+			} else {
+				setSelectionCount(selectionCount - 1)
 			}
 		}
 		// Handle other image clicks if needed
@@ -73,7 +88,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 
 	const handleSelectionMade = () => {
 		// Check if at least one ID is selected
-		return isAkashSelected /* add other ID checks as needed */
+		return isAkashSelected || isAxelarSelected /* add other ID checks as needed */
 	}
 
 	const handleNextClick = () => {
@@ -186,7 +201,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						<HStack w="full">
 							<VStack spacing={4}>
 								{rows.map((row) => (
-									<HStack key={Image.id} spacing={2} justifyContent="center">
+									<HStack key={-1} spacing={2} justifyContent="center">
 										{row.map((image) => (
 											<Box
 												key={image.id}
@@ -197,7 +212,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 												cursor="pointer"
 												w={153.5}
 												h="80px"
-												opacity={isAkashSelected && image.id === "1" ? 0.9 : 0.4}
+												opacity={isBoxSelected[image.id] ? 0.9 : 0.4}
 											>
 												<Image
 													src={image.src}
@@ -218,7 +233,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 				</Flex>
 
 				{/* Akash activity */}
-				{!isVisible && isAkashSelected && (
+				{!isVisible && (isAkashSelected || (isAkashSelected && isAxelarSelected)) && (
 					<Flex
 						key="akash"
 						bgGradient="linear(rgba(33, 33, 33, 0.9))"
@@ -279,6 +294,101 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 									<HStack>
 										<Text fontSize="15">
 											<Akashwallet />
+										</Text>
+									</HStack>
+								</Skeleton>
+							</HStack>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
+				{/* Axelar activity */}
+				{!isVisible && (isAxelarSelected || (isAkashSelected && isAxelarSelected)) && (
+					<Flex
+						key="axelar"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isAxelarSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/axelar.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
+								>
+									Axelar activity
+								</span>
+							</Text>
+							{/* Akash wallet and balance */}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Axelarwallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Axelarwallet />
 										</Text>
 									</HStack>
 								</Skeleton>

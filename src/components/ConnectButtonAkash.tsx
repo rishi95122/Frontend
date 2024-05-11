@@ -28,17 +28,33 @@ const Akashwallet = () => {
 
 	return (
 		<Flex alignItems="center">
-			<Button variant="outline" colorScheme="blue" onClick={async () => await connect()} mt={2}>
-				Check
-			</Button>
+			<Flex alignItems="center">
+				<Button
+					variant="outline"
+					h={{ base: "1.5rem", md: "2rem" }}
+					px={1}
+					position="relative"
+					rounded="0.5em"
+					colorScheme="blue"
+					onClick={connect}
+					mr={isWalletConnected ? 5 : 40}
+					mt={0}
+					pos="relative"
+					w={{ base: "25%", md: "100%" }}
+					shadow="rgba(35, 233, 196, 0.42) 0px 0px 10px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
+				>
+					Check
+				</Button>
+			</Flex>
 			<Text
 				fontFamily="body"
 				fontSize={{ base: "0.6rem", md: "sm" }}
 				fontWeight="900"
+				position="relative"
 				textAlign="center"
 				w="full"
 				alignItems="start"
-				mr={2} // Add margin between text and button
+				mr={isWalletConnected ? 20 : 220}
 			>
 				<span
 					style={{
