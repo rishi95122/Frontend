@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable complexity */
 /* eslint-disable no-negated-condition */
 /* eslint-disable eslint-comments/disable-enable-pair */
@@ -50,6 +51,7 @@ const gradientAnimation = keyframes`
 `
 
 type PickchainsProps = {
+	connect: () => void
 	onNext: () => void
 	onPrev: () => void
 }
@@ -100,6 +102,13 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 	})
 
 	const { connect } = useChain("akash")
+
+	const [pressed, setPressed] = useState(false)
+
+	const handleClick = () => {
+		setPressed(true)
+		void connect() // Call the connect function from useChain
+	}
 
 	const handleImageClick = (id: string) => {
 		if (id === "1") {
@@ -257,6 +266,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 			setIsVisible(false) // Allow setting isVisible to false
 		} else {
 			// Handle case when no IDs are selected
+			// eslint-disable-next-line eslint-comments/no-duplicate-disable
 			// eslint-disable-next-line no-console
 			console.log("Please select at least one Chain before proceeding.")
 		}
@@ -440,22 +450,41 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 								>
 									Wallets
 								</Text>
-								<Button
-									variant="outline"
-									h={{ base: "1.8rem", md: "2rem" }}
-									px={1}
-									position="relative"
-									fontSize={{ base: "0.5rem", md: "2rem" }}
-									rounded="0.7em"
-									colorScheme="purple"
-									onClick={connect}
-									mt={0}
-									pos="relative"
-									w={{ base: "130%", md: "23%" }}
-									shadow="rgba(35, 233, 196, 0.42) 0px 0px 10px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
-								>
-									Check
-								</Button>
+								{pressed ? (
+									<Button
+										variant="outline"
+										h={{ base: "1.8rem", md: "2rem" }}
+										px={1}
+										position="relative"
+										fontSize={{ base: "0.5rem", md: "1rem" }}
+										rounded="0.7em"
+										colorScheme="blue" // Change color or any other property as needed
+										onClick={() => console.log("Another action")}
+										mt={0}
+										pos="relative"
+										w={{ base: "130%", md: "23%" }}
+										shadow="rgba(35, 233, 196, 0.42) 0px 0px 10px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
+									>
+										Claim
+									</Button>
+								) : (
+									<Button
+										variant="outline"
+										h={{ base: "1.8rem", md: "2rem" }}
+										px={1}
+										position="relative"
+										fontSize={{ base: "0.5rem", md: "1rem" }}
+										rounded="0.7em"
+										colorScheme="purple"
+										onClick={handleClick}
+										mt={0}
+										pos="relative"
+										w={{ base: "130%", md: "23%" }}
+										shadow="rgba(35, 233, 196, 0.42) 0px 0px 10px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
+									>
+										Check
+									</Button>
+								)}
 							</Flex>
 						)}
 				</Flex>
