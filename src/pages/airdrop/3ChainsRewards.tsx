@@ -37,12 +37,11 @@ const gradientAnimation = keyframes`
   }
 `
 type ChainsrewardsProps = {
-	onNext: () => void
 	onPrev: () => void
 	selectedImages: () => void
 }
 
-const Chainsrewards: React.FC<ChainsrewardsProps> = ({ onNext, onPrev }) => {
+const Chainsrewards: React.FC<ChainsrewardsProps> = ({ onPrev }) => {
 	// Initialize with null to indicate no check has been made yet
 	const { isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -1528,29 +1527,6 @@ const Chainsrewards: React.FC<ChainsrewardsProps> = ({ onNext, onPrev }) => {
 					>
 						Previous
 					</Button>
-
-					<Button
-						_active={{
-							filter: "brightness(80%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
-						}}
-						_hover={{
-							filter: "brightness(110%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
-						}}
-						marginRight={{ base: "70px", md: "12em" }}
-						shadow="rgba(35, 233, 196, 0.42) 0px 0px 5px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
-						alignSelf="end"
-						bgGradient="linear(45deg, brand.1, brand.2)"
-						color="gray.100"
-						fontSize={{ base: "9", md: "16" }}
-						// leftIcon={<FarmIcon h="1.5rem" w="1.5rem" />}
-						mt={2}
-						rounded="0.9em"
-						transition="all 0.5s"
-						width={{ base: "80px", md: "120px" }}
-						onClick={onNext}
-					>
-						Next
-					</Button>
 				</Flex>
 
 				<Grid
@@ -1571,6 +1547,5 @@ const Chainsrewards: React.FC<ChainsrewardsProps> = ({ onNext, onPrev }) => {
 export default Chainsrewards
 
 Chainsrewards.propTypes = {
-	onNext: () => null,
 	onPrev: () => null
 }

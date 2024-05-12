@@ -32,8 +32,8 @@ const MultiStepForm = () => {
 			mt={{ base: -3, md: -4 }}
 		>
 			{step === 1 && <Welcome onNext={handleNext} />}
-			{step === 2 && <Pickchains onPrev={handlePrevious} />}
-			{step === 3 && <Chainsrewards onNext={handleNext} onPrev={handlePrevious} />}
+			{step === 2 && <Pickchains onNext={handleNext} onPrev={handlePrevious} />}
+			{step === 3 && <Chainsrewards onPrev={handlePrevious} />}
 			{step === 4 && <Claim onPrev={handlePrevious} />}
 		</Flex>
 	)

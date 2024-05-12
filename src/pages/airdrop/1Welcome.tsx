@@ -1,9 +1,12 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
 import { Footer } from "../../components/Layout/Footer"
-import { Button, Flex, Grid, HStack, Spacer, Text, VStack } from "@chakra-ui/react"
+import { DisclaimerModal } from "./components/DisclaimerModal"
+import { Button, Checkbox, Flex, Grid, HStack, Spacer, Text, VStack } from "@chakra-ui/react"
 import { keyframes } from "@emotion/react"
 // import { useTokenBalance } from "@hooks/tokens/query/useTokenBalance"
 import { motion } from "framer-motion"
+import { useState } from "react"
+import { type ZodVoidDef } from "zod"
 
 const gradientAnimation = keyframes`
   0% {
@@ -17,9 +20,13 @@ const gradientAnimation = keyframes`
   }
 `
 type WelcomeProps = {
-	onNext: () => void // Define the type of onNext prop
+	onNext: () => ZodVoidDef
 }
 const Welcome: React.FC<WelcomeProps> = ({ onNext }) => {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	const [isChecked, setIsChecked] = useState(false)
+	const [isBoxClicked, setIsBoxClicked] = useState(false)
+
 	return (
 		<Flex
 			animate={{ opacity: 1 }}
@@ -129,42 +136,69 @@ const Welcome: React.FC<WelcomeProps> = ({ onNext }) => {
 					</VStack>
 				</Flex>
 
-				<Flex justifyContent="center" mt={0}>
+				<Flex justifyContent="center" mt={2}>
+					<HStack>
+						<Checkbox
+							onChange={(event) => {
+								setIsChecked(event.target.checked)
+								setIsBoxClicked(true)
+							}}
+							rounded="2em"
+							size="lg"
+						/>
+						<Text fontFamily="heading" fontSize={10}>
+							I have read and agreed to these terms
+						</Text>
+					</HStack>
+					{isBoxClicked && <DisclaimerModal />}
+				</Flex>
+				<Flex justifyContent="center" mt={4} mb={2} w="full">
 					<Button
-						onClick={onNext}
 						_active={{
-							filter: "brightness(80%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
+							filter: isChecked ? "brightness(80%) drop-shadow(0px 0px 3px rgba(2,226,150, 1))" : ""
+						}}
+						_dark={{
+							_disabled: {
+								bg: "whiteAlpha.500",
+								color: "whiteAlpha.500",
+								cursor: "not-allowed"
+							}
+						}}
+						_disabled={{
+							bg: "offwhite.4",
+							color: "gray.800",
+							cursor: "not-allowed",
+							opacity: 0.5
 						}}
 						_hover={{
-							filter: "brightness(110%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
+							filter: isChecked
+								? "brightness(110%) drop-shadow(0px 0px 6px rgba(2,226,150, 1))"
+								: ""
 						}}
-						shadow="rgba(35, 233, 196, 0.42) 0px 0px 5px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
-						alignSelf="end"
 						bgGradient="linear(45deg, brand.1, brand.2)"
-						color="gray.100"
+						color="gray.800"
 						fontSize="16"
-						// leftIcon={<FarmIcon h="1.5rem" w="1.5rem" />}
-						maxW="6rem"
-						mt={2}
+						isDisabled={!isChecked}
+						onClick={onNext}
 						rounded="0.9em"
 						transition="all 0.5s"
-						width="120px"
+						w="30%"
 					>
-						Next
+						Enter Airdrop
 					</Button>
 				</Flex>
-
-				<Grid
-					placeItems="center"
-					gridColumnStart="1"
-					gridColumnEnd="3"
-					gridRowStart="4"
-					gridRowEnd="5"
-					mt="8px"
-				>
-					<Footer />
-				</Grid>
 			</Flex>
+
+			<Grid
+				placeItems="center"
+				gridColumnStart="1"
+				gridColumnEnd="3"
+				gridRowStart="4"
+				gridRowEnd="5"
+				mt="8px"
+			>
+				<Footer />
+			</Grid>
 		</Flex>
 	)
 }

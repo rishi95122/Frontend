@@ -196,57 +196,63 @@ export const DisclaimerModal = () => {
 				rounded="1.25em"
 			>
 				<ModalHeader color="white" textAlign="center" w="full">
-					Disclaimer
+					Token airdrop terms
 				</ModalHeader>
 				<ModalBody color="white" pb={4}>
 					<VStack spacing={6}>
-						<Text color="white">
-							Welcome to Electron Protocol, your hub for innovative speculation and decentralized
-							finance services. Accessing or using our services means you accept these terms:
+						<Text color="white" fontSize="12">
+						Welcome to the Supplemental Token Airdrop Terms (these “Airdrop Terms”) 
+						for the ELE token airdrop (the “Airdrop”) by Electron limited (“Organization”, “we” or “us”). 
+						These Airdrop Terms are supplemental to, and incorporate by reference, our general Terms of 
+						Service (“General Terms”). Defined terms used but not defined herein have the meaning set 
+						forth in the General Terms. The Airdrop, and your participation in it, is a Service defined
+						under the General Terms. These Airdrop Terms govern your ability to use our Services in order 
+						to participate in the Airdrop. Please read these Airdrop Terms carefully, as they include 
+						important information about your legal rights. By participating in the Airdrop or claiming 
+						Airdrop tokens, you are agreeing to these Airdrop Terms. If you do not understand or agree 
+						to these Airdrop Terms, please do not participate in the Airdrop.						
 						</Text>
 						<VStack align="start">
-							<Heading
-								fontFamily="body"
-								fontSize={breakpoint === "base" || breakpoint === "sm" ? "22" : "26"}
-								fontWeight="900"
-							>
-								No Investment Advice
-							</Heading>
-							<Text fontSize="15">
-								Our services provide a platform for speculation and decentralized finance
-								transactions. However, we don't offer financial or investment advice. Users must
-								make their decisions independently.
+							<Text fontSize="10">
+							SECTION 7 OF THE GENERAL TERMS CONTAINS AN ARBITRATION CLAUSE AND CLASS ACTION WAIVER. PLEASE REVIEW SUCH CLAUSES CAREFULLY, SINCE IT AFFECTS YOUR RIGHTS. BY AGREEING TO THESE AIRDROP TERMS, YOU AGREE TO RESOLVE ALL DISPUTES RELATED TO THE AIRDROP THROUGH BINDING INDIVIDUAL ARBITRATION AND TO WAIVE YOUR RIGHT TO PARTICIPATE IN CLASS ACTIONS, CLASS ARBITRATIONS OR REPRESENTATIVE ACTIONS, AS SET FORTH IN THE GENERAL TERMS. YOU HAVE THE RIGHT TO OPT-OUT OF THE ARBITRATION CLAUSE AND THE CLASS ACTION WAIVER AS EXPLAINED IN SECTION 7 OF THE GENERAL TERMS.
 							</Text>
 						</VStack>
 						<VStack align="start">
-							<Heading
-								fontFamily="body"
-								fontSize={breakpoint === "base" || breakpoint === "sm" ? "22" : "26"}
-								fontWeight="900"
-							>
-								Accuracy of Information
-							</Heading>
-							<Text fontSize="15">
-								While we strive for accuracy, we can't guarantee that all information presented
-								within our service is entirely accurate, complete, or current. The reliance on this
-								information and any subsequent action is entirely at your own risk.
+							<Text fontSize="10">
+							You agree and acknowledge that you have the sole responsibility and liability for all taxes in connection with your participation in the Airdrop and you should consult a tax advisor.							
 							</Text>
 						</VStack>
 						<VStack align="start">
-							<Heading
-								fontFamily="body"
-								fontSize={breakpoint === "base" || breakpoint === "sm" ? "22" : "26"}
-								fontWeight="900"
-							>
-								Non Endorsement
-							</Heading>
-							<Text fontSize="15">
-								Links and ads for third-party services, whether gambling or DeFi dApps, don't mean
-								we endorse them. Do your own research before deciding to use any external services.
+							<Text fontSize="10">
+							You agree and acknowledge that you are solely responsible for complying with all applicable laws of the jurisdiction you are located or participating in the Airdrop from
 							</Text>
-							<Text fontSize="15" pt={4}>
-								By using our service, you affirm being over 18 years old. If you disagree with these
-								terms, do not use our services.
+							<Text fontSize="10" pt={4}>
+							You agree and acknowledge that you (a) may receive tokens for free via the Airdrop (other than applicable taxes, if any), (b) were not previously promised any tokens, and (c) took no action in anticipation of or in reliance on receiving any tokens or an Airdrop.							
+							</Text>
+						</VStack>
+						<VStack align="start">
+							<Text fontSize="10">
+							Your eligibility to receive Airdrop tokens or participate in the Airdrop is subject to our sole discretion. To the extent you believe you should have received any airdropped tokens based on any documentation or points system released by us from time to time, such documentation does not entitle you to any tokens or to participate in the Airdrop and therefore you have no claim for any such tokens.						
+							</Text>
+							</VStack>
+						<VStack align="start">
+							<Text fontSize="10">
+							You agree not to engage in any activities that are designed to obtain more Airdrop tokens than you are entitled to. You agree that you are the legal owner of the blockchain address that you use to access or participate in the Airdrop.							
+							</Text>
+						</VStack>
+						<VStack align="start">
+							<Text fontSize="10">
+							You agree and acknowledge that you are not a Prohibited Person and you will not use a VPN or other tool to circumvent any geoblock or other restrictions that we may have implemented for Airdrop recipients. Any such circumvention, or attempted circumvention, may permanently disqualify you from participation in the Airdrop in our discretion.
+							</Text>
+						</VStack>
+						<VStack align="start">
+							<Text fontSize="10">
+							To participate in the Airdrop, you will need to connect a compatible third-party digital wallet (“Wallet”). By using a Wallet, you agree that you are using the Wallet under the terms and conditions of the applicable third-party provider of such Wallet. Wallets are not associated with, maintained by, supported by or affiliated with the Organization.							
+							</Text>
+						</VStack>
+						<VStack align="start">
+							<Text fontSize="10">
+							When you interact with the Services, you retain control over your digital assets at all times. We accept no responsibility or liability to you in connection with your use of a Wallet, and we make no representations or warranties regarding how the Services will operate or be compatible with any specific Wallet.							
 							</Text>
 						</VStack>
 						<HStack>

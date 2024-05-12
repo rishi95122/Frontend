@@ -82,6 +82,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 	const [isStargazeSelected, setIsStargazeSelected] = useState(false)
 	const [EleBalance] = useTokenBalance("factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/ELE")
 	const [selectionCount, setSelectionCount] = useState(0)
+	const [nextButtonClicked, setNextButtonClicked] = useState(false)
 
 	const [isBoxSelected, setIsBoxSelected] = useState<{ [key: string]: boolean }>({
 		"1": false,
@@ -100,6 +101,23 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 		"14": false,
 		"15": false
 	})
+
+	const areChainsSelected =
+		isAkashSelected ||
+		isAxelarSelected ||
+		isCelestiaSelected ||
+		isChihuahuaSelected ||
+		isCosmoshubSelected ||
+		isDydxSelected ||
+		isDymensionSelected ||
+		isJunoSelected ||
+		isKavaSelected ||
+		isMarsSelected ||
+		isNobleSelected ||
+		isOsmosisSelected ||
+		isSagaSelected ||
+		isSeiSelected ||
+		isStargazeSelected
 
 	const { connect } = useChain("akash")
 
@@ -270,6 +288,8 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 			// eslint-disable-next-line no-console
 			console.log("Please select at least one Chain before proceeding.")
 		}
+
+		setNextButtonClicked(false)
 	}
 
 	const images: ImageData[] = [
@@ -409,1770 +429,1534 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 							</VStack>
 						</HStack>
 					)}
-					{!isVisible &&
-						(isAkashSelected ||
-							isAxelarSelected ||
-							isCelestiaSelected ||
-							isChihuahuaSelected ||
-							isCosmoshubSelected ||
-							isDydxSelected ||
-							isDymensionSelected ||
-							isJunoSelected ||
-							isKavaSelected ||
-							isMarsSelected ||
-							isNobleSelected ||
-							isOsmosisSelected ||
-							isSagaSelected ||
-							isSeiSelected ||
-							isStargazeSelected) && (
-							<Flex alignItems="center" justifyContent="space-between">
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.6rem", md: "sm" }}
-									fontWeight="900"
+					{!isVisible && areChainsSelected && (
+						<Flex alignItems="center" justifyContent="space-between">
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.6rem", md: "sm" }}
+								fontWeight="900"
+								position="relative"
+								textAlign="left"
+								w="full"
+								alignItems="start"
+								mr={20}
+							>
+								Chains
+							</Text>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.6rem", md: "sm" }}
+								fontWeight="900"
+								position="relative"
+								textAlign="left"
+								w="full"
+								alignItems="start"
+								mr={10}
+							>
+								Wallets
+							</Text>
+							{pressed ? (
+								<Button
+									variant="outline"
+									h={{ base: "1.8rem", md: "2rem" }}
+									px={1}
 									position="relative"
-									textAlign="left"
-									w="full"
-									alignItems="start"
-									mr={20}
+									fontSize={{ base: "0.5rem", md: "1rem" }}
+									rounded="0.7em"
+									colorScheme="blue" // Change color or any other property as needed
+									onClick={() => console.log("Another action")}
+									mt={0}
+									pos="relative"
+									w={{ base: "130%", md: "23%" }}
+									shadow="rgba(35, 233, 196, 0.42) 0px 0px 10px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
 								>
-									Chains
-								</Text>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.6rem", md: "sm" }}
-									fontWeight="900"
+									Claim
+								</Button>
+							) : (
+								<Button
+									variant="outline"
+									h={{ base: "1.8rem", md: "2rem" }}
+									px={1}
 									position="relative"
-									textAlign="left"
-									w="full"
-									alignItems="start"
-									mr={10}
+									fontSize={{ base: "0.5rem", md: "1rem" }}
+									rounded="0.7em"
+									colorScheme="purple"
+									onClick={handleClick}
+									mt={0}
+									pos="relative"
+									w={{ base: "130%", md: "23%" }}
+									shadow="rgba(35, 233, 196, 0.42) 0px 0px 10px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
 								>
-									Wallets
-								</Text>
-								{pressed ? (
-									<Button
-										variant="outline"
-										h={{ base: "1.8rem", md: "2rem" }}
-										px={1}
-										position="relative"
-										fontSize={{ base: "0.5rem", md: "1rem" }}
-										rounded="0.7em"
-										colorScheme="blue" // Change color or any other property as needed
-										onClick={() => console.log("Another action")}
-										mt={0}
-										pos="relative"
-										w={{ base: "130%", md: "23%" }}
-										shadow="rgba(35, 233, 196, 0.42) 0px 0px 10px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
-									>
-										Claim
-									</Button>
-								) : (
-									<Button
-										variant="outline"
-										h={{ base: "1.8rem", md: "2rem" }}
-										px={1}
-										position="relative"
-										fontSize={{ base: "0.5rem", md: "1rem" }}
-										rounded="0.7em"
-										colorScheme="purple"
-										onClick={handleClick}
-										mt={0}
-										pos="relative"
-										w={{ base: "130%", md: "23%" }}
-										shadow="rgba(35, 233, 196, 0.42) 0px 0px 10px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
-									>
-										Check
-									</Button>
-								)}
-							</Flex>
-						)}
+									Check
+								</Button>
+							)}
+						</Flex>
+					)}
 				</Flex>
 
 				{/* Akash activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="akash"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isAkashSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/akash.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="akash"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isAkashSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/akash.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Akash activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Akashwallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Akashwallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Akash activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Akashwallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Akashwallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Axelar activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="axelar"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isAxelarSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/axelar.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="axelar"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isAxelarSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/axelar.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Axelar activity
-									</span>
-								</Text>
-								{/* Akash wallet and balance */}
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Axelarwallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Axelarwallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Axelar activity
+								</span>
+							</Text>
+							{/* Akash wallet and balance */}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Axelarwallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Axelarwallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Celestia activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="celestia"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isCelestiaSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/celestia.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="celestia"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isCelestiaSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/celestia.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Celestia activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Celestiawallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Celestiawallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Celestia activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Celestiawallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Celestiawallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Chihuahua activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="chihuahua"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isChihuahuaSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/chihuahua.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="chihuahua"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isChihuahuaSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/chihuahua.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Chihuahua activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Chihuahuawallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Chihuahuawallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Chihuahua activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Chihuahuawallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Chihuahuawallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Cosmoshub activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="cosmoshub"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isCosmoshubSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/cosmoshub.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="cosmoshub"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isCosmoshubSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/cosmoshub.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Cosmoshub activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Cosmoshubwallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Cosmoshubwallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Cosmoshub activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Cosmoshubwallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Cosmoshubwallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Dydx activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="dydx"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isDydxSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/dydx.svg"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="dydx"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isDydxSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/dydx.svg"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Dydx activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Dydxwallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Dydxwallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Dydx activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Dydxwallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Dydxwallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Dymension activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="dymension"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isDymensionSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/dymension.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="dymension"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isDymensionSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/dymension.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Dymension activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Dymensionwallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Dymensionwallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Dymension activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Dymensionwallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Dymensionwallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Juno activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="juno"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isJunoSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/juno.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="juno"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isJunoSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/juno.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Juno activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Junowallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Junowallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Juno activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Junowallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Junowallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Kava activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="kava"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isKavaSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/kava.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="kava"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isKavaSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/kava.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Kava activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Kavawallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Kavawallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Kava activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Kavawallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Kavawallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Mars activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="mars"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isMarsSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/mars.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="mars"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isMarsSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/mars.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Mars activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Marswallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Marswallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Mars activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Marswallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Marswallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Noble activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="noble"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isNobleSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/noble.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="noble"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isNobleSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/noble.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Neutron activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Noblewallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Noblewallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Neutron activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Noblewallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Noblewallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Osmosis activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="osmosis"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isOsmosisSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/osmosis.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="osmosis"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isOsmosisSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/osmosis.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Osmosis activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Osmosiswallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Osmosiswallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Osmosis activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Osmosiswallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Osmosiswallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Saga activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="saga"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isSagaSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/saga.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="saga"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isSagaSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/saga.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Saga activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Sagawallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Sagawallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Saga activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Sagawallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Sagawallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Sei activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="sei"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isSeiSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/sei.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="sei"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isSeiSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/sei.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Sei activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Seiwallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Seiwallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Sei activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Seiwallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Seiwallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				{/* Stargaze activity */}
-				{!isVisible &&
-					(isAkashSelected ||
-						isAxelarSelected ||
-						isCelestiaSelected ||
-						isChihuahuaSelected ||
-						isCosmoshubSelected ||
-						isDydxSelected ||
-						isDymensionSelected ||
-						isJunoSelected ||
-						isKavaSelected ||
-						isMarsSelected ||
-						isNobleSelected ||
-						isOsmosisSelected ||
-						isSagaSelected ||
-						isSeiSelected ||
-						isStargazeSelected) && (
-						<Flex
-							key="stargaze"
-							bgGradient="linear(rgba(33, 33, 33, 0.9))"
-							flexDir="column"
-							px={5}
-							py={3}
-							rounded="1.25em"
-							shadow="md"
-							w="full"
-							maxW="100%"
-							display={isStargazeSelected ? "flex" : "none"}
-						>
-							<HStack w="100%">
-								<Image
-									src="/assets/tokens/airdrop/stars.png"
-									w="1.5rem"
-									ml={{ base: "-0.5rem", md: "0rem" }}
-								/>
-								<Text
-									fontFamily="body"
-									fontSize={{ base: "0.5rem", md: "sm" }}
-									fontWeight="900"
-									textAlign="start"
-									w="82%"
-									alignItems="start"
+				{!isVisible && areChainsSelected && (
+					<Flex
+						key="stargaze"
+						bgGradient="linear(rgba(33, 33, 33, 0.9))"
+						flexDir="column"
+						px={5}
+						py={3}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						display={isStargazeSelected ? "flex" : "none"}
+					>
+						<HStack w="100%">
+							<Image
+								src="/assets/tokens/airdrop/stars.png"
+								w="1.5rem"
+								ml={{ base: "-0.5rem", md: "0rem" }}
+							/>
+							<Text
+								fontFamily="body"
+								fontSize={{ base: "0.5rem", md: "sm" }}
+								fontWeight="900"
+								textAlign="start"
+								w="82%"
+								alignItems="start"
+							>
+								<span
+									style={{
+										animation: `${gradientAnimation} 2s ease infinite`,
+										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+										backgroundSize: "100% 100%",
+										fontSize: "larger",
+										marginRight: "0px",
+										WebkitBackgroundClip: "text",
+										WebkitTextFillColor: "transparent"
+									}}
 								>
-									<span
-										style={{
-											animation: `${gradientAnimation} 2s ease infinite`,
-											background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
-											backgroundSize: "100% 100%",
-											fontSize: "larger",
-											marginRight: "0px",
-											WebkitBackgroundClip: "text",
-											WebkitTextFillColor: "transparent"
-										}}
-									>
-										Stargaze activity
-									</span>
-								</Text>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									minW={{ base: "35%", md: "8rem" }}
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "80%", md: "20%" }}
-									position="relative"
-									mr={{ base: 0, md: "12rem" }}
-								>
-									<Skeleton isLoaded={Boolean(Stargazewallet)}>
-										<HStack>
-											<Text fontSize="15">
-												<Stargazewallet />
-											</Text>
-										</HStack>
-									</Skeleton>
-								</HStack>
-								<HStack
-									_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
-									bg="offwhite.2"
-									color="gray.800"
-									h="2rem"
-									justify="center"
-									px={3}
-									py={1}
-									rounded="0.8em"
-									shadow="md"
-									w={{ base: "75%", md: "20%" }}
-									position="relative"
-								>
-									<Skeleton isLoaded={Boolean(EleBalance)}>
-										<HStack>
-											<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
-												{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-											</Text>
-											<Image
-												src="/assets/tokens/electron.png"
-												w={{ base: "1.2rem", md: "1.5rem" }}
-												mr={{ base: "0.5rem", md: "0rem" }}
-											/>
-										</HStack>
-									</Skeleton>
-								</HStack>
+									Stargaze activity
+								</span>
+							</Text>
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								minW={{ base: "35%", md: "8rem" }}
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "80%", md: "20%" }}
+								position="relative"
+								mr={{ base: 0, md: "12rem" }}
+							>
+								<Skeleton isLoaded={Boolean(Stargazewallet)}>
+									<HStack>
+										<Text fontSize="15">
+											<Stargazewallet />
+										</Text>
+									</HStack>
+								</Skeleton>
 							</HStack>
-						</Flex>
-					)}
+							<HStack
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
+								bg="offwhite.2"
+								color="gray.800"
+								h="2rem"
+								justify="center"
+								px={3}
+								py={1}
+								rounded="0.8em"
+								shadow="md"
+								w={{ base: "75%", md: "20%" }}
+								position="relative"
+							>
+								<Skeleton isLoaded={Boolean(EleBalance)}>
+									<HStack>
+										<Text fontSize="15" mr={{ base: "-0.5rem", md: "0rem" }}>
+											{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+										</Text>
+										<Image
+											src="/assets/tokens/electron.png"
+											w={{ base: "1.2rem", md: "1.5rem" }}
+											mr={{ base: "0.5rem", md: "0rem" }}
+										/>
+									</HStack>
+								</Skeleton>
+							</HStack>
+						</HStack>
+					</Flex>
+				)}
 				<Flex justifyContent="center" mt={2} mb={2} gap={{ base: 20, md: 250 }}>
-					<Button
-						marginLeft={{ base: "0", md: "12em" }}
-						onClick={onPrev}
-						_active={{
-							filter: "brightness(80%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
-						}}
-						_hover={{
-							filter: "brightness(110%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
-						}}
-						shadow="rgba(35, 233, 196, 0.42) 0px 0px 5px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
-						alignSelf="end"
-						bgGradient="linear(45deg, brand.1, brand.2)"
-						color="gray.100"
-						fontSize={{ base: "8", md: "16" }}
-						maxW={{ base: "6rem", md: "6rem" }}
-						mt={2}
-						rounded="0.9em"
-						transition="all 0.5s"
-						width={{ base: "120px", md: "120px" }}
-					>
-						Previous
-					</Button>
-					<Button
-						onClick={handleNextClick}
-						marginRight={{ base: "0em", md: "12em" }}
-						_active={{
-							filter: "brightness(80%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
-						}}
-						_hover={{
-							filter: "brightness(110%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
-						}}
-						shadow="rgba(35, 233, 196, 0.42) 0px 0px 5px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
-						alignSelf="end"
-						bgGradient="linear(45deg, brand.1, brand.2)"
-						color="gray.100"
-						fontSize={{ base: "8", md: "16" }}
-						maxW="6rem"
-						mt={2}
-						ml={{ base: -50, md: 0 }}
-						rounded="0.9em"
-						transition="all 0.5s"
-						width={{ base: "120px", md: "120px" }}
-						disabled={!selectionMade}
-						bg={selectionMade ? "linear(45deg, brand.1, brand.2)" : "gray"}
-					>
-						Next
-					</Button>
+					{!isVisible && (
+						<Button
+							marginLeft={{ base: "0", md: "0em" }}
+							onClick={onPrev}
+							_active={{
+								filter: "brightness(80%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
+							}}
+							_hover={{
+								filter: "brightness(110%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
+							}}
+							shadow="rgba(35, 233, 196, 0.42) 0px 0px 5px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
+							alignSelf="end"
+							bgGradient="linear(45deg, brand.1, brand.2)"
+							color="gray.100"
+							fontSize={{ base: "8", md: "16" }}
+							maxW={{ base: "6rem", md: "6rem" }}
+							mt={2}
+							rounded="0.9em"
+							transition="all 0.5s"
+							width={{ base: "120px", md: "120px" }}
+						>
+							Done
+						</Button>
+					)}
+					{!nextButtonClicked && isVisible && (
+						<Button
+							onClick={handleNextClick}
+							marginRight={{ base: "0em", md: "0em" }}
+							_active={{
+								filter: "brightness(80%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
+							}}
+							_hover={{
+								filter: "brightness(110%) drop-shadow(0px 1px 3px rgba(2,226,150, 1))"
+							}}
+							shadow="rgba(35, 233, 196, 0.42) 0px 0px 5px, rgba(255, 255, 255, 0.2) 0px 1px 0px inset, rgba(0, 0, 0, 0.15) 0px -3px 0px inset, rgb(35, 233, 196) 0px 0px 15px inset"
+							alignSelf="end"
+							bgGradient="linear(45deg, brand.1, brand.2)"
+							color="gray.100"
+							fontSize={{ base: "8", md: "16" }}
+							maxW="6rem"
+							mt={2}
+							ml={{ base: -50, md: 0 }}
+							rounded="0.9em"
+							transition="all 0.5s"
+							width={{ base: "120px", md: "120px" }}
+							disabled={!selectionMade}
+							bg={selectionMade ? "linear(45deg, brand.1, brand.2)" : "gray"}
+						>
+							Next
+						</Button>
+					)}
 				</Flex>
 				<Grid
 					placeItems="center"
