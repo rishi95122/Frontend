@@ -1,8 +1,6 @@
 // @ts-nocheck
 import Welcome from "./1Welcome"
 import Pickchains from "./2PickChains"
-import Chainsrewards from "./3ChainsRewards"
-import Claim from "./4Claim"
 import { Flex } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 import React, { useState } from "react"
@@ -35,8 +33,6 @@ const MultiStepForm = () => {
 		>
 			{step === 1 && <Welcome onNext={handleNext} />}
 			{step === 2 && <Pickchains onNext={handleNext} onPrev={handlePrevious} />}
-			{step === 3 && <Chainsrewards onPrev={handlePrevious} />}
-			{step === 4 && <Claim onPrev={handlePrevious} />}
 		</Flex>
 	)
 }
