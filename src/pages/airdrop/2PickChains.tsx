@@ -60,13 +60,13 @@ type ImageData = {
 const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 	const [selectionMade, setSelectionMade] = useState(false)
 	const [isVisible, setIsVisible] = useState(true)
-	const [isAkashSelected, setIsAkashSelected] = useState(false)
+	const [isNobleSelected, setIsNobleSelected] = useState(false)
 	const [isCelestiaSelected, setIsCelestiaSelected] = useState(false)
 	const [isCosmoshubSelected, setIsCosmoshubSelected] = useState(false)
 	const [isDydxSelected, setIsDydxSelected] = useState(false)
 	const [isDymensionSelected, setIsDymensionSelected] = useState(false)
 	const [isJunoSelected, setIsJunoSelected] = useState(false)
-	const [isNobleSelected, setIsNobleSelected] = useState(false)
+	const [isAkashSelected, setIsAkashSelected] = useState(false)
 	const [isOsmosisSelected, setIsOsmosisSelected] = useState(false)
 	const [isSeiSelected, setIsSeiSelected] = useState(false)
 	const [EleBalance] = useTokenBalance("factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/ELE")
@@ -107,9 +107,9 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 
 	const handleImageClick = (id: string) => {
 		if (id === "1") {
-			setIsAkashSelected(!isAkashSelected)
-			setIsBoxSelected({ ...isBoxSelected, "1": !isAkashSelected })
-			if (!isAkashSelected) {
+			setIsNobleSelected(!isNobleSelected)
+			setIsBoxSelected({ ...isBoxSelected, "1": !isNobleSelected })
+			if (!isNobleSelected) {
 				setSelectionCount(selectionCount + 1)
 			} else {
 				setSelectionCount(selectionCount - 1)
@@ -155,9 +155,9 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 				setSelectionCount(selectionCount - 1)
 			}
 		} else if (id === "7") {
-			setIsNobleSelected(!isNobleSelected)
-			setIsBoxSelected({ ...isBoxSelected, "7": !isNobleSelected })
-			if (!isNobleSelected) {
+			setIsAkashSelected(!isAkashSelected)
+			setIsBoxSelected({ ...isBoxSelected, "7": !isAkashSelected })
+			if (!isAkashSelected) {
 				setSelectionCount(selectionCount + 1)
 			} else {
 				setSelectionCount(selectionCount - 1)
@@ -189,13 +189,13 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 	const handleSelectionMade = () => {
 		// Check if at least one ID is selected
 		return (
-			isAkashSelected ||
+			isNobleSelected ||
 			isCelestiaSelected ||
 			isCosmoshubSelected ||
 			isDydxSelected ||
 			isDymensionSelected ||
 			isJunoSelected ||
-			isNobleSelected ||
+			isAkashSelected ||
 			isOsmosisSelected ||
 			isSeiSelected
 		)
@@ -216,13 +216,13 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 	}
 
 	const images: ImageData[] = [
-		{ id: "1", src: "/assets/tokens/airdrop/akash.png", text: "Akash" },
+		{ id: "1", src: "/assets/tokens/airdrop/noble.png", text: "Neutron" },
 		{ id: "2", src: "/assets/tokens/airdrop/celestia.png", text: "Celestia" },
 		{ id: "3", src: "/assets/tokens/airdrop/cosmoshub.png", text: "Cosmoshub" },
 		{ id: "4", src: "/assets/tokens/airdrop/dydx.svg", text: "Dydx" },
 		{ id: "5", src: "/assets/tokens/airdrop/dymension.png", text: "Dymension" },
 		{ id: "6", src: "/assets/tokens/airdrop/juno.png", text: "Juno" },
-		{ id: "7", src: "/assets/tokens/airdrop/noble.png", text: "Neutron" },
+		{ id: "7", src: "/assets/tokens/airdrop/akash.png", text: "Akash" },
 		{ id: "8", src: "/assets/tokens/airdrop/osmosis.png", text: "Osmosis" },
 		{ id: "9", src: "/assets/tokens/airdrop/sei.png", text: "Sei" }
 	]
@@ -323,7 +323,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 												p={2}
 												cursor="pointer"
 												w={{ base: "5em", md: 153.5 }}
-												h={{ base: "45px", md: "80px" }}
+												h={{ base: "4em", md: "80px" }}
 												opacity={isBoxSelected[image.id] ? 0.9 : 0.4}
 												display="flex" // Use flexbox for centering
 												flexDirection="column" // Stack items vertically
@@ -333,12 +333,12 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 												<Image
 													src={image.src}
 													boxSize="80px"
-													w={{ base: "1.2em", md: "2em" }}
-													h={{ base: "1.2em", md: "2em" }}
+													w={{ base: "1.8em", md: "2em" }}
+													h={{ base: "1.8em", md: "2em" }}
 													mr="0px"
 													opacity={0.9}
 												/>
-												<Text fontSize={{ base: "5px", md: "1em" }}>{image.text}</Text>
+												<Text fontSize={{ base: "10px", md: "1em" }}>{image.text}</Text>
 											</Box>
 										))}
 									</HStack>
@@ -411,10 +411,10 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 					)}
 				</Flex>
 
-				{/* Akash activity */}
+				{/* Neutron activity */}
 				{!isVisible && areChainsSelected && (
 					<Flex
-						key="akash"
+						key="noble"
 						bgGradient="linear(rgba(33, 33, 33, 0.9))"
 						flexDir="column"
 						px={5}
@@ -423,11 +423,11 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						shadow="md"
 						w="full"
 						maxW="100%"
-						display={isAkashSelected ? "flex" : "none"}
+						display={isNobleSelected ? "flex" : "none"}
 					>
 						<HStack w="100%">
 							<Image
-								src="/assets/tokens/airdrop/akash.png"
+								src="/assets/tokens/airdrop/noble.png"
 								w="1.5rem"
 								ml={{ base: "-0.5rem", md: "0rem" }}
 							/>
@@ -450,7 +450,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										WebkitTextFillColor: "transparent"
 									}}
 								>
-									Akash activity
+									Neutron activity
 								</span>
 							</Text>
 							<HStack
@@ -468,10 +468,10 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 								position="relative"
 								mr={{ base: 0, md: "12rem" }}
 							>
-								<Skeleton isLoaded={Boolean(Akashwallet)}>
+								<Skeleton isLoaded={Boolean(Noblewallet)}>
 									<HStack>
 										<Text fontSize="15">
-											<Akashwallet />
+											<Noblewallet />
 										</Text>
 									</HStack>
 								</Skeleton>
@@ -975,10 +975,10 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						</HStack>
 					</Flex>
 				)}
-				{/* Neutron activity */}
+				{/* Akash activity */}
 				{!isVisible && areChainsSelected && (
 					<Flex
-						key="noble"
+						key="akash"
 						bgGradient="linear(rgba(33, 33, 33, 0.9))"
 						flexDir="column"
 						px={5}
@@ -987,11 +987,11 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						shadow="md"
 						w="full"
 						maxW="100%"
-						display={isNobleSelected ? "flex" : "none"}
+						display={isAkashSelected ? "flex" : "none"}
 					>
 						<HStack w="100%">
 							<Image
-								src="/assets/tokens/airdrop/noble.png"
+								src="/assets/tokens/airdrop/akash.png"
 								w="1.5rem"
 								ml={{ base: "-0.5rem", md: "0rem" }}
 							/>
@@ -1014,7 +1014,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										WebkitTextFillColor: "transparent"
 									}}
 								>
-									Neutron activity
+									Akash activity
 								</span>
 							</Text>
 							<HStack
@@ -1032,10 +1032,10 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 								position="relative"
 								mr={{ base: 0, md: "12rem" }}
 							>
-								<Skeleton isLoaded={Boolean(Noblewallet)}>
+								<Skeleton isLoaded={Boolean(Akashwallet)}>
 									<HStack>
 										<Text fontSize="15">
-											<Noblewallet />
+											<Akashwallet />
 										</Text>
 									</HStack>
 								</Skeleton>
