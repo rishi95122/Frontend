@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-pascal-case */
 import Airdrop from "pages/airdrop"
+import Oops from "pages/airdrop/oops"
 import Earn from "pages/earn"
 import Games from "pages/games"
 import Prediction from "pages/games/prediction"
@@ -52,6 +53,12 @@ export const routes: PathRouteProps[] = [
 	{
 		element: <Airdrop />,
 		path: "/airdrop"
+	},
+	{
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-expect-error
+		element: <Oops />,
+		path: "/oops"
 	},
 	{
 		element: <Swap />,

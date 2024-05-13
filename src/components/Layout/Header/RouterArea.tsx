@@ -61,6 +61,8 @@ export const RouterArea = () => {
 
 	const { isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
 
+	const url = import.meta.env.VITE_NEUTRONNETWORK === "neutron" ? "/oops" : "/airdrop"
+
 	// @ts-expect-error types
 	const data: NavigationButtonProps[] = useMemo(() => {
 		return [
@@ -145,10 +147,10 @@ export const RouterArea = () => {
 					</Text>
 				),
 				navId: 5,
-				url: "/airdrop"
+				url
 			}
 		]
-	}, [gradientAnimation, isWalletConnected])
+	}, [gradientAnimation, isWalletConnected, url])
 
 	const initialIndex = useCallback(() => {
 		let initialIndexId = 0
@@ -176,6 +178,10 @@ export const RouterArea = () => {
 			case "airdrop":
 				initialIndexId = 5
 				setActiveRoute(data[5].subLinks)
+				break
+			case "oops":
+				initialIndexId = 6
+				setActiveRoute(data[6].subLinks)
 				break
 			default:
 				initialIndexId = -1

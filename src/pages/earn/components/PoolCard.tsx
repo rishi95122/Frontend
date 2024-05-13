@@ -88,7 +88,7 @@ export const PoolCard = ({
 				</VStack>
 				<Flex direction="column" flex={1} gap={2}>
 					<HStack
-						_dark={{ bg: "rgba(33, 33, 33, 0.5)", color: "white" }}
+						_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
 						bg="offwhite.2"
 						color="gray.800"
 						h="3rem"
@@ -123,7 +123,7 @@ export const PoolCard = ({
 						</Skeleton>
 					</HStack>
 					<HStack
-						_dark={{ bg: "rgba(33, 33, 33, 0.5)", color: "white" }}
+						_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
 						bg="offwhite.2"
 						color="gray.800"
 						h="3rem"

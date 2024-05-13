@@ -166,7 +166,7 @@ export const PoolTable = <Data extends object>({ data, columns }: DataTableProps
 							<Icon as={FaSearch} color="white" />
 						</InputLeftElement>
 						<Input
-							_hover={{ bg: "rgba(33, 33, 33, 0.5)" }}
+							_hover={{ bg: "rgba(33, 33, 33, 0.2)" }}
 							_focus={{ border: "none", shadow: "glowMd" }}
 							_placeholder={{
 								color: "white"
@@ -252,7 +252,7 @@ export const PoolTable = <Data extends object>({ data, columns }: DataTableProps
 					<Tbody>
 						{table.getRowModel().rows.map((row) => (
 							<Tr
-								_hover={{ bg: "rgba(33, 33, 33, 0.5)", shadow: "md" }}
+								_hover={{ bg: "rgba(33, 33, 33, 0.2)", shadow: "md" }}
 								key={row.id}
 								pos="relative"
 								rounded="1.25em"
