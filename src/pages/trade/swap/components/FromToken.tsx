@@ -219,6 +219,7 @@ export const FromToken = () => {
 			bg: "transparent",
 			border: "none",
 			borderRadius: "0",
+			maxH: "11.5em",
 			overflowX: "hidden",
 			overflowY: "scroll",
 			paddingEnd: 1,

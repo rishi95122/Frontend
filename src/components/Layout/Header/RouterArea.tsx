@@ -58,11 +58,10 @@ export const RouterArea = () => {
 	const location = useLocation()
 	const [, setActiveRoute] = useRecoilState(activeRouteState)
 	const [activeIndex, setActiveIndex] = useRecoilState(activeIndexState)
-
+	const { isOpen, onOpen, onClose } = useDisclosure()
 	const { isWalletConnected } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
 
 	const url = import.meta.env.VITE_NEUTRONNETWORK === "neutron" ? "/oops" : "/airdrop"
-
 	// @ts-expect-error types
 	const data: NavigationButtonProps[] = useMemo(() => {
 		return [
@@ -74,10 +73,12 @@ export const RouterArea = () => {
 				subLinks: {
 					Pools: {
 						icon: <Icon as={FarmIcon} h="1.5rem" w="1.5rem" zIndex={1} />,
+						navId: 10,
 						url: "/pools"
 					},
 					Swap: {
 						icon: <Icon as={SwapIcon} h="1.5rem" w="1.5rem" zIndex={1} />,
+						navId: 11,
 						url: "/swap"
 					}
 				},
@@ -112,10 +113,12 @@ export const RouterArea = () => {
 				subLinks: {
 					"My Assets": {
 						icon: <Icon as={PortfolioIcon} h="1.25rem" w="1.25rem" zIndex={1} />,
+						navId: 12,
 						url: "/assets"
 					},
 					"My Pools": {
 						icon: <Icon as={LiquidityIcon} h="1.25rem" w="1.25rem" zIndex={1} />,
+						navId: 13,
 						url: "/pools"
 					}
 					// IFO: {
@@ -207,9 +210,14 @@ export const RouterArea = () => {
 	) => {
 		setActiveIndex(navid)
 		setActiveRoute(subLinks)
-	}
 
-	const { isOpen, onOpen, onClose } = useDisclosure()
+		if (
+			[1, 2, 3, 5].includes(navid) ||
+			(subLinks && [10, 11, 12, 13].some((link) => link in subLinks))
+		) {
+			onClose()
+		}
+	}
 
 	return (
 		<>
