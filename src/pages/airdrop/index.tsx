@@ -20,16 +20,18 @@ const MultiStepForm = () => {
 
 	return (
 		<Flex
-			animate={{ opacity: 0.9 }}
+			animate={{ opacity: 0.8 }}
 			as={motion.main}
 			exit={{ opacity: 0 }}
 			flexDirection="column"
+			justifyContent="center" // Center horizontally
+			alignItems="center" // Center vertically
 			gap={2}
 			h="full"
 			initial={{ opacity: 0 }}
 			p={{ base: 4, lg: 24, md: 16 }}
 			w="full"
-			mt={{ base: -3, md: -4 }}
+			mt={{ base: 0, md: 0 }}
 		>
 			{step === 1 && <Welcome onNext={handleNext} />}
 			{step === 2 && <Pickchains onNext={handleNext} onPrev={handlePrevious} />}

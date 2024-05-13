@@ -189,7 +189,7 @@ export const FromToken = () => {
 		control: (provided: SystemStyleObject) => ({
 			...provided,
 			_placeholder: { color: "white !important" },
-			bg: useColorModeValue("rgba(33, 33, 33, 0.5)", "rgba(33, 33, 33, 0.5)"),
+			bg: useColorModeValue("rgba(33, 33, 33, 0.2)", "rgba(33, 33, 33, 0.2)"),
 			border: "none",
 			borderRadius: "1.25em",
 			color: "white !important",
@@ -372,7 +372,7 @@ export const FromToken = () => {
 					<>
 						<Flex align="space-between" direction="row" gap={3} w="full">
 							<MenuButton
-								_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
+								_dark={{ bg: "rgba(33, 33, 33, 0.2)" }}
 								as={Button}
 								bg="rgba(33, 33, 33, 0.5)"
 								flex={1}
@@ -426,10 +426,10 @@ export const FromToken = () => {
 							{from && (
 								<Flex align="end" direction="column" flex={1} gap={3} maxW="14rem">
 									<NumericFormat
-										_dark={{ _focus: { bg: "rgba(33, 33, 33, 0.5)" } }}
+										_dark={{ _focus: { bg: "rgba(33, 33, 33, 0.2)" } }}
 										allowLeadingZeros={false}
 										allowNegative={false}
-										bg="rgba(33, 33, 33, 0.5)"
+										bg="rgba(33, 33, 33, 0.2)"
 										color={useColorModeValue("white", "white")}
 										customInput={Input}
 										decimalScale={from.token.decimal}
@@ -502,7 +502,7 @@ export const FromToken = () => {
 						<Portal>
 							<MenuList
 								_dark={{ bgGradient: "linear(to-b, #1a001e, #0a2b33 20%)" }}
-								bg="rgba(33, 33, 33, 0.5)"
+								bg="rgba(33, 33, 33, 0.2)"
 								border="none"
 								left={{ base: -3, md: -3 }}
 								maxW={{ base: "18rem", md: "32rem" }}

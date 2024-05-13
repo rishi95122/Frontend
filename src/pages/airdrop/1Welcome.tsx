@@ -184,7 +184,7 @@ const Welcome: React.FC<WelcomeProps> = ({ onNext }) => {
 						transition="all 0.5s"
 						w="30%"
 					>
-						Enter Airdrop
+						Enter
 					</Button>
 				</Flex>
 			</Flex>

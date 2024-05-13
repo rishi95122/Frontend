@@ -2,17 +2,17 @@ import { ButtonText } from "./components/ButtonText"
 import { FromToken } from "./components/FromToken"
 import { SettingsButton } from "./components/SettingsButton"
 import { ToToken } from "./components/ToToken"
-import { Button, Flex, Icon } from "@chakra-ui/react"
+import { Box, Button, Flex, Icon, Tag, useBreakpoint } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
 import { initialBTCToken, initialNeutronToken } from "@utils/tokens/helpers"
 import { type Token } from "@utils/tokens/tokens"
-import { SwapIcon } from "components/Assets/SwapIcon"
+import { SwapIconTrade } from "components/Assets/SwapIconTrade"
 import { AnimatePresence, motion } from "framer-motion"
 import { useTokenSwap } from "hooks/swap/tx/useTokenSwap"
 import { useTokenList } from "hooks/tokens/query/useTokenList"
 import { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
-import { useSearchParams } from "react-router-dom"
+import { Link, useSearchParams } from "react-router-dom"
 import { useRecoilState, useRecoilValue } from "recoil"
 import { tokenSwapState } from "state/swapState"
 import { marketAdvancedModeState } from "state/UIState"
@@ -55,9 +55,9 @@ const Swap = () => {
 		})
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchParameters])
-
 	const advancedMode = useRecoilValue(marketAdvancedModeState)
 	const [isActive, setIsActive] = useState(false)
+	const breakpoint = useBreakpoint({ ssr: false })
 
 	return (
 		<Flex
@@ -167,7 +167,7 @@ const Swap = () => {
 								}}
 								aria-label="Switch Input and Output token"
 								as={motion.button}
-								bg="gray.700"
+								bg="rgba(33, 33, 33, 0.8)"
 								color="white"
 								shadow="md"
 								h="3rem"
@@ -188,7 +188,7 @@ const Swap = () => {
 								// @ts-expect-error types
 								transition={{ bounce: 0.2, type: "tween" }}
 							>
-								<Icon as={SwapIcon} h="2rem" w="2rem" />
+								<Icon as={SwapIconTrade} h="2rem" w="2rem" />
 							</Button>
 							<FromToken />
 							<ToToken />
@@ -239,6 +239,69 @@ const Swap = () => {
 					</MotionFlex>
 				</MotionFlex>
 			</AnimatePresence>
+			<motion.div
+				whileHover={{ scale: 1.05 }}
+				style={{
+					bottom: breakpoint === "base" || breakpoint === "sm" ? "0.1rem" : "-3rem",
+					display:
+						breakpoint === "base" || breakpoint === "sm" || breakpoint === "md" ? "none" : "block",
+					position: "absolute",
+					right: breakpoint === "base" || breakpoint === "sm" ? "0.5rem" : "1rem",
+					zIndex: 5
+				}}
+			>
+				<Flex
+					_hover={{ cursor: "pointer", textDecoration: "none" }}
+					as={Link}
+					to="https://t.me/hoperscommunity"
+					target="_blank"
+				>
+					<Tag
+						zIndex={0}
+						fontSize="md"
+						rounded="1em"
+						bg="offwhite.1"
+						_dark={{ bg: "gray.700", color: "white" }}
+						h="2rem"
+						pos="relative"
+					>
+						Need Help?
+						<Box
+							borderTop="5vh solid #f5f5f5"
+							_dark={{ borderTop: "5vh solid", borderTopColor: "gray.700" }}
+							w="0"
+							h="0"
+							border="auto"
+							borderLeft="1vh solid transparent"
+							borderRight="1vh solid transparent"
+							pos="absolute"
+							top="25%"
+							right="-20%"
+							transform="rotate(-60deg)"
+						/>
+					</Tag>
+					<video
+						autoPlay
+						loop
+						muted
+						style={{
+							position: "relative",
+							transform: "scaleX(-1)",
+							width:
+								breakpoint === "base" || breakpoint === "sm"
+									? advancedMode
+										? "6rem"
+										: "8rem"
+									: advancedMode
+									? "8rem"
+									: "12rem"
+						}}
+					>
+						<source src="/assets/e2.webm" type="video/webm" />
+						Your browser does not support the video tag.
+					</video>
+				</Flex>
+			</motion.div>
 		</Flex>
 	)
 }

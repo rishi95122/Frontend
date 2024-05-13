@@ -18,6 +18,7 @@ import Sagawallet from "../../components/ConnectButtonSaga"
 import Seiwallet from "../../components/ConnectButtonSei"
 import Stargazewallet from "../../components/ConnectButtonStargaze"
 import { Footer } from "../../components/Layout/Footer"
+import { PortfolioSummary } from "./components/PortfolioSummary"
 import {
 	Box,
 	Button,
@@ -1905,6 +1906,11 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						</HStack>
 					</Flex>
 				)}
+				{!isVisible && (
+					<Flex justifyContent="center" mt={2} mb={2} gap={{ base: 20, md: 250 }}>
+						<PortfolioSummary />
+					</Flex>
+				)}
 				<Flex justifyContent="center" mt={2} mb={2} gap={{ base: 20, md: 250 }}>
 					{!isVisible && (
 						<Button
@@ -1947,7 +1953,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 							fontSize={{ base: "8", md: "16" }}
 							maxW="6rem"
 							mt={2}
-							ml={{ base: -50, md: 0 }}
+							ml={{ base: 0, md: 0 }}
 							rounded="0.9em"
 							transition="all 0.5s"
 							width={{ base: "120px", md: "120px" }}
