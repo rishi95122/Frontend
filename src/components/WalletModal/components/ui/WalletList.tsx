@@ -2,7 +2,18 @@
 /* eslint-disable id-length */
 import { type DisplayWalletListType } from "../types"
 import { EmailSMSInput } from "./EmailSMSInput"
-import { Box, Button, Center, Divider, Flex, HStack, Icon, Image, Text } from "@chakra-ui/react"
+import {
+	Box,
+	Button,
+	Center,
+	Divider,
+	Flex,
+	HStack,
+	Icon,
+	Image,
+	Text,
+	VStack
+} from "@chakra-ui/react"
 import { useMemo } from "react"
 
 export const SimpleDisplayWalletListBaseStyle = () => ({
@@ -116,11 +127,13 @@ export const SimpleDisplayWalletList = ({ walletsData }: DisplayWalletListType) 
 				<Divider />
 			</HStack>
 			*/}
-			<HStack sx={SimpleDisplayWalletListBaseStyle()}>
-				{walletsData
-					.filter((wallet) => !wallet.name.includes("web3auth"))
-					.map(({ name, logo, subLogo, onClick }) => {
-						return (
+			<HStack sx={SimpleDisplayWalletListBaseStyle()} spacing={4} justifyContent="center">
+				{/* Top left image */}
+				<VStack>
+					{walletsData
+						.filter((wallet) => !wallet.name.includes("web3auth"))
+						.slice(0, 1) // Select only the first item for the top left
+						.map(({ name, logo, subLogo, onClick }) => (
 							<Flex
 								as={Button}
 								id={name}
@@ -160,8 +173,162 @@ export const SimpleDisplayWalletList = ({ walletsData }: DisplayWalletListType) 
 									)}
 								</Center>
 							</Flex>
-						)
-					})}
+						))}
+				</VStack>
+
+				{/* Top right image */}
+				<VStack>
+					{walletsData
+						.filter((wallet) => !wallet.name.includes("web3auth"))
+						.slice(1, 2) // Select only the second item for the top right
+						.map(({ name, logo, subLogo, onClick }) => (
+							<Flex
+								as={Button}
+								id={name}
+								key={name}
+								onClick={onClick}
+								sx={SimpleDisplayWalletListItemBaseStyle()}
+							>
+								<Center h="full" overflow="hidden" pos="relative" w="full">
+									{typeof logo === "string" ? (
+										<Image
+											h="full"
+											objectFit="fill"
+											p={2}
+											rounded={name.includes("leap") ? "full" : "full"}
+											src={name.includes("leap") ? "/assets/leap-logo.svg" : logo}
+											w="full"
+										/>
+									) : (
+										<Icon as={logo} />
+									)}
+									{subLogo && (
+										<Center
+											bg="white"
+											bottom="0"
+											h="1.5rem"
+											pos="absolute"
+											right="0"
+											rounded="full"
+											w="1.5rem"
+										>
+											{typeof subLogo === "string" ? (
+												<Image src={subLogo} w="1.25rem" />
+											) : (
+												<Icon as={subLogo} w="1.25rem" />
+											)}
+										</Center>
+									)}
+								</Center>
+							</Flex>
+						))}
+				</VStack>
+			</HStack>
+			<HStack pt={2}>
+				<Divider />
+
+				<Text color="gray.100" fontSize="sm" fontWeight="900" minW="10rem" textAlign="center">
+					Wallet Connect
+				</Text>
+
+				<Divider />
+			</HStack>
+			<HStack sx={SimpleDisplayWalletListBaseStyle()} spacing={4} justifyContent="center">
+				{/* Bottom left image */}
+				<VStack>
+					{walletsData
+						.filter((wallet) => !wallet.name.includes("web3auth"))
+						.slice(2, 3) // Select only the third item for the bottom left
+						.map(({ name, logo, subLogo, onClick }) => (
+							<Flex
+								as={Button}
+								id={name}
+								key={name}
+								onClick={onClick}
+								sx={SimpleDisplayWalletListItemBaseStyle()}
+							>
+								<Center h="full" overflow="hidden" pos="relative" w="full">
+									{typeof logo === "string" ? (
+										<Image
+											h="full"
+											objectFit="fill"
+											p={2}
+											rounded={name.includes("leap") ? "full" : "full"}
+											src={name.includes("leap") ? "/assets/leap-logo.svg" : logo}
+											w="full"
+										/>
+									) : (
+										<Icon as={logo} />
+									)}
+									{subLogo && (
+										<Center
+											bg="white"
+											bottom="0"
+											h="1.5rem"
+											pos="absolute"
+											right="0"
+											rounded="full"
+											w="1.5rem"
+										>
+											{typeof subLogo === "string" ? (
+												<Image src={subLogo} w="1.25rem" />
+											) : (
+												<Icon as={subLogo} w="1.25rem" />
+											)}
+										</Center>
+									)}
+								</Center>
+							</Flex>
+						))}
+				</VStack>
+
+				{/* Bottom right image */}
+				<VStack>
+					{walletsData
+						.filter((wallet) => !wallet.name.includes("web3auth"))
+						.slice(3, 4) // Select only the fourth item for the bottom right
+						.map(({ name, logo, subLogo, onClick }) => (
+							<Flex
+								as={Button}
+								id={name}
+								key={name}
+								onClick={onClick}
+								sx={SimpleDisplayWalletListItemBaseStyle()}
+							>
+								<Center h="full" overflow="hidden" pos="relative" w="full">
+									{typeof logo === "string" ? (
+										<Image
+											h="full"
+											objectFit="fill"
+											p={2}
+											rounded={name.includes("leap") ? "full" : "full"}
+											src={name.includes("leap") ? "/assets/leap-logo.svg" : logo}
+											w="full"
+										/>
+									) : (
+										<Icon as={logo} />
+									)}
+									{subLogo && (
+										<Center
+											bg="white"
+											bottom="0"
+											h="1.5rem"
+											pos="absolute"
+											right="0"
+											rounded="full"
+											w="1.5rem"
+										>
+											{typeof subLogo === "string" ? (
+												<Image src={subLogo} w="1.25rem" />
+											) : (
+												<Icon as={subLogo} w="1.25rem" />
+											)}
+										</Center>
+									)}
+								</Center>
+							</Flex>
+						))}
+				</VStack>
 			</HStack>
 		</Box>
 	)

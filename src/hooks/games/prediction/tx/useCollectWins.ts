@@ -11,7 +11,9 @@ import { toast } from "react-toastify"
 import { claimAllWins } from "utils/games/claimAllWins"
 
 export const useCollectWins = () => {
-	const { getSigningCosmWasmClient, address, status } = useChain(import.meta.env.VITE_NEUTRONNETWORK)
+	const { getSigningCosmWasmClient, address, status } = useChain(
+		import.meta.env.VITE_NEUTRONNETWORK
+	)
 
 	const refetchQueries = useRefetchQueries(["tokenBalance"])
 

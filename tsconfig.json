@@ -10,7 +10,7 @@
 		/* Modules */
 		"module": "esnext",
 		"moduleResolution": "node",
-		"types": ["node", "vite/client"],
+		"types": ["node", "vite/client", "react", "react-dom", "react-router-dom"],
 		"typeRoots": ["./node_modules/@types", "./node_modules"],
 
 		/* Emit */

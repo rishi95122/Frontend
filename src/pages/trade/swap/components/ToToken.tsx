@@ -129,7 +129,7 @@ export const ToToken = () => {
 		control: (provided: SystemStyleObject) => ({
 			...provided,
 			_placeholder: { color: "white !important" },
-			bg: useColorModeValue("rgba(33, 33, 33, 0.5)", "rgba(33, 33, 33, 0.5)"),
+			bg: useColorModeValue("rgba(33, 33, 33, 0.2)", "rgba(33, 33, 33, 0.2)"),
 			border: "none",
 			borderRadius: "1.25em",
 			color: "white !important",
@@ -180,10 +180,10 @@ export const ToToken = () => {
 				bgGradient: state.isSelected
 					? "linear(45deg, brand.1,brand.2)"
 					: useColorModeValue("whiteAlpha.300", "whiteAlpha.200"),
-				color: "rgba(33, 33, 33, 0.5)"
+				color: "rgba(33, 33, 33, 0.2)"
 			},
 			bg: state.isSelected
-				? useColorModeValue("rgba(33, 33, 33, 0.5)", "rgba(33, 33, 33, 0.5)")
+				? useColorModeValue("rgba(33, 33, 33, 0.2)", "rgba(33, 33, 33, 0.2)")
 				: "transparent",
 
 			borderRadius: "1.5em",
@@ -234,11 +234,11 @@ export const ToToken = () => {
 	return (
 		<Box
 			_dark={{
-				bg: "rgba(33, 33, 33, 0.5)",
+				bg: "rgba(33, 33, 33, 0.2)",
 				bgGradient: "linear(to-b, #0a2b33, #1a001e)"
 			}}
 			as={motion.div}
-			bg="rgba(33, 33, 33, 0.5)"
+			bg="rgba(33, 33, 33, 0.2)"
 			bgGradient="linear(to-b, #0a2b33, #1a001e)"
 			borderRadius="1em"
 			p={3}
@@ -260,9 +260,9 @@ export const ToToken = () => {
 						<>
 							<Flex align="space-between" direction="row" gap={3} pt={6} w="full">
 								<MenuButton
-									_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
+									_dark={{ bg: "rgba(33, 33, 33, 0.2)" }}
 									as={Button}
-									bg="rgba(33, 33, 33, 0.5)"
+									bg="rgba(33, 33, 33, 0.2)"
 									flex={1}
 									h="3rem"
 									px={1}

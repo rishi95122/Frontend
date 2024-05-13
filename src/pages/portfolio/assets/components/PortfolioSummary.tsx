@@ -28,7 +28,7 @@ export const PortfolioSummary = () => {
 			w="full"
 		>
 			<Flex
-				_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
+				_dark={{ bg: "rgba(33, 33, 33, 0.2)" }}
 				align="start"
 				bg="gray.700"
 				h="full"
@@ -71,7 +71,7 @@ export const PortfolioSummary = () => {
 				</VStack>
 			</Flex>
 			<Flex
-				_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
+				_dark={{ bg: "rgba(33, 33, 33, 0.2)" }}
 				align="start"
 				bg="gray.700"
 				h="full"
@@ -109,7 +109,7 @@ export const PortfolioSummary = () => {
 				</VStack>
 			</Flex>
 			<Flex
-				_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
+				_dark={{ bg: "rgba(33, 33, 33, 0.2)" }}
 				align="start"
 				bg="gray.700"
 				h="full"
@@ -145,7 +145,7 @@ export const PortfolioSummary = () => {
 				</VStack>
 			</Flex>
 			<Flex
-				_dark={{ bg: "rgba(33, 33, 33, 0.5)" }}
+				_dark={{ bg: "rgba(33, 33, 33, 0.2)" }}
 				align="start"
 				bg="gray.700"
 				h="full"
