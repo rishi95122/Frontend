@@ -16,7 +16,7 @@ import {
 	VStack
 } from "@chakra-ui/react"
 import { type Coin } from "@cosmjs/proto-signing"
-import { cosmwasm } from "@fuzio/sei-rpc"
+import { cosmwasm } from "@sei-js/proto"
 import { type SignData } from "@fuzio/web3auth"
 import { useFetchAllIDOs } from "@hooks/ido/query/useFetchAllIDOs"
 import { usePoolList } from "@hooks/pool/query/usePoolList"

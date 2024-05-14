@@ -1,5 +1,6 @@
 import { useChain } from "@cosmos-kit/react"
-import { contracts } from "@fuzio/contracts"
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { contracts } from "@electronprotocol/contracts"
 import { usePoolList } from "@hooks/pool/query/usePoolList"
 import { useMultipleTokenBalance } from "@hooks/tokens/query/useTokenBalance"
 import { useQuery } from "@tanstack/react-query"

@@ -20,7 +20,7 @@ export const ErrorView = ({ onClose, onReturn, wallet }: WalletViewProps) => {
 			bottomButton={<ConnectWalletButton buttonText="Change Wallet" onClick={onReturn} />}
 			contentDesc={message}
 			contentHeader="Oops! Something wrong..."
-			logo={logo}
+			walletIcon={typeof logo === "string" ? logo : undefined}
 			status={LogoStatus.Error}
 		/>
 	)

@@ -10,7 +10,7 @@ import {
 	Input,
 	Textarea
 } from "@chakra-ui/react"
-import { type InstantiateMsg } from "@fuzio/contracts/types/FuzioNativeIDO.types"
+import { type InstantiateMsg } from "@electronprotocol/contracts/types/FuzioNativeIDO.types"
 import { useCreateIDO } from "hooks/ido/tx/useCreateIDO"
 import gregorian from "react-date-object/calendars/gregorian"
 import en from "react-date-object/locales/gregorian_en"

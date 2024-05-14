@@ -1,4 +1,4 @@
-import { type Denom } from "@fuzio/contracts/types/FuzioPool.types"
+import { type Denom } from "@electronprotocol/contracts/types/FuzioPool.types"
 import { type BigNumber } from "bignumber.js"
 
 export type Reward = {

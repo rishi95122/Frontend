@@ -10,7 +10,7 @@ import {
 	Text,
 	VStack
 } from "@chakra-ui/react"
-import { type FinishedRound } from "@fuzio/contracts/types/FuzioNativePrediction.types"
+import { type FinishedRound } from "@electronprotocol/contracts/types/FuzioNativePrediction.types"
 import { BigNumber } from "bignumber.js"
 import { type Variants } from "framer-motion"
 import { animate, motion, useMotionValue } from "framer-motion"

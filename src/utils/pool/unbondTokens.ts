@@ -1,6 +1,6 @@
 import { simulateTransaction } from "../messages/simulateTransaction"
 import { type SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate"
-import { contracts } from "@fuzio/contracts"
+import { contracts } from "@electronprotocol/contracts"
 
 export const unbondTokens = async (
 	address: string,
@@ -10,9 +10,9 @@ export const unbondTokens = async (
 ) => {
 	const client = await getSigningCosmWasmClient()
 
-	const { FuzioStakingMessageComposer } = contracts.FuzioStaking
+	const { FuzioStakingMsgComposer } = contracts.FuzioStaking
 
-	const messageComposer = new FuzioStakingMessageComposer(address, stakingAddress)
+	const messageComposer = new FuzioStakingMsgComposer(address, stakingAddress)
 
 	const unbondMessage = messageComposer.unbond({ amount: amount.toString() })
 

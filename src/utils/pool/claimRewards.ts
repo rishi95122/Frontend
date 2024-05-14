@@ -3,7 +3,7 @@ import {
 	type MsgExecuteContractEncodeObject,
 	type SigningCosmWasmClient
 } from "@cosmjs/cosmwasm-stargate"
-import { contracts } from "@fuzio/contracts"
+import { contracts } from "@electronprotocol/contracts"
 import { type TPool } from "utils/tokens/pools"
 
 export const claimRewards = async (
@@ -14,12 +14,12 @@ export const claimRewards = async (
 	const client = await getSigningCosmWasmClient()
 	const { bondingPeriods } = pool
 
-	const { FuzioStakingMessageComposer } = contracts.FuzioStaking
+	const { FuzioStakingMsgComposer } = contracts.FuzioStaking
 
 	const transactions: MsgExecuteContractEncodeObject[] = []
 
 	for (const bondingPeriod of bondingPeriods) {
-		const messageComposer = new FuzioStakingMessageComposer(address, bondingPeriod.address)
+		const messageComposer = new FuzioStakingMsgComposer(address, bondingPeriod.address)
 
 		const stakerInfo = await client.queryContractSmart(bondingPeriod.address, {
 			staker_info: {

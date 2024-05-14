@@ -1,4 +1,4 @@
-import { type MsgTransfer } from "@sei-js/proto/types/codegen/ibc/applications/transfer/v1/tx"
+import { type MsgTransfer } from "@sei-js/proto/dist/types/codegen/ibc/applications/transfer/v1/tx"
 import { initialNeutronToken } from "@utils/tokens/helpers"
 import { type Token } from "@utils/tokens/tokens"
 import Long from "long"

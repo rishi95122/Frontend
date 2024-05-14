@@ -3,7 +3,7 @@ import {
 	type MsgExecuteContractEncodeObject,
 	type SigningCosmWasmClient
 } from "@cosmjs/cosmwasm-stargate"
-import { contracts } from "@fuzio/contracts"
+import { contracts } from "@electronprotocol/contracts"
 
 export const redeemTokens = async (
 	address: string,
@@ -12,12 +12,12 @@ export const redeemTokens = async (
 ) => {
 	const client = await getSigningCosmWasmClient()
 
-	const { FuzioStakingMessageComposer } = contracts.FuzioStaking
+	const { FuzioStakingMsgComposer } = contracts.FuzioStaking
 
 	const redeemMessages: MsgExecuteContractEncodeObject[] = []
 
 	for (const stakingAddress of stakingAddresses) {
-		const messageComposer = new FuzioStakingMessageComposer(address, stakingAddress)
+		const messageComposer = new FuzioStakingMsgComposer(address, stakingAddress)
 		const redeemMessage = messageComposer.redeem()
 
 		redeemMessages.push(redeemMessage)

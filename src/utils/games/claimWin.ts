@@ -1,5 +1,5 @@
 import { type SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate"
-import { contracts } from "@fuzio/contracts"
+import { contracts } from "@electronprotocol/contracts"
 
 export const claimWin = async (
 	address: string,
@@ -9,9 +9,9 @@ export const claimWin = async (
 	const client = await getSigningCosmWasmClient()
 
 	const {
-		FuzioNativePrediction: { FuzioNativePredictionMessageComposer }
+		FuzioNativePrediction: { FuzioNativePredictionMsgComposer }
 	} = contracts
-	const messageComposer = new FuzioNativePredictionMessageComposer(
+	const messageComposer = new FuzioNativePredictionMsgComposer(
 		address,
 		"sei1wtm234jw7ewdq2aqs0r7eq5t4vhwknpjdd0r7g6fdu4aj4wfedlq8w6pua"
 	)
