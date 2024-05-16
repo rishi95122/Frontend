@@ -391,7 +391,7 @@ export const RouterArea = () => {
 						{data.map((props: NavigationButtonProps) => {
 							return (
 								<NavigationButton
-									key={props.navId} // Use navId as the key
+									key={props.url} // Use url as the key
 									activeIndex={activeIndex}
 									isDisabled={props.isDisabled}
 									onClick={() => {

@@ -27,7 +27,8 @@ export const useFetchAllIDOs = () => {
 							countTotal: true,
 							key: new Uint8Array(),
 							limit: 5n,
-							offset
+							offset,
+							reverse: false
 						}
 					})
 					allIDOContracts = [...allIDOContracts, ...contracts]

@@ -43,8 +43,11 @@ export const externalChainInfoState = atom<MsgTransfer>({
 		sender: "",
 		sourceChannel: "",
 		sourcePort: "transfer",
-		timeoutHeight: { revisionHeight: Long.fromNumber(0), revisionNumber: Long.fromNumber(4) },
-		timeoutTimestamp: Long.fromNumber(0),
+		timeoutHeight: {
+			revisionHeight: Long.fromNumber(0) as unknown as bigint,
+			revisionNumber: Long.fromNumber(4) as unknown as bigint
+		},
+		timeoutTimestamp: Long.fromNumber(0) as unknown as bigint,
 		token: { amount: "0", denom: "uatom" }
 	},
 	key: "externalChainInfo"
