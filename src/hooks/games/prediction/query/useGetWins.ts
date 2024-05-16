@@ -1,5 +1,5 @@
 import { useChain } from "@cosmos-kit/react"
-import { contracts } from "@fuzio/contracts"
+import { contracts } from "@electronprotocol/contracts"
 import { useQuery } from "@tanstack/react-query"
 
 export const useGetWins = () => {

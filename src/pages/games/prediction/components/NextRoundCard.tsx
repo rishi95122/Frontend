@@ -26,7 +26,7 @@ import {
 	VStack
 } from "@chakra-ui/react"
 import { useChain } from "@cosmos-kit/react"
-import { type NextRound } from "@fuzio/contracts/types/FuzioNativePrediction.types"
+import { type NextRound } from "@electronprotocol/contracts/types/FuzioNativePrediction.types"
 import { useTokenBalance } from "@hooks/tokens/query/useTokenBalance"
 import dayjs from "dayjs"
 import duration from "dayjs/plugin/duration"

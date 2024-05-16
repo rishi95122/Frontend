@@ -29,7 +29,7 @@ export const ConnectingView = ({ onClose, onReturn, wallet }: WalletViewProps) =
 		<SimpleDisplayModalContent
 			contentDesc={desc}
 			contentHeader={title}
-			logo={logo}
+			walletIcon={typeof logo === "string" ? logo : undefined}
 			status={LogoStatus.Loading}
 		/>
 	)

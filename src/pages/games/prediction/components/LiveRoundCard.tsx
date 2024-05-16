@@ -13,7 +13,7 @@ import {
 	Text,
 	VStack
 } from "@chakra-ui/react"
-import { type LiveRound, type Timestamp } from "@fuzio/contracts/types/FuzioNativePrediction.types"
+import { type LiveRound, type Timestamp } from "@electronprotocol/contracts/types/FuzioNativePrediction.types"
 import RiveComponent from "@rive-app/react-canvas"
 import { BigNumber } from "bignumber.js"
 import dayjs from "dayjs"

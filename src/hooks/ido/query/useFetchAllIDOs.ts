@@ -1,5 +1,5 @@
 import { useChain } from "@cosmos-kit/react"
-import { cosmwasm } from "@fuzio/sei-rpc"
+import { cosmwasm } from "@sei-js/proto"
 import { useQuery } from "@tanstack/react-query"
 
 export const useFetchAllIDOs = () => {
@@ -27,7 +27,8 @@ export const useFetchAllIDOs = () => {
 							countTotal: true,
 							key: new Uint8Array(),
 							limit: 5n,
-							offset
+							offset,
+							reverse: false
 						}
 					})
 					allIDOContracts = [...allIDOContracts, ...contracts]

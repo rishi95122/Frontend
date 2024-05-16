@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { useChain } from "@cosmos-kit/react"
-import { contracts } from "@fuzio/contracts"
-import { type MyCurrentPositionResponse } from "@fuzio/contracts/types/FuzioNativePrediction.types"
+import { contracts } from "@electronprotocol/contracts"
+import { type MyCurrentPositionResponse } from "@electronprotocol/contracts/types/FuzioNativePrediction.types"
 import { useQuery } from "@tanstack/react-query"
 
 export const usePlayerPosition = ({ roundId }: { roundId: string }) => {

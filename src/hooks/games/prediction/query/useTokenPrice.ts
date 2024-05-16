@@ -1,7 +1,7 @@
 import { createProtobufRpcClient, QueryClient } from "@cosmjs/stargate"
 import { Tendermint34Client } from "@cosmjs/tendermint-rpc"
 import { useChain } from "@cosmos-kit/react"
-import { seiprotocol } from "@fuzio/sei-rpc"
+import { seiprotocol } from "@sei-js/proto"
 import { useQuery } from "@tanstack/react-query"
 import { convertMicroDenomToDenom } from "@utils/tokens/helpers"
 

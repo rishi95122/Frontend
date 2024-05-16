@@ -20,7 +20,7 @@ export const usePoolList = () => {
 			const response = await fetch(
 				import.meta.env.VITE_NEUTRONNETWORK === "neutron"
 					? "https://api.electronprotocol.io/poolList"
-					: "https://apit.electronprotocol.io/poolList"
+					: "http://localhost:1337/"
 			)
 			const responseJson = await response.json()
 			const pools: TPool[] = []

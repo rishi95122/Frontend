@@ -47,8 +47,13 @@ const Deposit = ({ token }: { token: Token }) => {
 			sender: externalAddress!,
 			sourceChannel: token.chain?.ibcChannels?.deposit_channel!,
 			sourcePort: token.chain?.ibcChannels?.port_id!,
-			timeoutHeight: { revisionHeight: Long.fromNumber(0), revisionNumber: Long.fromNumber(4) },
-			timeoutTimestamp: Long.fromNumber(dayjs().add(10, "minutes").unix() * 1_000_000_000),
+			timeoutHeight: {
+				revisionHeight: Long.fromNumber(0) as unknown as bigint,
+				revisionNumber: Long.fromNumber(4) as unknown as bigint
+			},
+			timeoutTimestamp: Long.fromNumber(
+				dayjs().add(10, "minutes").unix() * 1_000_000_000
+			) as unknown as bigint,
 			token: {
 				amount: "0",
 				denom: token.chain?.localDenom!

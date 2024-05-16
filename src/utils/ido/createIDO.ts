@@ -1,5 +1,5 @@
 import { type SigningCosmWasmClient } from "@cosmjs/cosmwasm-stargate"
-import { type IdoInfo, type InstantiateMsg } from "@fuzio/contracts/types/FuzioNativeIDO.types"
+import { type IdoInfo, type InstantiateMsg } from "@electronprotocol/contracts/types/FuzioNativeIDO.types"
 
 export const createIDO = async (
 	address: string,

@@ -54,10 +54,12 @@ export const useIBCDeposit = () => {
 					sourceChannel: externalToken?.chain?.ibcChannels?.withdraw_channel!,
 					sourcePort: externalToken?.chain?.ibcChannels?.port_id!,
 					timeoutHeight: {
-						revisionHeight: Long.fromNumber(height + 500),
-						revisionNumber: Long.fromNumber(4)
+						revisionHeight: Long.fromNumber(height + 500) as unknown as bigint,
+						revisionNumber: Long.fromNumber(4) as unknown as bigint
 					},
-					timeoutTimestamp: Long.fromNumber(dayjs().add(10, "minutes").unix() * 1_000_000_000),
+					timeoutTimestamp: Long.fromNumber(
+						dayjs().add(10, "minutes").unix() * 1_000_000_000
+					) as unknown as bigint,
 					token: {
 						...previous.token!,
 						denom: externalToken?.chain?.localDenom!

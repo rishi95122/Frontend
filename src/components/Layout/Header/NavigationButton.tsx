@@ -121,7 +121,7 @@ const NavigationButton = ({
 							{Object.entries(subLinks).map((subLink) => {
 								return (
 									<Link
-										key={props.key}
+										key={subLink[0]}
 										style={{
 											pointerEvents: isDisabled ? "none" : "all",
 											position: "relative"

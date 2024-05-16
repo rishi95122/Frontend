@@ -181,7 +181,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 
 	return (
 		<ChainProvider
-			assetLists={assets}
+			assetLists={assets as never}
 			chains={[...chains, neutronMainnet]}
 			defaultNameService="icns"
 			endpointOptions={{
@@ -215,7 +215,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 			}}
 			key="chainProvider"
 			signerOptions={{
-				signingCosmwasm: (chain: Chain) => {
+				signingCosmwasm: (chain: Chain | string) => {
 					// const { gasPrice } = defaultGasForChain(chain)
 					// registry
 					const neutronRegistry = new Registry([
@@ -232,7 +232,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 
 					const aminoTypes = new AminoTypes(aminoConverters)
 
-					switch (chain.chain_name) {
+					switch ((chain as Chain).chain_name) {
 						case "neutrontestnet":
 							return {
 								aminoTypes,
@@ -256,7 +256,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 							}
 					}
 				},
-				signingStargate: (chain: Chain) => {
+				signingStargate: (chain: Chain | string) => {
 					// const { gasPrice } = defaultGasForChain(chain)
 					// registry
 					const neutronRegistry = new Registry([...seiprotocolProtoRegistry, ...ibcProtoRegistry])
@@ -268,7 +268,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 
 					const aminoTypes = new AminoTypes(aminoConverters)
 
-					switch (chain.chain_name) {
+					switch ((chain as Chain).chain_name) {
 						case "seitestnet2":
 							return {
 								aminoTypes,

@@ -30,7 +30,7 @@ export const RejectedView = ({ onClose, onReturn, wallet }: WalletViewProps) => 
 			}
 			contentDesc={wallet.rejectMessageTarget || "Connection permission was denied."}
 			contentHeader="Request Rejected"
-			logo={logo}
+			walletIcon={typeof logo === "string" ? logo : undefined}
 			status={LogoStatus.Error}
 		/>
 	)

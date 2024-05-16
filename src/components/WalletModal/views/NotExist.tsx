@@ -40,7 +40,7 @@ export const NotExistView = ({ onClose, onReturn, wallet }: WalletViewProps) => 
 					: "Download link not provided."
 			}
 			contentHeader={`${prettyName} could not be found.`}
-			logo={logo}
+			walletIcon={typeof logo === "string" ? logo : undefined}
 			status={LogoStatus.Error}
 		/>
 	)

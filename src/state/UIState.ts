@@ -1,4 +1,4 @@
-import { type MsgTransfer } from "@sei-js/proto/types/codegen/ibc/applications/transfer/v1/tx"
+import { type MsgTransfer } from "@sei-js/proto/dist/types/codegen/ibc/applications/transfer/v1/tx"
 import { initialNeutronToken } from "@utils/tokens/helpers"
 import { type Token } from "@utils/tokens/tokens"
 import Long from "long"
@@ -43,8 +43,11 @@ export const externalChainInfoState = atom<MsgTransfer>({
 		sender: "",
 		sourceChannel: "",
 		sourcePort: "transfer",
-		timeoutHeight: { revisionHeight: Long.fromNumber(0), revisionNumber: Long.fromNumber(4) },
-		timeoutTimestamp: Long.fromNumber(0),
+		timeoutHeight: {
+			revisionHeight: Long.fromNumber(0) as unknown as bigint,
+			revisionNumber: Long.fromNumber(4) as unknown as bigint
+		},
+		timeoutTimestamp: Long.fromNumber(0) as unknown as bigint,
 		token: { amount: "0", denom: "uatom" }
 	},
 	key: "externalChainInfo"
