@@ -6,6 +6,7 @@ import { Decimal } from "@cosmjs/math"
 import { Registry } from "@cosmjs/proto-signing"
 import { type AminoConverters } from "@cosmjs/stargate"
 import { AminoTypes, GasPrice } from "@cosmjs/stargate"
+import { type MainWalletBase } from "@cosmos-kit/core"
 import { wallets as keplrWallets } from "@cosmos-kit/keplr"
 import { wallets as leapWallets } from "@cosmos-kit/leap"
 import { ChainProvider } from "@cosmos-kit/react"
@@ -369,7 +370,7 @@ export const NeutronProvider = ({ children }: { children?: React.ReactNode }) =>
 				}
 			}}
 			walletModal={getModal()}
-			wallets={[...keplrWallets, ...leapWallets]}
+			wallets={[...keplrWallets, ...leapWallets] as unknown as MainWalletBase[]}
 		>
 			{/*
 			
