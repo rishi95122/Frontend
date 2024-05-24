@@ -239,47 +239,51 @@ export const SimpleDisplayWalletList = ({ walletsData }: DisplayWalletListType) 
 					{walletsData
 						.filter((wallet) => !wallet.name.includes("web3auth"))
 						.slice(2, 3) // Select only the third item for the bottom left
-						.map(({ name, logo, subLogo, onClick }) => (
-							<Flex
-								as={Button}
-								id={name}
-								key={name}
-								onClick={onClick}
-								sx={SimpleDisplayWalletListItemBaseStyle()}
-							>
-								<Center h="full" overflow="hidden" pos="relative" w="full">
-									{typeof logo === "string" ? (
-										<Image
-											h="full"
-											objectFit="fill"
-											p={2}
-											rounded={name.includes("leap") ? "full" : "full"}
-											src={name.includes("leap") ? "/assets/leap-logo.svg" : logo}
-											w="full"
-										/>
-									) : (
-										<Icon as={logo} />
-									)}
-									{subLogo && (
-										<Center
-											bg="white"
-											bottom="0"
-											h="1.5rem"
-											pos="absolute"
-											right="0"
-											rounded="full"
-											w="1.5rem"
-										>
-											{typeof subLogo === "string" ? (
-												<Image src={subLogo} w="1.25rem" />
-											) : (
-												<Icon as={subLogo} w="1.25rem" />
-											)}
-										</Center>
-									)}
-								</Center>
-							</Flex>
-						))}
+						.map(({ name, logo, subLogo, onClick }) => {
+							// eslint-disable-next-line @typescript-eslint/no-explicit-any
+							const l: any = logo as any
+							return (
+								<Flex
+									as={Button}
+									id={name}
+									key={name}
+									onClick={onClick}
+									sx={SimpleDisplayWalletListItemBaseStyle()}
+								>
+									<Center h="full" overflow="hidden" pos="relative" w="full">
+										{typeof logo === "string" || typeof logo === "object" ? (
+											<Image
+												h="full"
+												objectFit="fill"
+												p={2}
+												rounded={name.includes("leap") ? "full" : "full"}
+												src={name.includes("leap") ? "/assets/leap-logo.svg" : l.major}
+												w="full"
+											/>
+										) : (
+											<Icon as={logo} />
+										)}
+										{subLogo && (
+											<Center
+												bg="white"
+												bottom="0"
+												h="1.5rem"
+												pos="absolute"
+												right="0"
+												rounded="full"
+												w="1.5rem"
+											>
+												{typeof subLogo === "string" ? (
+													<Image src={subLogo} w="1.25rem" />
+												) : (
+													<Icon as={subLogo} w="1.25rem" />
+												)}
+											</Center>
+										)}
+									</Center>
+								</Flex>
+							)
+						})}
 				</VStack>
 
 				{/* Bottom right image */}
