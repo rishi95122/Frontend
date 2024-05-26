@@ -11,8 +11,8 @@ type AddressData = {
 	share_percentage: number
 }
 
-const AkashIBCreceived = () => {
-	const { address, isWalletConnected } = useChain("akash")
+const OsmosisIBCtransfer = () => {
+	const { address, isWalletConnected } = useChain("osmosis")
 	const [walletAddress, setWalletAddress] = useState<string>("")
 	const [percentage, setPercentage] = useState<number | null>(null)
 
@@ -26,7 +26,7 @@ const AkashIBCreceived = () => {
 		const fetchPercentage = async (): Promise<void> => {
 			try {
 				const response = await axios.get<AddressData[]>(
-					"https://raw.githubusercontent.com/Electron-Protocol/airdrop/main/Akash/Akash_percentage_Undelegate.json"
+					"https://raw.githubusercontent.com/Electron-Protocol/airdrop/main/Osmosis/Osmosis_percentage_IBCtransfer.json"
 				)
 				const data = response.data
 				const addressData = data.find(
@@ -51,7 +51,7 @@ const AkashIBCreceived = () => {
 	return (
 		<Flex alignItems="center" flexDirection="column">
 			<Text fontSize={{ base: "0.35rem", md: "0.5rem" }} ml="0">
-				IBC Received
+				IBC Transfers
 			</Text>
 			<Text fontSize={{ base: "0.35rem", md: "0.5rem" }} ml="0">
 				{percentage !== null ? percentage + "%" : "Percentage: N/A"}
@@ -60,4 +60,4 @@ const AkashIBCreceived = () => {
 	)
 }
 
-export default AkashIBCreceived
+export default OsmosisIBCtransfer

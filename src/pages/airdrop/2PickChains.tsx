@@ -12,12 +12,24 @@ import Noblewallet from "../../components/ConnectButtonNoble"
 import Osmosiswallet from "../../components/ConnectButtonOsmosis"
 import Seiwallet from "../../components/ConnectButtonSei"
 import { Footer } from "../../components/Layout/Footer"
-import AkashDelegate from "./components/getAkashDelegate"
-import AkashIBCreceived from "./components/getAkashIBCreceived"
-import AkashIBCtransfer from "./components/getAkashIBCtransfer"
-import AkashRewards from "./components/getAkashRewards"
-import AkashUndelegate from "./components/getAkashUndelegate"
-import AkashVotes from "./components/getAkashVotes"
+import AkashDelegate from "./components/getAkash/getAkashDelegate"
+import AkashIBCreceived from "./components/getAkash/getAkashIBCreceived"
+import AkashIBCtransfer from "./components/getAkash/getAkashIBCtransfer"
+import AkashRewards from "./components/getAkash/getAkashRewards"
+import AkashUndelegate from "./components/getAkash/getAkashUndelegate"
+import AkashVotes from "./components/getAkash/getAkashVotes"
+import DydxDelegate from "./components/getDydx/getDydxDelegate"
+import DydxIBCreceived from "./components/getDydx/getDydxIBCreceived"
+import DydxIBCtransfer from "./components/getDydx/getDydxIBCtransfer"
+import DydxRewards from "./components/getDydx/getDydxRewards"
+import DydxUndelegate from "./components/getDydx/getDydxUndelegate"
+import DydxVotes from "./components/getDydx/getDydxVotes"
+import OsmosisDelegate from "./components/getOsmosis/getOsmosisDelegate"
+import OsmosisIBCreceived from "./components/getOsmosis/getOsmosisIBCreceived"
+import OsmosisIBCtransfer from "./components/getOsmosis/getOsmosisIBCtransfer"
+import OsmosisRewards from "./components/getOsmosis/getOsmosisRewards"
+import OsmosisUndelegate from "./components/getOsmosis/getOsmosisUndelegate"
+import OsmosisVotes from "./components/getOsmosis/getOsmosisVotes"
 import { PortfolioSummary } from "./components/PortfolioSummary"
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons"
 import {
@@ -1046,7 +1058,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						</HStack>
 					</Flex>
 				)}
-				{/* New empty component */}
+				{/* dydx percentage */}
 				<Collapse in={isDydxExpanded}>
 					<Box
 						bg="rgba(33, 33, 33, 0.1)"
@@ -1059,55 +1071,35 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						mt={0}
 						textAlign="center"
 					>
-						<Flex justify="center" align="center" w="full" mt={0}>
-							<SimpleGrid columns={3} spacing={4} gridColumnGap={40}>
+						<Flex
+							justify="center"
+							align="center"
+							w="full"
+							mt={{ base: "-5", md: "-5" }}
+							mb={{ base: "-5", md: "-5" }}
+						>
+							<SimpleGrid
+								columns={3}
+								spacing={{ base: "2", md: "4" }}
+								gridColumnGap={{ base: "6", md: "40" }}
+							>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Get rewards %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DydxRewards />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Delegations %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DydxDelegate />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										IBC Transfer %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DydxIBCtransfer />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Voting %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DydxVotes />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Undelegations %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DydxUndelegate />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										IBC Receive %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DydxIBCreceived />
 								</HStack>
 							</SimpleGrid>
 						</Flex>
@@ -1550,7 +1542,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						</HStack>
 					</Flex>
 				)}
-				{/* New empty component */}
+				{/* Akash percentage */}
 				<Collapse in={isAkashExpanded}>
 					<Box
 						bg="rgba(33, 33, 33, 0.1)"
@@ -1698,7 +1690,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						</HStack>
 					</Flex>
 				)}
-				{/* New empty component */}
+				{/* Osmosis percentage */}
 				<Collapse in={isOsmosisExpanded}>
 					<Box
 						bg="rgba(33, 33, 33, 0.1)"
@@ -1711,55 +1703,35 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						mt={0}
 						textAlign="center"
 					>
-						<Flex justify="center" align="center" w="full" mt={0}>
-							<SimpleGrid columns={3} spacing={4} gridColumnGap={40}>
+						<Flex
+							justify="center"
+							align="center"
+							w="full"
+							mt={{ base: "-5", md: "-5" }}
+							mb={{ base: "-5", md: "-5" }}
+						>
+							<SimpleGrid
+								columns={3}
+								spacing={{ base: "2", md: "4" }}
+								gridColumnGap={{ base: "6", md: "40" }}
+							>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Get rewards %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<OsmosisRewards />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Delegations %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<OsmosisDelegate />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										IBC Transfer %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<OsmosisIBCtransfer />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Voting %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<OsmosisVotes />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Undelegations %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<OsmosisUndelegate />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										IBC Receive %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<OsmosisIBCreceived />
 								</HStack>
 							</SimpleGrid>
 						</Flex>
