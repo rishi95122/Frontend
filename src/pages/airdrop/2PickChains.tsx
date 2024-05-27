@@ -24,6 +24,12 @@ import DydxIBCtransfer from "./components/getDydx/getDydxIBCtransfer"
 import DydxRewards from "./components/getDydx/getDydxRewards"
 import DydxUndelegate from "./components/getDydx/getDydxUndelegate"
 import DydxVotes from "./components/getDydx/getDydxVotes"
+import DymensionDelegate from "./components/getDymension/getDymensionDelegate"
+import DymensionIBCreceived from "./components/getDymension/getDymensionIBCreceived"
+import DymensionIBCtransfer from "./components/getDymension/getDymensionIBCtransfer"
+import DymensionRewards from "./components/getDymension/getDymensionRewards"
+import DymensionUndelegate from "./components/getDymension/getDymensionUndelegate"
+import DymensionVotes from "./components/getDymension/getDymensionVotes"
 import OsmosisDelegate from "./components/getOsmosis/getOsmosisDelegate"
 import OsmosisIBCreceived from "./components/getOsmosis/getOsmosisIBCreceived"
 import OsmosisIBCtransfer from "./components/getOsmosis/getOsmosisIBCtransfer"
@@ -408,8 +414,8 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 								position="relative"
 								textAlign="left"
 								w="full"
-								alignItems="start"
-								mr={10}
+								alignItems="center"
+								mr={{ base: "9em", md: "4em" }}
 							>
 								Wallets
 							</Text>
@@ -1206,7 +1212,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						</HStack>
 					</Flex>
 				)}
-				{/* New empty component */}
+				{/* Dymension percentage */}
 				<Collapse in={isDymensionExpanded}>
 					<Box
 						bg="rgba(33, 33, 33, 0.1)"
@@ -1219,55 +1225,35 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 						mt={0}
 						textAlign="center"
 					>
-						<Flex justify="center" align="center" w="full" mt={0}>
-							<SimpleGrid columns={3} spacing={4} gridColumnGap={40}>
+						<Flex
+							justify="center"
+							align="center"
+							w="full"
+							mt={{ base: "-5", md: "-5" }}
+							mb={{ base: "-5", md: "-5" }}
+						>
+							<SimpleGrid
+								columns={3}
+								spacing={{ base: "2", md: "4" }}
+								gridColumnGap={{ base: "6", md: "40" }}
+							>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Get rewards %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DymensionRewards />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Delegations %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DymensionDelegate />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										IBC Transfer %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DymensionIBCtransfer />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Voting %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DymensionVotes />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										Undelegations %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DymensionUndelegate />
 								</HStack>
 								<HStack spacing={1}>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										IBC Receive %
-									</Text>
-									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
-										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
-									</Text>
+									<DymensionIBCreceived />
 								</HStack>
 							</SimpleGrid>
 						</Flex>
