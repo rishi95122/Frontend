@@ -253,7 +253,7 @@ const Swap = () => {
 				<Flex
 					_hover={{ cursor: "pointer", textDecoration: "none" }}
 					as={Link}
-					to="https://t.me/hoperscommunity"
+					to="https://t.me/electroncommunity"
 					target="_blank"
 				>
 					<Tag
@@ -261,16 +261,19 @@ const Swap = () => {
 						fontSize="md"
 						rounded="1em"
 						bg="offwhite.1"
-						_dark={{ bg: "gray.700", color: "white" }}
+						mt="2em"
+						_dark={{ bg: "gray.800", color: "white" }}
 						h="2rem"
 						pos="relative"
 					>
 						Need Help?
 						<Box
 							borderTop="5vh solid #f5f5f5"
-							_dark={{ borderTop: "5vh solid", borderTopColor: "gray.700" }}
+							_dark={{ borderTop: "5vh solid", borderTopColor: "gray.800" }}
 							w="0"
 							h="0"
+							mt="0.4em"
+							mr="0.2em"
 							border="auto"
 							borderLeft="1vh solid transparent"
 							borderRight="1vh solid transparent"
@@ -285,6 +288,7 @@ const Swap = () => {
 						loop
 						muted
 						style={{
+							height: "15em",
 							position: "relative",
 							transform: "scaleX(-1)",
 							width:

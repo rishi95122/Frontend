@@ -12,15 +12,43 @@ import Noblewallet from "../../components/ConnectButtonNoble"
 import Osmosiswallet from "../../components/ConnectButtonOsmosis"
 import Seiwallet from "../../components/ConnectButtonSei"
 import { Footer } from "../../components/Layout/Footer"
+import AkashDelegate from "./components/getAkash/getAkashDelegate"
+import AkashIBCreceived from "./components/getAkash/getAkashIBCreceived"
+import AkashIBCtransfer from "./components/getAkash/getAkashIBCtransfer"
+import AkashRewards from "./components/getAkash/getAkashRewards"
+import AkashUndelegate from "./components/getAkash/getAkashUndelegate"
+import AkashVotes from "./components/getAkash/getAkashVotes"
+import DydxDelegate from "./components/getDydx/getDydxDelegate"
+import DydxIBCreceived from "./components/getDydx/getDydxIBCreceived"
+import DydxIBCtransfer from "./components/getDydx/getDydxIBCtransfer"
+import DydxRewards from "./components/getDydx/getDydxRewards"
+import DydxUndelegate from "./components/getDydx/getDydxUndelegate"
+import DydxVotes from "./components/getDydx/getDydxVotes"
+import DymensionDelegate from "./components/getDymension/getDymensionDelegate"
+import DymensionIBCreceived from "./components/getDymension/getDymensionIBCreceived"
+import DymensionIBCtransfer from "./components/getDymension/getDymensionIBCtransfer"
+import DymensionRewards from "./components/getDymension/getDymensionRewards"
+import DymensionUndelegate from "./components/getDymension/getDymensionUndelegate"
+import DymensionVotes from "./components/getDymension/getDymensionVotes"
+import OsmosisDelegate from "./components/getOsmosis/getOsmosisDelegate"
+import OsmosisIBCreceived from "./components/getOsmosis/getOsmosisIBCreceived"
+import OsmosisIBCtransfer from "./components/getOsmosis/getOsmosisIBCtransfer"
+import OsmosisRewards from "./components/getOsmosis/getOsmosisRewards"
+import OsmosisUndelegate from "./components/getOsmosis/getOsmosisUndelegate"
+import OsmosisVotes from "./components/getOsmosis/getOsmosisVotes"
 import { PortfolioSummary } from "./components/PortfolioSummary"
+import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons"
 import {
 	Box,
 	Button,
+	Collapse,
 	Flex,
 	Grid,
 	Heading,
 	HStack,
+	IconButton,
 	Image,
+	SimpleGrid,
 	Skeleton,
 	Text,
 	VStack
@@ -72,6 +100,15 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 	const [EleBalance] = useTokenBalance("factory/neutron13r3st22qa04c8q0d6elg4eyc55vcyrdhgcjm9f/ELE")
 	const [selectionCount, setSelectionCount] = useState(0)
 	const [nextButtonClicked, setNextButtonClicked] = useState(false)
+	const [isNobleExpanded, setIsNobleExpanded] = useState(false)
+	const [isCelestiaExpanded, setIsCelestiaExpanded] = useState(false)
+	const [isCosmoshubExpanded, setIsCosmoshubExpanded] = useState(false)
+	const [isDydxExpanded, setIsDydxExpanded] = useState(false)
+	const [isDymensionExpanded, setIsDymensionExpanded] = useState(false)
+	const [isJunoExpanded, setIsJunoExpanded] = useState(false)
+	const [isAkashExpanded, setIsAkashExpanded] = useState(false)
+	const [isOsmosisExpanded, setIsOsmosisExpanded] = useState(false)
+	const [isSeiExpanded, setIsSeiExpanded] = useState(false)
 
 	const [isBoxSelected, setIsBoxSelected] = useState<{ [key: string]: boolean }>({
 		"1": false,
@@ -95,6 +132,16 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 		isNobleSelected ||
 		isOsmosisSelected ||
 		isSeiSelected
+
+	const toggleNoble = () => setIsNobleExpanded(!isNobleExpanded)
+	const toggleCelestia = () => setIsCelestiaExpanded(!isCelestiaExpanded)
+	const toggleCosmoshub = () => setIsCosmoshubExpanded(!isCosmoshubExpanded)
+	const toggleDydx = () => setIsDydxExpanded(!isDydxExpanded)
+	const toggleDymension = () => setIsDymensionExpanded(!isDymensionExpanded)
+	const toggleJuno = () => setIsJunoExpanded(!isJunoExpanded)
+	const toggleAkash = () => setIsAkashExpanded(!isAkashExpanded)
+	const toggleOsmosis = () => setIsOsmosisExpanded(!isOsmosisExpanded)
+	const toggleSei = () => setIsSeiExpanded(!isSeiExpanded)
 
 	const { connect } = useChain("akash")
 
@@ -367,8 +414,8 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 								position="relative"
 								textAlign="left"
 								w="full"
-								alignItems="start"
-								mr={10}
+								alignItems="center"
+								mr={{ base: "9em", md: "4em" }}
 							>
 								Wallets
 							</Text>
@@ -444,7 +491,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										animation: `${gradientAnimation} 2s ease infinite`,
 										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
 										backgroundSize: "100% 100%",
-										fontSize: "larger",
+										fontSize: "1em",
 										marginRight: "0px",
 										WebkitBackgroundClip: "text",
 										WebkitTextFillColor: "transparent"
@@ -476,6 +523,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 									</HStack>
 								</Skeleton>
 							</HStack>
+
 							<HStack
 								_dark={{ bg: "rgba(33, 33, 33, 0.2)", color: "white" }}
 								bg="offwhite.2"
@@ -496,15 +544,89 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										</Text>
 										<Image
 											src="/assets/tokens/electron.png"
-											w={{ base: "1.2rem", md: "1.5rem" }}
-											mr={{ base: "0.5rem", md: "0rem" }}
+											w={{ base: "1rem", md: "1.2rem" }}
+											mr={{ base: "0.5rem", md: "0.7rem" }}
 										/>
 									</HStack>
 								</Skeleton>
 							</HStack>
+							<IconButton
+								paddingRight={{ base: "1rem", md: "0rem" }}
+								icon={isNobleExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
+								onClick={toggleNoble}
+								aria-label="Toggle Details"
+								variant="ghost"
+							/>
 						</HStack>
 					</Flex>
 				)}
+				{/* New empty component */}
+				<Collapse in={isNobleExpanded}>
+					<Box
+						bg="rgba(33, 33, 33, 0.1)"
+						px={5}
+						py={10}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						mt={0}
+						textAlign="center"
+					>
+						<Flex justify="center" align="center" w="full" mt={0}>
+							<SimpleGrid columns={3} spacing={4} gridColumnGap={40}>
+								<HStack spacing={1} justify="center" align="center">
+									<Text fontSize="10" textAlign="center">
+										Get rewards %
+									</Text>
+									<Text fontSize="10" textAlign="center">
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1} justify="center" align="center">
+									<Text fontSize="10" textAlign="center">
+										Delegations %
+									</Text>
+									<Text fontSize="10" textAlign="center">
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1} justify="center" align="center">
+									<Text fontSize="10" textAlign="center">
+										IBC Transfer %
+									</Text>
+									<Text fontSize="10" textAlign="center">
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1} justify="center" align="center">
+									<Text fontSize="10" textAlign="center">
+										Voting %
+									</Text>
+									<Text fontSize="10" textAlign="center">
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1} justify="center" align="center">
+									<Text fontSize="10" textAlign="center">
+										Undelegations %
+									</Text>
+									<Text fontSize="10" textAlign="center">
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1} justify="center" align="center">
+									<Text fontSize="10" textAlign="center">
+										IBC Receive %
+									</Text>
+									<Text fontSize="10" textAlign="center">
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+							</SimpleGrid>
+						</Flex>
+					</Box>
+				</Collapse>
 				{/* Celestia activity */}
 				{!isVisible && areChainsSelected && (
 					<Flex
@@ -538,7 +660,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										animation: `${gradientAnimation} 2s ease infinite`,
 										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
 										backgroundSize: "100% 100%",
-										fontSize: "larger",
+										fontSize: "1em",
 										marginRight: "0px",
 										WebkitBackgroundClip: "text",
 										WebkitTextFillColor: "transparent"
@@ -590,15 +712,89 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										</Text>
 										<Image
 											src="/assets/tokens/electron.png"
-											w={{ base: "1.2rem", md: "1.5rem" }}
-											mr={{ base: "0.5rem", md: "0rem" }}
+											w={{ base: "1rem", md: "1.2rem" }}
+											mr={{ base: "0.5rem", md: "0.7rem" }}
 										/>
 									</HStack>
 								</Skeleton>
 							</HStack>
+							<IconButton
+								paddingRight={{ base: "1rem", md: "0rem" }}
+								icon={isCelestiaExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
+								onClick={toggleCelestia}
+								aria-label="Toggle Details"
+								variant="ghost"
+							/>
 						</HStack>
 					</Flex>
 				)}
+				{/* New empty component */}
+				<Collapse in={isCelestiaExpanded}>
+					<Box
+						bg="rgba(33, 33, 33, 0.1)"
+						px={5}
+						py={10}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						mt={0}
+						textAlign="center"
+					>
+						<Flex justify="center" align="center" w="full" mt={0}>
+							<SimpleGrid columns={3} spacing={4} gridColumnGap={40}>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Get rewards %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Delegations %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										IBC Transfer %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Voting %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Undelegations %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										IBC Receive %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+							</SimpleGrid>
+						</Flex>
+					</Box>
+				</Collapse>
 				{/* Cosmoshub activity */}
 				{!isVisible && areChainsSelected && (
 					<Flex
@@ -632,13 +828,13 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										animation: `${gradientAnimation} 2s ease infinite`,
 										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
 										backgroundSize: "100% 100%",
-										fontSize: "larger",
+										fontSize: "1em",
 										marginRight: "0px",
 										WebkitBackgroundClip: "text",
 										WebkitTextFillColor: "transparent"
 									}}
 								>
-									Cosmoshub activity
+									Cosmos activity
 								</span>
 							</Text>
 							<HStack
@@ -684,15 +880,89 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										</Text>
 										<Image
 											src="/assets/tokens/electron.png"
-											w={{ base: "1.2rem", md: "1.5rem" }}
-											mr={{ base: "0.5rem", md: "0rem" }}
+											w={{ base: "1rem", md: "1.2rem" }}
+											mr={{ base: "0.5rem", md: "0.7rem" }}
 										/>
 									</HStack>
 								</Skeleton>
 							</HStack>
+							<IconButton
+								paddingRight={{ base: "1rem", md: "0rem" }}
+								icon={isCosmoshubExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
+								onClick={toggleCosmoshub}
+								aria-label="Toggle Details"
+								variant="ghost"
+							/>
 						</HStack>
 					</Flex>
 				)}
+				{/* New empty component */}
+				<Collapse in={isCosmoshubExpanded}>
+					<Box
+						bg="rgba(33, 33, 33, 0.1)"
+						px={5}
+						py={10}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						mt={0}
+						textAlign="center"
+					>
+						<Flex justify="center" align="center" w="full" mt={0}>
+							<SimpleGrid columns={3} spacing={4} gridColumnGap={40}>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Get rewards %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Delegations %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										IBC Transfer %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Voting %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Undelegations %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										IBC Receive %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+							</SimpleGrid>
+						</Flex>
+					</Box>
+				</Collapse>
 				{/* Dydx activity */}
 				{!isVisible && areChainsSelected && (
 					<Flex
@@ -726,7 +996,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										animation: `${gradientAnimation} 2s ease infinite`,
 										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
 										backgroundSize: "100% 100%",
-										fontSize: "larger",
+										fontSize: "1em",
 										marginRight: "0px",
 										WebkitBackgroundClip: "text",
 										WebkitTextFillColor: "transparent"
@@ -778,15 +1048,69 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										</Text>
 										<Image
 											src="/assets/tokens/electron.png"
-											w={{ base: "1.2rem", md: "1.5rem" }}
-											mr={{ base: "0.5rem", md: "0rem" }}
+											w={{ base: "1rem", md: "1.2rem" }}
+											mr={{ base: "0.5rem", md: "0.7rem" }}
 										/>
 									</HStack>
 								</Skeleton>
 							</HStack>
+							<IconButton
+								paddingRight={{ base: "1rem", md: "0rem" }}
+								icon={isDydxExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
+								onClick={toggleDydx}
+								aria-label="Toggle Details"
+								variant="ghost"
+							/>
 						</HStack>
 					</Flex>
 				)}
+				{/* dydx percentage */}
+				<Collapse in={isDydxExpanded}>
+					<Box
+						bg="rgba(33, 33, 33, 0.1)"
+						px={5}
+						py={10}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						mt={0}
+						textAlign="center"
+					>
+						<Flex
+							justify="center"
+							align="center"
+							w="full"
+							mt={{ base: "-5", md: "-5" }}
+							mb={{ base: "-5", md: "-5" }}
+						>
+							<SimpleGrid
+								columns={3}
+								spacing={{ base: "2", md: "4" }}
+								gridColumnGap={{ base: "6", md: "40" }}
+							>
+								<HStack spacing={1}>
+									<DydxRewards />
+								</HStack>
+								<HStack spacing={1}>
+									<DydxDelegate />
+								</HStack>
+								<HStack spacing={1}>
+									<DydxIBCtransfer />
+								</HStack>
+								<HStack spacing={1}>
+									<DydxVotes />
+								</HStack>
+								<HStack spacing={1}>
+									<DydxUndelegate />
+								</HStack>
+								<HStack spacing={1}>
+									<DydxIBCreceived />
+								</HStack>
+							</SimpleGrid>
+						</Flex>
+					</Box>
+				</Collapse>
 				{/* Dymension activity */}
 				{!isVisible && areChainsSelected && (
 					<Flex
@@ -820,13 +1144,13 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										animation: `${gradientAnimation} 2s ease infinite`,
 										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
 										backgroundSize: "100% 100%",
-										fontSize: "larger",
+										fontSize: "1em",
 										marginRight: "0px",
 										WebkitBackgroundClip: "text",
 										WebkitTextFillColor: "transparent"
 									}}
 								>
-									Dymension activity
+									Dym activity
 								</span>
 							</Text>
 							<HStack
@@ -872,15 +1196,69 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										</Text>
 										<Image
 											src="/assets/tokens/electron.png"
-											w={{ base: "1.2rem", md: "1.5rem" }}
-											mr={{ base: "0.5rem", md: "0rem" }}
+											w={{ base: "1rem", md: "1.2rem" }}
+											mr={{ base: "0.5rem", md: "0.7rem" }}
 										/>
 									</HStack>
 								</Skeleton>
 							</HStack>
+							<IconButton
+								paddingRight={{ base: "1rem", md: "0rem" }}
+								icon={isDymensionExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
+								onClick={toggleDymension}
+								aria-label="Toggle Details"
+								variant="ghost"
+							/>
 						</HStack>
 					</Flex>
 				)}
+				{/* Dymension percentage */}
+				<Collapse in={isDymensionExpanded}>
+					<Box
+						bg="rgba(33, 33, 33, 0.1)"
+						px={5}
+						py={10}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						mt={0}
+						textAlign="center"
+					>
+						<Flex
+							justify="center"
+							align="center"
+							w="full"
+							mt={{ base: "-5", md: "-5" }}
+							mb={{ base: "-5", md: "-5" }}
+						>
+							<SimpleGrid
+								columns={3}
+								spacing={{ base: "2", md: "4" }}
+								gridColumnGap={{ base: "6", md: "40" }}
+							>
+								<HStack spacing={1}>
+									<DymensionRewards />
+								</HStack>
+								<HStack spacing={1}>
+									<DymensionDelegate />
+								</HStack>
+								<HStack spacing={1}>
+									<DymensionIBCtransfer />
+								</HStack>
+								<HStack spacing={1}>
+									<DymensionVotes />
+								</HStack>
+								<HStack spacing={1}>
+									<DymensionUndelegate />
+								</HStack>
+								<HStack spacing={1}>
+									<DymensionIBCreceived />
+								</HStack>
+							</SimpleGrid>
+						</Flex>
+					</Box>
+				</Collapse>
 				{/* Juno activity */}
 				{!isVisible && areChainsSelected && (
 					<Flex
@@ -914,7 +1292,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										animation: `${gradientAnimation} 2s ease infinite`,
 										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
 										backgroundSize: "100% 100%",
-										fontSize: "larger",
+										fontSize: "1em",
 										marginRight: "0px",
 										WebkitBackgroundClip: "text",
 										WebkitTextFillColor: "transparent"
@@ -966,15 +1344,89 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										</Text>
 										<Image
 											src="/assets/tokens/electron.png"
-											w={{ base: "1.2rem", md: "1.5rem" }}
-											mr={{ base: "0.5rem", md: "0rem" }}
+											w={{ base: "1rem", md: "1.2rem" }}
+											mr={{ base: "0.5rem", md: "0.7rem" }}
 										/>
 									</HStack>
 								</Skeleton>
 							</HStack>
+							<IconButton
+								paddingRight={{ base: "1rem", md: "0rem" }}
+								icon={isJunoExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
+								onClick={toggleJuno}
+								aria-label="Toggle Details"
+								variant="ghost"
+							/>
 						</HStack>
 					</Flex>
 				)}
+				{/* New empty component */}
+				<Collapse in={isJunoExpanded}>
+					<Box
+						bg="rgba(33, 33, 33, 0.1)"
+						px={5}
+						py={10}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						mt={0}
+						textAlign="center"
+					>
+						<Flex justify="center" align="center" w="full" mt={0}>
+							<SimpleGrid columns={3} spacing={4} gridColumnGap={40}>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Get rewards %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Delegations %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										IBC Transfer %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Voting %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Undelegations %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										IBC Receive %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+							</SimpleGrid>
+						</Flex>
+					</Box>
+				</Collapse>
 				{/* Akash activity */}
 				{!isVisible && areChainsSelected && (
 					<Flex
@@ -1008,7 +1460,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										animation: `${gradientAnimation} 2s ease infinite`,
 										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
 										backgroundSize: "100% 100%",
-										fontSize: "larger",
+										fontSize: "1em",
 										marginRight: "0px",
 										WebkitBackgroundClip: "text",
 										WebkitTextFillColor: "transparent"
@@ -1060,15 +1512,69 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										</Text>
 										<Image
 											src="/assets/tokens/electron.png"
-											w={{ base: "1.2rem", md: "1.5rem" }}
-											mr={{ base: "0.5rem", md: "0rem" }}
+											w={{ base: "1rem", md: "1.2rem" }}
+											mr={{ base: "0.5rem", md: "0.7rem" }}
 										/>
 									</HStack>
 								</Skeleton>
 							</HStack>
+							<IconButton
+								paddingRight={{ base: "1rem", md: "0rem" }}
+								icon={isAkashExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
+								onClick={toggleAkash}
+								aria-label="Toggle Details"
+								variant="ghost"
+							/>
 						</HStack>
 					</Flex>
 				)}
+				{/* Akash percentage */}
+				<Collapse in={isAkashExpanded}>
+					<Box
+						bg="rgba(33, 33, 33, 0.1)"
+						px={5}
+						py={10}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						mt={0}
+						textAlign="center"
+					>
+						<Flex
+							justify="center"
+							align="center"
+							w="full"
+							mt={{ base: "-5", md: "-5" }}
+							mb={{ base: "-5", md: "-5" }}
+						>
+							<SimpleGrid
+								columns={3}
+								spacing={{ base: "2", md: "4" }}
+								gridColumnGap={{ base: "6", md: "40" }}
+							>
+								<HStack spacing={1}>
+									<AkashRewards />
+								</HStack>
+								<HStack spacing={1}>
+									<AkashDelegate />
+								</HStack>
+								<HStack spacing={1}>
+									<AkashIBCtransfer />
+								</HStack>
+								<HStack spacing={1}>
+									<AkashVotes />
+								</HStack>
+								<HStack spacing={1}>
+									<AkashUndelegate />
+								</HStack>
+								<HStack spacing={1}>
+									<AkashIBCreceived />
+								</HStack>
+							</SimpleGrid>
+						</Flex>
+					</Box>
+				</Collapse>
 				{/* Osmosis activity */}
 				{!isVisible && areChainsSelected && (
 					<Flex
@@ -1102,13 +1608,13 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										animation: `${gradientAnimation} 2s ease infinite`,
 										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
 										backgroundSize: "100% 100%",
-										fontSize: "larger",
+										fontSize: "1em",
 										marginRight: "0px",
 										WebkitBackgroundClip: "text",
 										WebkitTextFillColor: "transparent"
 									}}
 								>
-									Osmosis activity
+									Osmo activity
 								</span>
 							</Text>
 							<HStack
@@ -1154,15 +1660,69 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										</Text>
 										<Image
 											src="/assets/tokens/electron.png"
-											w={{ base: "1.2rem", md: "1.5rem" }}
-											mr={{ base: "0.5rem", md: "0rem" }}
+											w={{ base: "1rem", md: "1.2rem" }}
+											mr={{ base: "0.5rem", md: "0.7rem" }}
 										/>
 									</HStack>
 								</Skeleton>
 							</HStack>
+							<IconButton
+								paddingRight={{ base: "1rem", md: "0rem" }}
+								icon={isOsmosisExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
+								onClick={toggleOsmosis}
+								aria-label="Toggle Details"
+								variant="ghost"
+							/>
 						</HStack>
 					</Flex>
 				)}
+				{/* Osmosis percentage */}
+				<Collapse in={isOsmosisExpanded}>
+					<Box
+						bg="rgba(33, 33, 33, 0.1)"
+						px={5}
+						py={10}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						mt={0}
+						textAlign="center"
+					>
+						<Flex
+							justify="center"
+							align="center"
+							w="full"
+							mt={{ base: "-5", md: "-5" }}
+							mb={{ base: "-5", md: "-5" }}
+						>
+							<SimpleGrid
+								columns={3}
+								spacing={{ base: "2", md: "4" }}
+								gridColumnGap={{ base: "6", md: "40" }}
+							>
+								<HStack spacing={1}>
+									<OsmosisRewards />
+								</HStack>
+								<HStack spacing={1}>
+									<OsmosisDelegate />
+								</HStack>
+								<HStack spacing={1}>
+									<OsmosisIBCtransfer />
+								</HStack>
+								<HStack spacing={1}>
+									<OsmosisVotes />
+								</HStack>
+								<HStack spacing={1}>
+									<OsmosisUndelegate />
+								</HStack>
+								<HStack spacing={1}>
+									<OsmosisIBCreceived />
+								</HStack>
+							</SimpleGrid>
+						</Flex>
+					</Box>
+				</Collapse>
 				{/* Sei activity */}
 				{!isVisible && areChainsSelected && (
 					<Flex
@@ -1196,7 +1756,7 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										animation: `${gradientAnimation} 2s ease infinite`,
 										background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
 										backgroundSize: "100% 100%",
-										fontSize: "larger",
+										fontSize: "1em",
 										marginRight: "0px",
 										WebkitBackgroundClip: "text",
 										WebkitTextFillColor: "transparent"
@@ -1248,15 +1808,89 @@ const Pickchains: React.FC<PickchainsProps> = ({ onPrev }) => {
 										</Text>
 										<Image
 											src="/assets/tokens/electron.png"
-											w={{ base: "1.2rem", md: "1.5rem" }}
-											mr={{ base: "0.5rem", md: "0rem" }}
+											w={{ base: "1rem", md: "1.2rem" }}
+											mr={{ base: "0.5rem", md: "0.7rem" }}
 										/>
 									</HStack>
 								</Skeleton>
 							</HStack>
+							<IconButton
+								paddingRight={{ base: "1rem", md: "0rem" }}
+								icon={isSeiExpanded ? <ChevronUpIcon /> : <ChevronDownIcon />}
+								onClick={toggleSei}
+								aria-label="Toggle Details"
+								variant="ghost"
+							/>
 						</HStack>
 					</Flex>
 				)}
+				{/* New empty component */}
+				<Collapse in={isSeiExpanded}>
+					<Box
+						bg="rgba(33, 33, 33, 0.1)"
+						px={5}
+						py={10}
+						rounded="1.25em"
+						shadow="md"
+						w="full"
+						maxW="100%"
+						mt={0}
+						textAlign="center"
+					>
+						<Flex justify="center" align="center" w="full" mt={0}>
+							<SimpleGrid columns={3} spacing={4} gridColumnGap={40}>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Get rewards %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Delegations %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										IBC Transfer %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Voting %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										Undelegations %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+								<HStack spacing={1}>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										IBC Receive %
+									</Text>
+									<Text fontSize="10" mr={{ base: "0rem", md: "0rem" }}>
+										{shortenNumber(convertMicroDenomToDenom(EleBalance, 6), 2)}
+									</Text>
+								</HStack>
+							</SimpleGrid>
+						</Flex>
+					</Box>
+				</Collapse>
 				{!isVisible && (
 					<Flex justifyContent="center" mt={2} mb={2} gap={{ base: 20, md: 250 }}>
 						<PortfolioSummary />

@@ -75,7 +75,7 @@ const Welcome: React.FC<WelcomeProps> = ({ onNext }) => {
 							<span
 								style={{
 									animation: `${gradientAnimation} 2s ease infinite`,
-									background: "-webkit-linear-gradient(45deg, #61a9bb, #ec80fe)",
+									background: "-webkit-linear-gradient(72deg, #61a9bb, #ec80fe)",
 									backgroundSize: "100% 100%",
 									fontSize: "larger",
 									marginRight: "0px",
