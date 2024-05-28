@@ -94,7 +94,7 @@ export const HeaderMenu = () => {
 					_hover={{ bg: "blackAlpha.100" }}
 					as="a"
 					bg="transparent"
-					href="https://twitter.com/Hopers_io"
+					href="https://x.com/ElectronDeFi"
 					icon={<FaXTwitter size="18" />}
 					target="_blank"
 				>
