@@ -1,0 +1,4 @@
+cargo:rerun-if-env-changed=NEXUS_VM_PROVER
+cargo:rerun-if-changed=bin/riscv32i-unknown-none-elf.a
+cargo:rustc-link-lib=static=nexus-rt
+cargo:rustc-link-search=/workspaces/Frontend/src/nexus-project/target/riscv32i-unknown-none-elf/debug/build/nexus-rt-c0a39ae97970b146/out
